@@ -1,0 +1,201 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.regTeacherFiles {
+  height: 100vh;
+  background: linear-gradient(171deg, #05096E 0%, #169DE8 100%);
+  border-radius: 0px 0px 500px 0px;
+}
+.regTeacherFiles .container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.regTeacherFiles .container .regDataPF {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  align-items: center;
+  width: 910px;
+  height: 650px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0px 4px 35px 0px rgba(41, 82, 144, 0.25);
+}
+.regTeacherFiles .container .regDataPF .logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+.regTeacherFiles .container .regDataPF .logo img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.regTeacherFiles .container .regDataPF .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+}
+.regTeacherFiles .container .regDataPF .title h1 {
+  color: #020D23;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Bahnschrift;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.regTeacherFiles .container .regDataPF .title p {
+  color: #00040D;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Bahnschrift;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm {
+  display: flex;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+  justify-content: space-around;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .leftInput {
+  cursor: pointer;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .leftInput label {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+  width: 300px;
+  height: 100px;
+  padding: 0px 20px;
+  border-radius: 18px;
+  background: #ecebeb;
+  box-shadow: 0px 32px 40px 0px rgba(136, 150, 200, 0.12);
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .leftInput label div p {
+  padding: 0;
+  margin: 0;
+  color: #373333;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .leftInput label div h5 {
+  color: #454F5B;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  text-decoration-line: underline;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .leftInput .errorBorder {
+  border: 2px solid red;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .leftInput select, .regTeacherFiles .container .regDataPF .regTeacherFilesForm .leftInput input {
+  height: 37px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #B5B5B5;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+  outline: none;
+  padding: 0px 5px;
+  display: none;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .rightInput {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .rightInput label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+  width: 300px;
+  height: 100px;
+  padding: 0px 20px;
+  border-radius: 18px;
+  background: #ecebeb;
+  box-shadow: 0px 32px 40px 0px rgba(136, 150, 200, 0.12);
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .rightInput label div p {
+  padding: 0;
+  margin: 0;
+  color: #373333;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .rightInput label div h5 {
+  color: #454F5B;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  text-decoration-line: underline;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .rightInput .errorBorder {
+  border: 2px solid red;
+}
+.regTeacherFiles .container .regDataPF .regTeacherFilesForm .rightInput select, .regTeacherFiles .container .regDataPF .regTeacherFilesForm .rightInput input {
+  height: 37px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #B5B5B5;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+  padding: 0px 5px;
+  display: none;
+}
+.regTeacherFiles .container .regDataPF .savefilesButton {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.regTeacherFiles .container .regDataPF .savefilesButton button {
+  border: none;
+  border-radius: 5px;
+  border: 1px solid #B5B5B5;
+  background: #107DDB;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  color: #FFF;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.56px;
+  width: 134px;
+  height: 39px;
+}/*# sourceMappingURL=regTeacherFiles.css.map */

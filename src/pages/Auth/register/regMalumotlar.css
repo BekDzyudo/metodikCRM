@@ -1,0 +1,192 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.regMalumotlar {
+  height: 100vh;
+  background: linear-gradient(171deg, #05096e 0%, #169de8 100%);
+  border-radius: 0px 0px 500px 0px;
+}
+.regMalumotlar .container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.regMalumotlar .container .regData {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  align-items: center;
+  width: 910px;
+  height: 570px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 4px 35px 0px rgba(41, 82, 144, 0.25);
+}
+.regMalumotlar .container .regData .logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+.regMalumotlar .container .regData .logo img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.regMalumotlar .container .regData .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+}
+.regMalumotlar .container .regData .title h1 {
+  color: #020d23;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Bahnschrift;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.regMalumotlar .container .regData .title p {
+  color: #00040d;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Bahnschrift;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+.regMalumotlar .container .regData .addMalumotlarForm {
+  display: flex;
+  justify-content: space-around;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  flex-wrap: wrap;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .leftInput {
+  width: 33%;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .leftInput label {
+  color: #000;
+  font-family: Open Sans;
+  font-size: 13.5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1px;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .leftInput .errorBorder {
+  border: 2px solid red;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .leftInput select,
+.regMalumotlar .container .regData .addMalumotlarForm .leftInput input {
+  height: 37px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+  outline: none;
+  padding: 0px 5px;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .centerInput {
+  width: 33%;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .centerInput label {
+  color: #000;
+  font-family: Open Sans;
+  font-size: 13.5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1px;
+}
+.regMalumotlar
+  .container
+  .regData
+  .addMalumotlarForm
+  .centerInput
+  .errorBorder {
+  border: 2px solid red;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .centerInput select,
+.regMalumotlar .container .regData .addMalumotlarForm .centerInput input {
+  height: 37px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+  padding: 0px 5px;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .rightInput {
+  width: 33%;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .rightInput label {
+  color: #000;
+  font-family: Open Sans;
+  font-size: 13.5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1px;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .rightInput .errorBorder {
+  border: 2px solid red;
+}
+.regMalumotlar .container .regData .addMalumotlarForm .rightInput select,
+.regMalumotlar .container .regData .addMalumotlarForm .rightInput input {
+  height: 37px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+  padding: 0px 5px;
+}
+.regMalumotlar .container .regData .saveMalumotlarButton {
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+.regMalumotlar .container .regData .saveMalumotlarButton button {
+  border: none;
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  background: #107ddb;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.56px;
+  width: 134px;
+  height: 39px;
+} /*# sourceMappingURL=regMalumotlar.css.map */
+
+.select {
+  width: 92%;
+}
+.select select,
+input {
+  height: 37px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+  padding: 0px 5px;
+}

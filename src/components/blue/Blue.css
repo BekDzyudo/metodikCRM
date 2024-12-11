@@ -1,0 +1,13 @@
+.hududblue {
+    position: relative;
+  }
+  .blue {
+    position: absolute;
+    background: linear-gradient(168deg, #05096E 37.95%, #169DE8 96.46%);
+    border-radius: 0px 0px 500px 0px;
+    padding-bottom: 1px;
+    height: 80em;
+    width: 100%;
+    z-index: -1;
+  }
+  

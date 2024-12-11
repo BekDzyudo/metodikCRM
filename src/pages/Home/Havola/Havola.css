@@ -1,0 +1,39 @@
+.havola {
+    margin: 120px 0;
+  }
+  .havola_top {
+    margin-bottom: 75px;
+  }
+  .havola_top h1 {
+    color: #333;
+    font-size: 60px;
+    font-weight: 700;
+  }
+  .havola_box {
+    display: flex;
+    justify-content: space-between;
+  }
+  .havolalar {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+  .havola_img {
+    width: 100px;
+    height: 80px;
+    margin-right: 5px;
+  }
+  
+  .havola_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .havola_title p {
+    font-size: 25px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+  }
+  

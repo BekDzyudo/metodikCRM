@@ -1,0 +1,79 @@
+.korilgan_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .korilgan_top h1 {
+    font-size: 60px;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .korilgan_card-box {
+    margin: 70px 0 150px 0 !important;
+    display: flex;
+  }
+  
+  .korilgan_card {
+    height: 240px;
+    border-radius: 25px;
+    background: rgba(243, 243, 243, 0.45);
+    padding: 30px 20px 30px 30px;
+    margin: 0 10px;
+  }
+  
+  .korilgan_card-box .col-4:nth-last-child(2) {
+    margin-top: 50px;
+  }
+  .korilgan_card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .korilgan_title {
+    width: 75%;
+  }
+  .korilgan_card-body p {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    line-height: normal;
+  }
+  .korilgan_card-body span {
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .korilgan_img {
+    width: 25%;
+    height: 120px;
+    border-radius: 6px;
+  }
+  
+  .korilgan_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .korilgan_bottom {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .korilgan_bottom span {
+    color: #1485d5;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .korilgan_bottom i {
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  

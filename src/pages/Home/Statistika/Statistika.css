@@ -1,0 +1,30 @@
+.statistika {
+  margin: 200px 0;
+}
+
+.statistika_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.son {
+  border-right: 3px solid #ddd;
+  text-align: center;
+  padding: 0 25px;
+}
+
+.son:last-child {
+  border: none;
+}
+
+.son .count {
+  color: #1485d5;
+  text-align: justify;
+  font-size: 50px;
+  font-weight: 600;
+}
+.son p {
+  color: #1c71ff;
+  font-size: 22px;
+  font-weight: 700;
+}

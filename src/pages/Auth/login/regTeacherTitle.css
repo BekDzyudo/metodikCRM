@@ -1,0 +1,176 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.regTeacherTitle {
+  height: 100vh;
+  background: linear-gradient(171deg, #05096e 0%, #169de8 100%);
+  border-radius: 0px 0px 500px 0px;
+}
+.regTeacherTitle .container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.regTeacherTitle .container .regTeacher {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  align-items: center;
+  width: 910px;
+  height: 620px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 4px 35px 0px rgba(41, 82, 144, 0.25);
+}
+.regTeacherTitle .container .regTeacher .logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+.regTeacherTitle .container .regTeacher .logo img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.regTeacherTitle .container .regTeacher .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+}
+.regTeacherTitle .container .regTeacher .title h1 {
+  color: #020d23;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Bahnschrift;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.regTeacherTitle .container .regTeacher .title p {
+  color: #00040d;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Bahnschrift;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .topInput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  margin-bottom: 10px;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .topInput div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  width: 50%;
+  margin: 10px 0;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .topInput label {
+  color: #acacac;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.56px;
+  cursor: pointer;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .topInput .errorBorder {
+  border: 2px solid red;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .topInput select,
+.regTeacherTitle .container .regTeacher .addTeacherForm .topInput input {
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  background: #fff;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  height: 37px;
+  outline: none;
+  padding: 0px 5px;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .bottomInput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .bottomInput label {
+  color: #acacac;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.56px;
+  cursor: pointer;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .bottomInput .otch {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  width: 50%;
+}
+.regTeacherTitle
+  .container
+  .regTeacher
+  .addTeacherForm
+  .bottomInput
+  .errorBorder {
+  border: 2px solid red;
+}
+.regTeacherTitle .container .regTeacher .addTeacherForm .bottomInput select,
+.regTeacherTitle .container .regTeacher .addTeacherForm .bottomInput input {
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  background: #fff;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  height: 37px;
+  outline: none;
+  padding: 0px 5px;
+}
+.regTeacherTitle .container .regTeacher .saveTeacherButton {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.regTeacherTitle .container .regTeacher .saveTeacherButton button {
+  border: none;
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  background: #107ddb;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.56px;
+  width: 300px;
+  height: 39px;
+} /*# sourceMappingURL=regTeacherTitle.css.map */

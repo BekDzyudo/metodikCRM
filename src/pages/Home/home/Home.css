@@ -1,0 +1,46 @@
+.homeBag {
+    position: relative;
+  }
+  .home_box {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .name h1 {
+    color: #fff;
+    font-size: 70px;
+    font-weight: 800;
+    text-align: justify;
+  }
+  
+  .text p {
+    margin-top: 45px !important;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  .home_btn {
+    margin-top: 60px !important;
+  }
+  .BTN {
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    background: #05cbd6;
+    border-radius: 50px;
+    padding: 16px 50px;
+    border: none;
+  }
+  .BTN:hover{
+    background: #03adb6;
+
+  }
+  
+  .home_img img {
+    width: 100%;
+    height: 100%;
+  }
+  

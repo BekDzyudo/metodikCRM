@@ -1,0 +1,32 @@
+.top {
+  margin: 63px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top .left a {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.left .bosh {
+  border-right: 1px solid #fff;
+  margin-right: 10px;
+  padding-right: 10px;
+  color: #fff;
+}
+
+.left .back {
+  color: #05cbd6;
+}
+
+.right a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+}
+.right i {
+  font-size: 24px;
+}

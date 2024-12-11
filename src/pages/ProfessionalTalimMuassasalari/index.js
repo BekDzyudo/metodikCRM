@@ -1,0 +1,5 @@
+export {default as HududlarLayout} from "./HududlarLayout"
+export {default as Viloyatlar} from "./Viloyatlar"
+export {default as Tumanlar} from "./Tumanlar"
+export {default as Muassasalar} from "./Muassasalar"
+export {default as MuassasaMalumotiLayout} from "./MuassasaMalumotiLayout"

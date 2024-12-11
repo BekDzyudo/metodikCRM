@@ -1,0 +1,45 @@
+.oops {
+  background: linear-gradient(171deg, #05096e 0%, #169de8 100%);
+  border-radius: 0px 0px 600px 0px;
+  width: 100%;
+  height: 100vh;
+}
+
+.oops_box {
+  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.oops_box .d-flex {
+  align-items: center;
+}
+.oops_name h1 {
+  color: #fff;
+  font-size: 104px;
+  font-weight: 900;
+}
+.oops_name p {
+  margin: 20px 0 !important;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.oops_name .btn {
+  border-radius: 16px;
+  background: #1689c9;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.oops_img {
+  width: 525px;
+  height: 525px;
+}
+
+.oops_img img {
+  width: 100%;
+  height: 100%;
+}

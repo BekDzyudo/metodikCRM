@@ -1,0 +1,147 @@
+.bar {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+.logo-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.logo-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+.search {
+  position: relative;
+}
+
+.search input {
+  width: 350px;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  background: none;
+  color: #fff;
+  padding: 5px 0 5px 15px;
+  outline: none;
+}
+.search i {
+  color: #fff;
+  position: absolute;
+  right: 20px;
+  top: 7px;
+}
+
+.dropdowns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.til select {
+  border: 1px solid #fff;
+  border-radius: 50px;
+  background: none;
+  outline: none;
+  color: #fff;
+  padding: 10px;
+}
+.til select option {
+  background: #179fe8cc;
+  border: none;
+}
+.kirish-btn {
+  border: 1px solid #fff;
+  border-radius: 50px;
+  color: #fff;
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.kirish-btn .signIn {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.kirish-btn:hover {
+  color: #fff;
+}
+
+/* DropDawnProfile */
+
+.userName {
+  position: relative;
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+}
+.userimg {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.userName img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  border: 1px solid #fff;
+}
+.userName p {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.dropdawnProfile {
+  position: absolute;
+  top: 3.5rem;
+  right: -1.5rem;
+  width: 150px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid gray;
+}
+
+.dropdawnProfile::before {
+  content: "";
+  position: absolute;
+  top: -0.7rem;
+  right: 1.1rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+.dropdawnProfile ul {
+  display: inline-block;
+  padding: 0 10px;
+  margin: 0;
+}
+.dropdawnProfile ul li {
+  margin: 10px 0;
+}
+.dropdawnProfile ul li a {
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+.dropdawnProfile ul li a svg {
+  margin-right: 5px;
+}
