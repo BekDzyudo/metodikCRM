@@ -24,7 +24,7 @@ export function RegisterTeacher() {
     fetch(`${import.meta.env.VITE_BASE_URL}/region/`)
       .then((res) => res.json())
       .then((data) => setRegions(data))
-      .catch((err) => console.error("Viloyatlar yuklashda xatolik:", err));
+      .catch((err) => console.error(err));
   }, []);
 
   const handleRegionChange = (e) => {
@@ -32,7 +32,7 @@ export function RegisterTeacher() {
     fetch(`${import.meta.env.VITE_BASE_URL}/district/${regionId}`)
       .then((res) => res.json())
       .then((data) => setDistricts(data.districts))
-      .catch((err) => console.error("Tumanlar yuklashda xatolik:", err));
+      .catch((err) => console.error(err));
   };
 
   const handleDistrictChange = (e) => {
@@ -40,7 +40,7 @@ export function RegisterTeacher() {
     fetch(`${import.meta.env.VITE_BASE_URL}/district-college/${districtId}`)
       .then((res) => res.json())
       .then((data) => setColleges(data))
-      .catch((err) => console.error("Kollejlar yuklashda xatolik:", err));
+      .catch((err) => console.error(err));
   };
 
   function addData() {
@@ -74,7 +74,7 @@ export function RegisterTeacher() {
 
     if (errorArr.length == 0) {
       if (dataObj.password !== dataObj.password2) {
-        toast.error("Parol bir xil emas")
+        toast.error("Parolni qayta tekshiring")
       }
        else {
         fetch(`${import.meta.env.VITE_BASE_URL}/register/teacher/`, {
@@ -88,7 +88,7 @@ export function RegisterTeacher() {
             return res;
           })
           .then((data) => {
-            // console.log(data); 
+            regTeacherForm.current.reset();
             toast.success("Muvaffaqiyatli")
             navigate("/login")
           })
@@ -104,7 +104,7 @@ export function RegisterTeacher() {
             toast.error( errPasswText && errPasswText)
           })
           .finally(() => {
-            regTeacherForm.current.reset();
+            
             saveMalumot.innerHTML = "Saqlash";
           });
 

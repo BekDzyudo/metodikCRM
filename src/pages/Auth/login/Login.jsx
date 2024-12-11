@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useRef} from 'react'
 import "./regTeacherTitle.scss"
 import newLogo from "../../../images/newLogo.svg"
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { login } from '../../../components/authentication/auth';
 
-export function Loginn() {
+export function Login() {
     const email = useRef();
     const password = useRef();
     const regLoginForm = useRef()
@@ -20,7 +20,6 @@ export function Loginn() {
             email: email.current.value,
             password: password.current.value,
           };
-          console.log(dataObj);
 
 
           let errorArr = Object.keys(dataObj).filter((key) => {
@@ -40,17 +39,16 @@ export function Loginn() {
               });
             });
       
-            const response = await login(dataObj);
-            if(response){
-              handleLogin(response)
-              toast.success("Muvaffaqiyatli")
-              navigate("/")
-              console.log(response);
-              
-            }
-            else{
-              console.log(response);
-              toast.error("Email yoki Parol noto'g'ri")
+            if (errorArr.length == 0) {
+              const response = await login(dataObj);
+              if(response){
+                handleLogin(response)
+                toast.success("Xush kelibsiz")
+                navigate("/")
+              }
+              else{
+                toast.error("Email yoki Parol noto'g'ri")
+              }
             }
     }
     return (

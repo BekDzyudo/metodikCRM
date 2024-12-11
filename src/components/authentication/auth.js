@@ -38,7 +38,6 @@ export const refreshAccessToken = async (refreshToken) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ refreshToken }),
   });
-  console.log(response);
   
   return response.json();
 };

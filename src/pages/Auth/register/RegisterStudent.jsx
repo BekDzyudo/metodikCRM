@@ -47,7 +47,7 @@ export function RegisterStudent() {
 
       if (errorArr.length == 0) {
         if (dataObj.password !== dataObj.password2) {
-          toast.error("Parol bir xil emas")
+          toast.error("Parolni qayta tekshiring")
         }
          else {
           fetch(`${import.meta.env.VITE_BASE_URL}/register/ordinary/`, {
@@ -61,23 +61,20 @@ export function RegisterStudent() {
               return res;
             })
             .then((data) => {
-              console.log(data); 
+              regStudentForm.current.reset();
               toast.success("Muvaffaqiyatli")
               navigate("/login")
             })
             .catch((err) => {
               const errorObj = JSON.parse(err.message)
-              console.log(errorObj);
               let errPasswText = errorObj?.password?.join(" ")
               let errEmailText = errorObj?.email?.join(" ")
-              
-              console.log(errPasswText, errEmailText);
               
               toast.error(errEmailText && errEmailText)
               toast.error( errPasswText && errPasswText)
             })
             .finally(() => {
-              regStudentForm.current.reset();
+              
               saveMalumot.innerHTML = "Saqlash";
             });
   
