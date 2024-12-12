@@ -45,8 +45,8 @@ export function RegisterTeacher() {
 
   function addData() {
     let dataObj = {
-      firstName: firstName.current.value,
-      lastName: lastName.current.value,
+      first_name: firstName.current.value,
+      last_name: lastName.current.value,
       region: region.current.value,
       district: district.current.value,
       college: talimMuassasasiNomi.current.value,
@@ -129,15 +129,15 @@ export function RegisterTeacher() {
 
           <form action="" className="addMalumotlarForm" ref={regTeacherForm}>
             <div className="centerInput">
-              <label htmlFor="firstName">Ism*</label>
+              <label htmlFor="first_name">Ism*</label>
               <input
                 ref={firstName}
                 type="text"
-                id="firstName"
+                id="first_name"
                 style={{ marginBottom: "10px" }}
               />
-              <label htmlFor="lastName">Familya*</label>
-              <input ref={lastName} type="text" id="lastName" />
+              <label htmlFor="last_name">Familya*</label>
+              <input ref={lastName} type="text" id="last_name" />
             </div>
             <div className="leftInput">
               <label htmlFor="region">Viloyat*</label>

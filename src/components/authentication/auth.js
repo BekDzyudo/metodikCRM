@@ -33,10 +33,12 @@ export const forgetPassword = async (data) => {
   
 
 export const refreshAccessToken = async (refreshToken) => {
+  const data = {refresh: refreshToken}
   const response = await fetch(`${BASE_URL}/login/refresh/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ refreshToken }),
+    // body: JSON.stringify({refreshToken}),
+    body: JSON.stringify(data)
   });
   
   return response.json();

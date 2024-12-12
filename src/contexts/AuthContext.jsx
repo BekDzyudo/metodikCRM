@@ -9,11 +9,22 @@ export const AuthProvider = ({children}) =>{
         refreshToken: localStorage.getItem("refreshToken") || null,
         accessToken: localStorage.getItem("accessToken") || null,
       });
+      
+      // test
+      // const test = (token) =>{
+      //   const decoode = jwtDecode(token)
+      //   console.log("srazuu => ", decoode);
+      // }
+      // useEffect(()=>{
+      //   test(localStorage.getItem("refreshToken") ? localStorage.getItem("refreshToken") : null)
+      // }, [auth])
 
        // isTokenExpired
   const isTokenExpired = (token) => {
     try {
       const decoded = jwtDecode(token);
+      console.log(decoded);
+      
       const currentTime = Date.now() / 1000; // Hozirgi vaqtni sekundda olamiz
       return decoded.exp < currentTime; // Token muddati tugaganmi?
     } catch (error) {

@@ -85,11 +85,11 @@ export function Login() {
                     </form>
                     <div className="saveTeacherButton">
                         <Link >
-                            <button onClick={addData} id="saveMalumot" >Saqlash</button>
+                            <button onClick={addData} id="saveMalumot" >Tizimga kirish</button>
                         </Link>
                     </div>
                     <Link to="/register-select" className='saveTeacherRoyxat'>
-                        <p>Ro'yxatdan otish</p>
+                        <p>Ro'yxatdan o'tish</p>
                     </Link>
                 </div>
             </div>

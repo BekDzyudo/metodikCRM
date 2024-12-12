@@ -4,50 +4,51 @@
   box-sizing: border-box;
 }
 
-.regNewParol {
+.regParolTiklash {
   height: 100vh;
   background: linear-gradient(171deg, #05096e 0%, #169de8 100%);
   border-radius: 0px 0px 500px 0px;
 }
 
-.regNewParol .container {
+.regParolTiklash .container {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.newParol {
+.regParol {
   display: flex;
   flex-direction: column;
   padding: 30px;
   align-items: center;
   width: 600px;
-  height: 400px;
+  height: 370px;
   flex-shrink: 0;
   border-radius: 5px;
   background: #fff;
   box-shadow: 0px 4px 35px 0px rgba(41, 82, 144, 0.25);
 }
-.newParol .logo {
+.regParol .logo {
   width: 80px;
   height: 80px;
   margin-bottom: 15px;
 }
 
-.newParol .logo img {
+.regParol .logo img {
   width: 100%;
   height: 100%;
   cursor: pointer;
   -o-object-fit: cover;
   object-fit: cover;
 }
-.newParol .title {
+.regParol .title {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 15px;
+  margin-bottom: 10px;
 }
-.newParol .title h1 {
+.regParol .title h1 {
   color: #020d23;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
@@ -57,7 +58,7 @@
   font-weight: 600;
   line-height: normal;
 }
-.newParol .title p {
+.regParol .title p {
   color: #00040d;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
@@ -66,17 +67,16 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-bottom: 20px;
 }
 
-.newParol .addParolForm {
+.regParol .addParolForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80%;
 }
 
-.newParol .addParolForm .topInput {
+.regParol .addParolForm .topInput {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -86,7 +86,7 @@
   margin-bottom: 10px;
 }
 
-.newParol .topInput .topInputBox {
+.regParol .topInput .topInputBox {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
@@ -94,7 +94,7 @@
   margin: 10px 0;
 }
 
-.newParol .topInput .topInputBox label {
+.regParol .topInput .topInputBox label {
   color: #acacac;
   font-family: Open Sans;
   font-size: 16px;
@@ -105,7 +105,7 @@
   cursor: pointer;
 }
 
-.newParol .topInput .topInputBox input {
+.regParol .topInput .topInputBox input {
   border-radius: 5px;
   border: 1px solid #b5b5b5;
   background: #fff;
@@ -113,15 +113,18 @@
   height: 37px;
   outline: none;
   padding: 0px 5px;
+  font-size: 14px;
 }
-
-.newParol .savePatolButton {
+.regParol .topInput .topInputBox .errorBorder{
+  border: 2px solid red;
+}
+.regParol .savePatolButton {
   width: 100%;
-  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
-.newParol .saveParolButton button {
+.regParol .saveParolButton button {
+  margin-top: 10px;
   border: none;
   border-radius: 5px;
   border: 1px solid #b5b5b5;

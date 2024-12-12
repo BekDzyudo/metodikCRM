@@ -18,7 +18,6 @@ import { Profil } from "./pages/profil/profil";
 import { RegPortfolio } from "./pages/regPortfolio/regPortfolio";
 import { RegTeacherFiles } from "./pages/regTeacherFiles/regTeacherFiles";
 import { Login } from "./pages/Auth/login/Login";
-import { RegParolTiklash } from "./pages/RegParolTiklashUnik/regParolTiklash";
 import { RegKod } from "./pages/RegParolTiklashUnik/regKod";
 import PrezidentFarmoni from "./pages/MeyoriyHuquqiyHujjatlar/PrezidentFarmoni";
 import VazirlarQarori from "./pages/MeyoriyHuquqiyHujjatlar/VazirlarQarori";
@@ -30,7 +29,6 @@ import { BookBatafsil } from "./pages/adabiyotlar/components/main/bookBatafsil/b
 import YangiliklarDetail from "./pages/News/YangiliklarDetail";
 import YangilikLayout from "./pages/News/YangilikLayout";
 import Oops from "./components/oops/oops";
-import { RegNewParol } from "./pages/RegParolTiklashUnik/regNewParol";
 import DropDawnProfile from "./components/navbar/topNavbar/DropDawnProfile";
 import MainLayouts from "./layouts/MainLayouts";
 import { HududlarLayout, Viloyatlar, Tumanlar, Muassasalar, MuassasaMalumotiLayout } from "./pages/ProfessionalTalimMuassasalari";
@@ -42,6 +40,8 @@ import { AuthContext } from "./contexts/AuthContext";
 import { RegisterSelect } from "./pages/Auth/register/RegisterSelect";
 import { RegisterTeacher } from "./pages/Auth/register/RegisterTeacher";
 import { RegisterStudent } from "./pages/Auth/register/RegisterStudent";
+import { RegParolTiklash } from "./pages/Auth/register/regParolTiklash";
+import { RegNewParol } from "./pages/Auth/register/regNewParol";
 
 function App() {
   const {auth} = useContext(AuthContext)
@@ -229,10 +229,6 @@ function App() {
           element: <RegKod />,
         },
         {
-          path: "regNewParol",
-          element: <RegNewParol />,
-        },
-        {
           path: "DropDawnProfile",
           element: <DropDawnProfile />,
         },
@@ -261,6 +257,10 @@ function App() {
     {
       path: "/regParolTiklash",
       element: auth.refreshToken ? <Navigate to="/"/> : <RegParolTiklash />,
+    },
+    {
+      path: "/regNewParol",
+      element: auth.refreshToken ? <Navigate to="/"/> : <RegNewParol />,
     },
   ],
 );
