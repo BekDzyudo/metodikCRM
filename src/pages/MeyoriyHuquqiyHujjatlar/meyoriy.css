@@ -118,3 +118,8 @@
 .progress_text {
   width: 80%;
 }
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}

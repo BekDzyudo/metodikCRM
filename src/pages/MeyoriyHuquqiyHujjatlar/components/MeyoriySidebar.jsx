@@ -3,23 +3,32 @@ import { Link, NavLink } from "react-router-dom";
 
 function MeyoriySidebar() {
   return (
-    <div className="farmon_left">
-      <div className="col">
-        <div className="farmon_card">
-          <NavLink to="/MeyoriySahifa" className="farmon_title">
-            Prezident Farmonlari
-          </NavLink>
-          <NavLink to="/MeyoriySahifa/vazirlarQarori" className="farmon_title">
-            Vazirlar Mahkamasi qarorlari
-          </NavLink>
-          <NavLink to="/MeyoriySahifa/vazirlarBuyrugi" className="farmon_title">
-            Vazirlig buyruqlari ta'lim
-          </NavLink>
-          <NavLink to="/MeyoriySahifa/nizomlar" className="farmon_title">
-            Nizomlar
-          </NavLink>
-        </div>
-      </div>
+    <div className="col-4 sidebar">
+      <NavLink
+        to="/MeyoriySahifa"
+        end
+        className={({ isActive }) => (isActive ? "isActive" : "malumot_card")}
+      >
+        <p>Prezident Farmonlari</p>
+      </NavLink>
+      <NavLink
+        to="/MeyoriySahifa/vazirlarQarori"
+        className={({ isActive }) => (isActive ? "isActive" : "malumot_card")}
+      >
+        <p>Vazirlar Mahkamasi qarorlari</p>
+      </NavLink>
+      <NavLink
+        to="/MeyoriySahifa/vazirlarBuyrugi"
+        className={({ isActive }) => (isActive ? "isActive" : "malumot_card")}
+      >
+        <p>Vazirlig buyruqlari ta'lim</p>
+      </NavLink>
+      <NavLink
+        to="/MeyoriySahifa/nizomlar"
+        className={({ isActive }) => (isActive ? "isActive" : "malumot_card")}
+      >
+        <p>Nizomlar</p>
+      </NavLink>
     </div>
   );
 }

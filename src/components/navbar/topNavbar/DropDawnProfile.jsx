@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ImExit } from "react-icons/im";
 import { CiSettings } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
+import { AuthContext } from '../../../contexts/AuthContext';
 
 function DropDawnProfile() {
+    const {logout} = useContext(AuthContext)
     return (
         <div className='flex flex-col dropdawnProfile'>
             <ul className='flex flex-col gap-4'>
@@ -18,12 +20,12 @@ function DropDawnProfile() {
                 <li>
                     <Link>
                        <CiSettings className='w-25px h-25px'/>
-                        Sozlama
+                        Sozlamalar
                     </Link>
                 </li>
                 <hr />
                 <li>
-                    <Link to="/">
+                    <Link to="/login" onClick={logout}>
                         <ImExit className='w-25 h-25'/>
                         Chiqish
                     </Link>

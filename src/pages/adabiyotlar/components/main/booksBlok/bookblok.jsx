@@ -8,7 +8,7 @@ import useGetFetch from "../../../../../hooks/useGetFetch";
 export function Bookblok() {
   const [newArr, setNewArr] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(9);
+  const [postPerPage, setPostPerPage] = useState(18);
   const [isPending, setIsPending] = useState(true);
   let bookArr = [];
 
@@ -36,21 +36,6 @@ export function Bookblok() {
   const { data, isPendingg, error } = useGetFetch( "http://192.168.101.175:8000/api/region/")
   console.log(data);
   console.log(error);
-  
-
-  // useEffect(() => {
-  //   fetch(
-  //     "http://192.168.101.175:8000/api/region"
-  //   )
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-        
-  //     })
-  //     .catch((err) => console.log(err.message));
-  // }, []);
 
   function choppedBookItem(books) {
     const lastIndex = currentPage * postPerPage;

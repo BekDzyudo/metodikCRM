@@ -8,31 +8,19 @@ import MeyoriySidebar from "./components/MeyoriySidebar";
 function PrezidentFarmoni() {
   return (
     <div className="container">
-      <div className="top">
-        <div className="left">
-          <Link to="/" className="bosh">
-            Bosh sahifa
-          </Link>
-          <Link to="/Meyoriy" className="bosh">
-            Me’yoriy-huquqiy hujjatlar
-          </Link>
-          <Link className="back">Prezident Farmonlari</Link>
-        </div>
-        <div className="right">
-          <Link>
-            <i className="bi bi-arrow-left-short"></i> Orqaga
-          </Link>
-        </div>
-      </div>
       <div className="row">
         <div className="col-12">
           <div className=" farmon_body">
             <MeyoriySidebar />
-            <div className="col-10 farmon_right">
+            <div className="col-8 farmon_right">
               <div className="col-3 farmon_right-img">
                 <img src={farmon} alt="farmon" />
               </div>
-              <div className="col-7 farmon_right-text">
+              <div className="col-5">
+                <h1>Title</h1>
+                <p>description</p>
+              </div>
+              <div className="col-12 farmon_right-text">
                 <p>
                   O'zbekiston Respublikasi Prezidentining 2022 yil 29 yanvardagi
                   "2022-2026 yillarga mo'ljallangan Yangi O'zbekistonning
@@ -122,7 +110,7 @@ function PrezidentFarmoni() {
           </div>
         </div>
       </div>
-      <PagenationWhite />
+      {/* <PagenationWhite /> */}
     </div>
   );
 }

@@ -5,25 +5,20 @@ import {jwtDecode} from "jwt-decode"
 export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) =>{
+  const [userName, setName] = useState(null)
     const [auth, setAuth] = useState({
         refreshToken: localStorage.getItem("refreshToken") || null,
         accessToken: localStorage.getItem("accessToken") || null,
       });
-      
-      // test
-      // const test = (token) =>{
-      //   const decoode = jwtDecode(token)
-      //   console.log("srazuu => ", decoode);
-      // }
-      // useEffect(()=>{
-      //   test(localStorage.getItem("refreshToken") ? localStorage.getItem("refreshToken") : null)
-      // }, [auth])
 
-       // isTokenExpired
   const isTokenExpired = (token) => {
     try {
       const decoded = jwtDecode(token);
-      console.log(decoded);
+      setName({
+        name: decoded.first_name,
+        userImage: decoded.image,
+      });
+      
       
       const currentTime = Date.now() / 1000; // Hozirgi vaqtni sekundda olamiz
       return decoded.exp < currentTime; // Token muddati tugaganmi?
@@ -87,7 +82,7 @@ export const AuthProvider = ({children}) =>{
   }, []);
 
   return (
-    <AuthContext.Provider value={{auth, login, logout, refresh}}>
+    <AuthContext.Provider value={{auth, login, logout, refresh, userName}}>
         {children}
     </AuthContext.Provider>
   )

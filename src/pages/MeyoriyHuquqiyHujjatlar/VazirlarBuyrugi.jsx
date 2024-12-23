@@ -9,130 +9,109 @@ import MeyoriySidebar from "./components/MeyoriySidebar";
 function VazirlarBuyrugi() {
   return (
     <div className="container">
-      <div className="top">
-        <div className="left">
-          <Link to="/" className="bosh">
-            Bosh sahifa
-          </Link>
-          <Link to="/Meyoriy" className="bosh">
-            Me’yoriy-huquqiy hujjatlar
-          </Link>
-          <Link to="/vazirligBuyruqi" className="back">
-            Vazirlig buyruqlari ta'lim
-          </Link>
-        </div>
-        <div className="right">
-          <Link>
-            <i className="bi bi-arrow-left-short"></i> Orqaga
-          </Link>
-        </div>
-      </div>
       <div className="row">
         <div className="col-12">
           <div className=" farmon_body">
             <MeyoriySidebar />
-            <div className="col-10 farmon_right">
+            <div className="col-8 farmon_right">
               <div className="col-3 farmon_right-img">
                 <img src={buyruq} alt="farmon" />
               </div>
-              <div className="col-7">
+              <div className="col-5">
+                <h1>Title</h1>
+                <p>description</p>
+              </div>
+              <div className="col-12 farmon_right-text">
                 <p>
-                  O'zbekiston Respublikasi oliy ta'lim muassasalari talabalari
-                  o'rtasida o;tkaziladigan "Yil talabasi-2019" tanlovining yangi
-                  taxriridagi nizomi.
+                  O'zbekiston Respublikasi Prezidentining 2022 yil 29 yanvardagi
+                  "2022-2026 yillarga mo'ljallangan Yangi O'zbekistonning
+                  taraqqiyot strategiyasi to'g'risida"gi PF-60-son farmoni.
                 </p>
                 <p>
-                  Oliy va professional talim muassasalari xodimlari uchun
-                  namunaviy Kasb odobnomasi 2019 yil 30 dekabrdagi 1201 sonli
+                  O'zbekiston Respublikasi Prezidentining 2022 yil 29 yanvardagi
+                  "2022-2026 yillarga mo'ljallangan Yangi O'zbekistonning
+                  taraqqiyot strategiyasi to'g'risida"gi PF-60-son farmoni.
                 </p>
-
                 <p>
-                  «Оliy va urta mahsus, kasb-hunar ta'lim massasalari va akdemik
-                  liceylarining professor-ukituvchilari, hodimlari va
-                  talabalariga karatilgan nokonuniy hatti-harakatlarni oldini
-                  olish buyicha masalalarni muhokama kilish 12.2018 yil 24
-                  dekabrdagi 87-01-854 sonli Oliy va professional talim
-                  muassasalari xodimlari uchun namunaviy Kasb odobnomasi 2019
-                  yil 30 dekabrdagi 1201 sonli. Oliy ta'lim muassasalari
-                  talabalari o'rtasida o;tkaziladigan "Yil talabasi-2019"
-                  tanlovining yangi taxriridagi nizomi.
+                  O'zbekiston Respublikasi Prezidentining 2022 yil 29 yanvardagi
+                  "2022-2026 yillarga mo'ljallangan Yangi O'zbekistonning
+                  taraqqiyot strategiyasi to'g'risida"gi PF-60-son farmoni.
+                </p>
+                <p>
+                  O'zbekiston Respublikasi Prezidentining 2021 yil 16 iyundagi
+                  "Davlat organlari va tashkilotlarining faoliyati ochiqligini
+                  ta'minlash, shuningdek, jamoatchilik nazoratini samarali
+                  amalga oshirishga doir qo'shimcha chora-tadbirlar
+                  to'g'risida"gi PF-6247-son farmoni. Prezidentining 2021 yil 16
+                  iyundagi "Davlat organlari va tashkilotlarining faoliyati
+                  ochiqligini ta'minlash, shuningdek, jamoatchilik nazoratini
+                  samarali amalga oshirishga doir qo'shimcha chora-tadbirlar
+                  to'g'risida"gi PF-6247-son farmoni
                 </p>
               </div>
-
               <p>
-                O'zbekiston Respublikasi oliy ta'lim muassasalari talabalari
-                o'rtasida o;tkaziladigan "Yil talabasi-2019" tanlovining yangi
-                taxriridagi nizomi.
-              </p>
-
-              <p>
-                «Оliy va urta mahsus, kasb-hunar ta'lim massasalari va akdemik
-                liceylarining professor-ukituvchilari, hodimlari va talabalariga
-                karatilgan nokonuniy hatti-harakatlarni oldini olish buyicha
-                masalalarni muhokama kilish 12.2018 yil 24 dekabrdagi 87-01-854
-                sonli
+                O'zbekiston Respublikasi Prezidentining 2021 yil 10 fevraldagi
+                "Qonunchilik hujjatlari ijrosini samarali tashkil etishda davlat
+                boshqaruvi organlari va mahalliy ijro etuvchi hokimiyat
+                organlari rahbarlarining shaxsiy javobgarligini kuchaytirishga
+                doir qo'shimcha chora-tadbirlar to'g'risida"gi PF-6166-son
+                farmoni
               </p>
               <p>
-                Oliy va professional talim muassasalari xodimlari uchun
-                namunaviy Kasb odobnomasi 2019 yil 30 dekabrdagi 1201 sonli
-              </p>
-
-              <p>
-                O'zbekiston Respublikasi oliy ta'lim muassasalari talabalari
-                o'rtasida o;tkaziladigan "Yil talabasi-2019" tanlovining yangi
-                taxriridagi nizomi.
+                O'zbekiston Respublikasi Prezidentining 2021 yil 3 fevraldagi "
+                2017 — 2021 yillarda O'zbekiston Respublikasini
+                rivojlantirishning beshta ustuvor yo'nalishi bo'yicha harakatlar
+                strategiyasini "yoshlarni qo'llab-quvvatlash va aholi
+                salomatligini mustahkamlash yili"da amalga oshirishga oid davlat
+                dasturi to'g'risida "gi PF-6155-son farmoni
               </p>
               <p>
-                O'zbekiston Respublikasi oliy ta'lim muassasalari talabalari
-                o'rtasida o;tkaziladigan "Yil talabasi-2019" tanlovining yangi
-                taxriridagi nizomi.
-              </p>
-
-              <p>
-                «Оliy va urta mahsus, kasb-hunar ta'lim massasalari va akdemik
-                liceylarining professor-ukituvchilari, hodimlari va talabalariga
-                karatilgan nokonuniy hatti-harakatlarni oldini olish buyicha
-                masalalarni muhokama kilish 12.2018 yil 24 dekabrdagi 87-01-854
-                sonli
+                O'zbekiston Respublikasi Prezidentining 2020 yil 27 oktyabrdagi
+                "Davlat ishtirokidagi korxonalarni isloh qilishni
+                jadallashtirish hamda davlat aktivlarini xususiylashtirishga oid
+                chora-tadbirlar to'g'risida"gi PF-6096-son farmoni
               </p>
               <p>
-                Oliy va professional talim muassasalari xodimlari uchun
-                namunaviy Kasb odobnomasi 2019 yil 30 dekabrdagi 1201 sonli
-              </p>
-
-              <p>
-                O'zbekiston Respublikasi oliy ta'lim muassasalari talabalari
-                o'rtasida o;tkaziladigan "Yil talabasi-2019" tanlovining yangi
-                taxriridagi nizomi.
+                O'zbekiston Respublikasi Prezidentining 2020 yil 30 oktyabrdagi
+                "Sog'lom turmush tarzini keng tatbiq etish va ommaviy sportni
+                yanada rivojlantirish chora-tadbirlari to'g'risidagi PF-6099-son
+                farmoni
               </p>
               <p>
-                O'zbekiston Respublikasi oliy ta'lim muassasalari talabalari
-                o'rtasida o;tkaziladigan "Yil talabasi-2019" tanlovining yangi
-                taxriridagi nizomi.
-              </p>
-
-              <p>
-                «Оliy va urta mahsus, kasb-hunar ta'lim massasalari va akdemik
-                liceylarining professor-ukituvchilari, hodimlari va talabalariga
-                karatilgan nokonuniy hatti-harakatlarni oldini olish buyicha
-                masalalarni muhokama kilish 12.2018 yil 24 dekabrdagi 87-01-854
-                sonli
+                O'zbekiston Respublikasi prezidenti 2020 yil 5 oktyabr"
+                "O'zbekistonni raqamlash - 2030" tasdiqlangan strategiya va
+                universitetga amalgaoshirish chora-tadbirlari-ko'rilgan
+                chora-tadbirlar " gi PF-6079-son qarori
               </p>
               <p>
-                Oliy va professional talim muassasalari xodimlari uchun
-                namunaviy Kasb odobnomasi 2019 yil 30 dekabrdagi 1201 sonli
+                O'zbekiston Respublikasi Prezidentining 2020 yil 18 avgustdagi
+                "Respublikada eksport va investisiya salohiyatini yanada
+                rivojlantirishga oid qo'shimcha chora-tadbirlar to'g'risida"gi
+                PF-6042-son farmoni
               </p>
-
               <p>
-                O'zbekiston Respublikasi oliy ta'lim muassasalari talabalari
-                o'rtasida o;tkaziladigan "Yil talabasi-2019" tanlovining yangi
-                taxriridagi nizomi.
+                O'zbekiston Respublikasi Prezidentining 2020 yil 27 oktyabrdagi
+                "Davlat ishtirokidagi korxonalarni isloh qilishni
+                jadallashtirish hamda davlat aktivlarini xususiylashtirishga oid
+                chora-tadbirlar to'g'risida"gi PF-6096-son farmoni
+              </p>
+              <p>
+                O'zbekiston Respublikasi Prezidentining 2020 yil 30 oktyabrdagi
+                "Sog'lom turmush tarzini keng tatbiq etish va ommaviy sportni
+                yanada rivojlantirish chora-tadbirlari to'g'risidagi PF-6099-son
+                farmoni
+              </p>
+              <p>
+                O'zbekiston Respublikasi prezidenti 2020 yil 5 oktyabr"
+                "O'zbekistonni raqamlash - 2030" tasdiqlangan strategiya va
+                universitetga amalgaoshirish chora-tadbirlari-ko'rilgan
+                chora-tadbirlar " gi PF-6079-son qarori
               </p>
             </div>
           </div>
         </div>
       </div>
-      <PagenationWhite />
+      {/* <PagenationWhite /> */}
     </div>
   );
 }

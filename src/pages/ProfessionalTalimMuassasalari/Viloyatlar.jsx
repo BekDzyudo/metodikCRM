@@ -34,7 +34,7 @@ function Viloyatlar() {
                   {regions.map((region) => {
                     const str = region.name.split(" ");
                     return (
-                      <div className="" key={region.id}>
+                      <Link className="" to={`/viloyatlar/tumanlar/${region.id}`} key={region.id}>
                         <div className="hudud_card">
                           <div className="hudud_card-img">
                             <img src={region.image} alt="" />
@@ -44,14 +44,13 @@ function Viloyatlar() {
                               return <p key={item}>{item}</p>;
                             })}
                           </h4>
-
                           <div className="hudud_card-btn">
-                            <Link to={`/viloyatlar/tumanlar/${region.id}`}>
+                            <Link >
                               Batafsil
                             </Link>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>

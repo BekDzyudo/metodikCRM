@@ -50,7 +50,7 @@ function Muassasalar() {
                 {collages.map((college) => {
                   const str = college.name.split(" ");
                   return (
-                    <div className="" key={college.id}>
+                    <Link to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${college.id}`} key={college.id}>
                       <div className="hudud_card">
                         <div className="hudud_card-img">
                           <img src= {college.image} alt="" />
@@ -62,12 +62,12 @@ function Muassasalar() {
                         </h4>
 
                         <div className="hudud_card-btn">
-                          <Link to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${college.id}`}>
+                          <Link>
                             Batafsil
                           </Link>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
