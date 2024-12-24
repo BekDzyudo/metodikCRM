@@ -26,46 +26,17 @@
          font-size: 16px;
       }
     }
-    .list {
-      width: 100%;
-      border-radius: 14px;
-      background: #fff;
-      box-shadow: 9px 9px 35px 0px rgba(0, 0, 0, 0.09);
+    .malumot_card{
+      width: 354px;
+      padding: 10px 20px;
       display: flex;
-      flex-direction: column;
-      row-gap: 13px;
-      padding: 25px 20px;
-
-      .item {
-        border: 2px solid #f4f4f4;
-        height: 77px;
-        flex-shrink: 0;
-        border-radius: 9px;
-        background: #fff;
-        width: 100%;
-        padding: 0px 10px;
-        display: flex;
-        align-items: center;
-        color: #6d6c6c;
-        font-family: Manrope;
-        font-size: 23.169px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        letter-spacing: -0.463px;
-        text-decoration: none;
-        position: relative;
-        top: 0;
-        left: 0;
-        .circle {
-          display: none;
-          position: absolute;
-          right: 10px;
-          top: 10px;
-          padding: 6px;
-          border-radius: 50%;
-          background-color: rgba(0, 0, 0, 0.35);
-        }
+      border-radius: 5px;
+      background: #ffffff;
+      p{
+        color: #326695;
+        font-family: "PT Sans";
+        font-size: 17px;
+        font-weight: 600;
       }
     }
     .malumot_card:hover {
@@ -129,7 +100,7 @@
         position: relative;
         top: 0;
         left: 0;
-        width: 31.5%;
+        width: 48%;
         border-radius: 15px;
         background: rgba(243, 243, 243, 0.45);
         padding: 15px;
@@ -149,7 +120,7 @@
               color: #fff;
               font-feature-settings: "liga" off;
               font-family: Euclid Square;
-              font-size: 15px;
+              font-size: 20px;
               font-style: normal;
               font-weight: 400;
               line-height: 24px;
@@ -188,7 +159,7 @@
         }
         .bookImg {
           width: 33%;
-          height: 120px;
+          height: 180px;
           img {
             width: 100%;
             object-fit: cover;
@@ -201,23 +172,14 @@
     .pagenation {
       display: flex;
       justify-content: center;
-      column-gap: 7px;
-      width: 100%;
-      .page_item {
-        .pageBtn {
-          padding: 5px 10px;
-          background-color: rgba(243, 243, 243, 0.45);
-          border: none;
-          border-radius: 3px;
-        }
-        .pageBtn:hover {
-          background-color: white;
-          transform: scale(1.05);
-        }
-        .active {
-          background-color: white;
-        }
-      }
+    }
+    .noData{
+      font-size: 50px;
+      margin-top: 100px;
+      margin-left: 100px;
+      color: white;
+      opacity: 0.5;
+      text-align: center;
     }
   }
 }

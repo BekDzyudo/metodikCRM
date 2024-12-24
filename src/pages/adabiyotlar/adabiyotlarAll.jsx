@@ -12,7 +12,6 @@ export function AdabiyotlarAll() {
       <TopNavbar />
       <Navbar />
       <div className="container">
-        <Next />
         <Outlet />
       </div>
       <FooterWhite />

@@ -20,6 +20,7 @@ export const AuthProvider = ({children}) =>{
       });
       
       
+      
       const currentTime = Date.now() / 1000; // Hozirgi vaqtni sekundda olamiz
       return decoded.exp < currentTime; // Token muddati tugaganmi?
     } catch (error) {
