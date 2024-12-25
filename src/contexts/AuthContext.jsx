@@ -17,9 +17,8 @@ export const AuthProvider = ({children}) =>{
       setName({
         name: decoded.first_name,
         userImage: decoded.image,
+        userId: decoded.user_id
       });
-      
-      
       
       const currentTime = Date.now() / 1000; // Hozirgi vaqtni sekundda olamiz
       return decoded.exp < currentTime; // Token muddati tugaganmi?
