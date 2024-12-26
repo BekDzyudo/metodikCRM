@@ -1,353 +1,517 @@
-.bookBatafsil{
+.bookBatafsil {
+  display: flex;
+  flex-direction: column;
+  row-gap: 45px;
+  position: relative;
+  top: 0;
+  left: 0;
+  .bookTitle {
+    max-width: 50%;
+    p {
+      color: #fff;
+      font-feature-settings: "clig" off, "liga" off;
+      font-family: Euclid Square;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+  .bookContent {
     display: flex;
-    flex-direction: column;
-    row-gap: 45px;
-    position: relative;
-    top: 0;
-    left: 0;
-    .bookTitle{
-        max-width: 50%;
-        p{
-            color: #FFF;
-            font-feature-settings: 'clig' off, 'liga' off;
+    column-gap: 30px;
+    .bookImg {
+      width: 30%;
+      height: 558px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+    .bookDesc {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      .title {
+        color: #fff;
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: Euclid Square;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-bottom: 5px !important;
+      }
+      .titleName {
+        color: #fff;
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: Euclid Square;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      .yuklash {
+        margin-top: 40px;
+        border-radius: 10px;
+        background: rgba(243, 243, 243, 0.45);
+        padding: 10px 20px;
+        display: flex;
+        column-gap: 20px;
+        width: 70%;
+        justify-content: space-between;
+        align-items: center;
+        .yuklashDesc {
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          p:nth-child(1) {
+            color: #fff;
+            font-feature-settings: "clig" off, "liga" off;
             font-family: Euclid Square;
-            font-size: 30px;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+          p:nth-child(2) {
+            color: #fff;
+            font-feature-settings: "clig" off, "liga" off;
+            font-family: Euclid Square;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            span {
+              color: white;
+              font-weight: 500;
+            }
+          }
+        }
+        .yuklashBtn:hover {
+          background: #0d6ec4;
+        }
+        .yuklashBtn {
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: 1px solid #b5b5b5;
+          background: #107ddb;
+          box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+          color: #fff;
+          font-family: Euclid Square;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          letter-spacing: 0.56px;
+        }
+      }
+      .hr {
+        color: white;
+        margin: 50px 0px;
+        height: 2px;
+      }
+      .izohlar {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        width: 100%;
+        margin-bottom: 100px;
+        .izohTitle {
+          color: #fff;
+          font-feature-settings: "clig" off, "liga" off;
+          font-family: Euclid Square;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+        }
+        .izohForm {
+          border-radius: 10px;
+          background: rgba(243, 243, 243, 0.45);
+          width: 100%;
+
+          #matn {
+            background: none;
+            width: 100%;
+            border: none;
+            padding: 10px;
+            outline: none;
+            color: #fff;
+            font-feature-settings: "clig" off, "liga" off;
+            font-family: Euclid Square;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            resize: none;
+          }
+          #matn::placeholder {
+            color: #fff;
+            font-feature-settings: "clig" off, "liga" off;
+            font-family: Euclid Square;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+        }
+        .saveBlok {
+          display: flex;
+          justify-content: end;
+          .saveBtn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #b5b5b5;
+            background: #107ddb;
+            box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+            color: #fff;
+            font-family: Euclid Square;
+            font-size: 14px;
             font-style: normal;
             font-weight: 700;
             line-height: normal;
+            letter-spacing: 0.56px;
+          }
+          .saveBtn:hover {
+            background: #0d6ec4;
+          }
         }
-    }
-    .bookContent{
+        .ideaBlok {
+          margin-top: 50px;
+          padding: 20px 0px;
+          border: 1px solid red;
+          display: flex;
+          flex-direction: column;
+          row-gap: 20px;
+          .ideaCard {
+            background-color: white;
+            border-radius: 5px;
+            padding: 5px;
+          }
+        }
+      }
+      .comments {
         display: flex;
-        column-gap: 30px;
-        .bookImg{
-            width: 30%;
-            height: 558px;
-            img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 10px;
+        flex-direction: column;
+        row-gap: 30px;
+        .comment {
+          display: flex;
+          column-gap: 20px;
+          // align-items: center;
+          .commentImage {
+            width: 58px;
+            height: 50px;
+            border-radius: 50%;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              object-fit: cover;
             }
-        }
-        .bookDesc{
-            width: 60%;
+          }
+          .commentDesc {
             display: flex;
             flex-direction: column;
-            .title{
-                color: #FFF;
-                font-feature-settings: 'clig' off, 'liga' off;
-                font-family: Euclid Square;
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: normal;
-                margin-bottom: 5px !important;
+            row-gap: 2px;
+            width: 100%;
+            .nameAndDate {
+              span:nth-child(1) {
+                font-size: 14px;
+                color: white;
+              }
+              span:nth-child(2) {
+                font-size: 14px;
+                color: white;
+                margin-left: 20px;
+              }
             }
-            .titleName{
-                color: #FFF;
-                font-feature-settings: 'clig' off, 'liga' off;
-                font-family: Euclid Square;
+            .commentTitle {
+              font-size: 16px;
+              color: white;
+            }
+            .btns {
+              display: flex;
+              align-items: center;
+              column-gap: 15px;
+              .like {
+                display: flex;
+                align-items: center;
+                column-gap: 5px;
+                span:nth-child(1) {
+                  font-size: 25px;
+                  color: white;
+                  cursor: pointer;
+                  &:hover {
+                    color: green;
+                    transition: all 0.3s;
+                  }
+                }
+                span:nth-child(2) {
+                  font-size: 16px;
+                  color: white;
+                }
+              }
+              .disLike {
+                display: flex;
+                align-items: center;
+                column-gap: 5px;
+                span:nth-child(1) {
+                  font-size: 25px;
+                  color: white;
+                  cursor: pointer;
+                  &:hover {
+                    color: red;
+                    transition: all 0.3s;
+                  }
+                }
+                span:nth-child(2) {
+                  font-size: 16px;
+                  color: white;
+                }
+              }
+              button {
+                padding: 3px 10px;
+                border-radius: 7px;
+                background: #107ddb;
+                font-size: 13px;
+                color: white;
+                &:hover {
+                  background: #0d6ec4;
+                }
+              }
+            }
+            .replyNone {
+              display: none;
+            }
+            .replyForm {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              column-gap: 10px;
+              margin-top: 5px;
+              .replyCommentImage {
+                width: 33px;
+                height: 30px;
+                border-radius: 50%;
+                img {
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  object-fit: cover;
+                }
+              }
+              form {
+                width: 100%;
+                input {
+                  border-bottom: 2px solid #ccc;
+                  background: none;
+                  outline: none;
+                  margin-bottom: 10px;
+                  color: white;
+                  width: 100%;
+                  &::placeholder {
+                    color: #ccc;
+                    padding-left: 5px;
+                  }
+                }
+                .replyBtns {
+                  display: flex;
+                  column-gap: 10px;
+                  justify-content: end;
+                  button:nth-child(1) {
+                    padding: 3px 10px;
+                    border-radius: 7px;
+                    background: rgb(185, 80, 80);
+                    font-size: 13px;
+                    color: white;
+                    &:hover {
+                      background: rgb(206, 78, 78);
+                    }
+                  }
+                  button:nth-child(2) {
+                    padding: 3px 10px;
+                    border-radius: 7px;
+                    background: #107ddb;
+                    font-size: 13px;
+                    color: white;
+                    &:hover {
+                      background: #0d6ec4;
+                    }
+                  }
+                }
+              }
+            }
+            .javobSelect{
+                width: max-content;
                 font-size: 16px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: normal;
+                color: rgb(160, 175, 199);
+                cursor: pointer;
+                border-bottom: 1px solid rgb(160, 175, 199);
+                &:hover{
+                    color: white;
+                }
             }
-            .yuklash{
-                margin-top: 40px;
-                border-radius: 10px;
-                background: rgba(243, 243, 243, 0.45);
-                padding: 10px 20px;
+            .comments {
+              display: flex;
+              flex-direction: column;
+              row-gap: 30px;
+              margin-top: 20px;
+              .comment {
                 display: flex;
                 column-gap: 20px;
-                width: 70%;
-                justify-content: space-between;
-                align-items: center;
-                .yuklashDesc{
-                    display: flex;
-                    flex-direction: column;
-                    row-gap: 10px;
-                    p:nth-child(1){
-                        color: #FFF;
-                        font-feature-settings: 'clig' off, 'liga' off;
-                        font-family: Euclid Square;
-                        font-size: 16px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: normal;
-                    }
-                    p:nth-child(2){
-                        color: #FFF;
-                        font-feature-settings: 'clig' off, 'liga' off;
-                        font-family: Euclid Square;
-                        font-size: 16px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: normal;
-                        span{
-                            color: white;
-                            font-weight: 500;
-                        }
-                    }
-                }
-                .yuklashBtn:hover{
-                    background: #0d6ec4;
-                }
-                .yuklashBtn{
-                    padding: 10px 20px;
-                    border-radius: 5px;
-                    border: 1px solid #B5B5B5;
-                    background: #107DDB;
-                    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
-                    color: #FFF;
-                    font-family: Euclid Square;
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: normal;
-                    letter-spacing: 0.56px;
-                }
-            }
-            .hr{
-                color: white;
-                margin: 50px 0px;
-                height: 2px;
-            }
-            .izohlar{
-                display: flex;
-                flex-direction: column;
-                row-gap: 10px;
-                width: 100%;
-                margin-bottom: 100px;
-                .izohTitle{
-                    color: #FFF;
-                    font-feature-settings: 'clig' off, 'liga' off;
-                    font-family: Euclid Square;
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: normal;
-                }
-                .izohForm{
-                    border-radius: 10px;
-                    background: rgba(243, 243, 243, 0.45);
+                // align-items: center;
+                .commentImage {
+                  width: 33px;
+                  height: 30px;
+                  border-radius: 50%;
+                  img {
                     width: 100%;
-
-                    #matn{
-                        background:none;
-                        width: 100%;
-                        border: none;
-                        padding: 10px;
-                        outline: none;
-                        color: #FFF;
-                        font-feature-settings: 'clig' off, 'liga' off;
-                        font-family: Euclid Square;
-                        font-size: 18px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: normal;
-                        resize: none;
-                    }
-                    #matn::placeholder{
-                        color: #FFF;
-                        font-feature-settings: 'clig' off, 'liga' off;
-                        font-family: Euclid Square;
-                        font-size: 18px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: normal;
-                       
-                    }
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                  }
                 }
-                .saveBlok{
-                    display: flex;
-                    justify-content: end;
-                    .saveBtn{
-                        padding: 10px 20px;
-                        border-radius: 5px;
-                        border: 1px solid #B5B5B5;
-                        background: #107DDB;
-                        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
-                        color: #FFF;
-                        font-family: Euclid Square;
-                        font-size: 14px;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: normal;
-                        letter-spacing: 0.56px;
+                .commentDesc {
+                  display: flex;
+                  flex-direction: column;
+                  row-gap: 2px;
+                  width: 100%;
+                  .nameAndDate {
+                    span:nth-child(1) {
+                      font-size: 14px;
+                      color: white;
                     }
-                    .saveBtn:hover{
-                        background: #0d6ec4;
+                    span:nth-child(2) {
+                      font-size: 14px;
+                      color: white;
+                      margin-left: 20px;
                     }
-                }
-                .ideaBlok{
-                    margin-top: 50px;
-                    padding: 20px 0px;
-                    border: 1px solid red;
+                  }
+                  .commentTitle {
+                    font-size: 16px;
+                    color: white;
+                  }
+                  .btns {
                     display: flex;
-                    flex-direction: column;
-                    row-gap: 20px;
-                    .ideaCard{
-                        background-color: white;
-                        border-radius: 5px;
-                        padding: 5px;
-                    }
-                }
-            }
-            .comments{
-                display: flex;
-                flex-direction: column;
-                row-gap: 30px;
-                .comment{
-                    display: flex;
-                    column-gap: 20px;
                     align-items: center;
-                    .commentImage{
-                        width: 55px;
-                        height: 50px;
-                        border-radius: 50%;
-                        img{
-                            width: 100%;
-                            height: 100%;
-                            border-radius: 50%;
-                            object-fit: cover;
+                    column-gap: 15px;
+                    .like {
+                      display: flex;
+                      align-items: center;
+                      column-gap: 5px;
+                      span:nth-child(1) {
+                        font-size: 25px;
+                        color: white;
+                        cursor: pointer;
+                        &:hover {
+                          color: green;
+                          transition: all 0.3s;
                         }
+                      }
+                      span:nth-child(2) {
+                        font-size: 16px;
+                        color: white;
+                      }
                     }
-                    .commentDesc{
-                        display: flex;
-                        flex-direction: column;
-                        row-gap: 2px;
+                    .disLike {
+                      display: flex;
+                      align-items: center;
+                      column-gap: 5px;
+                      span:nth-child(1) {
+                        font-size: 25px;
+                        color: white;
+                        cursor: pointer;
+                        &:hover {
+                          color: red;
+                          transition: all 0.3s;
+                        }
+                      }
+                      span:nth-child(2) {
+                        font-size: 16px;
+                        color: white;
+                      }
+                    }
+                    button {
+                      padding: 3px 10px;
+                      border-radius: 7px;
+                      background: #107ddb;
+                      font-size: 13px;
+                      color: white;
+                      &:hover {
+                        background: #0d6ec4;
+                      }
+                    }
+                  }
+                  .replyNone {
+                    display: none;
+                  }
+                  .replyForm {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    column-gap: 10px;
+                    margin-top: 5px;
+                    .replyCommentImage {
+                      width: 33px;
+                      height: 30px;
+                      border-radius: 50%;
+                      img {
                         width: 100%;
-                        .nameAndDate{
-                            span:nth-child(1){
-                                font-size: 14px;
-                                color: white;
-                            }
-                            span:nth-child(2){
-                                font-size: 14px;
-                                color: white;
-                                margin-left: 20px;
-                            }
-                        }
-                        .commentTitle{
-                            font-size: 16px;
-                            color: white;
-                        }
-                        .btns{
-                            display: flex;
-                            align-items: center;
-                            column-gap: 15px;
-                            .like{
-                                display: flex;
-                                align-items: center;
-                                column-gap: 5px;
-                                span:nth-child(1){
-                                    font-size: 25px;
-                                    color: white;
-                                    cursor: pointer;
-                                    &:hover{
-                                        color: green;
-                                        transition: all 0.3s;
-                                    }
-                                }
-                                span:nth-child(2){
-                                    font-size: 16px;
-                                    color: white;
-                                }
-                            }
-                            .disLike{
-                                display: flex;
-                                align-items: center;
-                                column-gap: 5px;
-                                span:nth-child(1){
-                                    font-size: 25px;
-                                    color: white;
-                                    cursor: pointer;
-                                    &:hover{
-                                        color: red;
-                                        transition: all 0.3s;
-                                    }
-                                }
-                                span:nth-child(2){
-                                    font-size: 16px;
-                                    color: white;
-                                }
-                            }
-                            button{
-                                padding: 3px 10px;
-                                border-radius: 7px;
-                                background: #107DDB;
-                                font-size: 13px;
-                                color: white;
-                                &:hover{
-                                    background: #0d6ec4;
-                                }
-                            }
-                        }
-                        .replyNone{
-                            display: none;
-                        }
-                        .replyForm{
-                            width: 100%;
-                            display: flex;
-                            align-items: center;
-                            column-gap: 10px;
-                            margin-top: 5px;
-                            .replyCommentImage{
-                                width: 33px;
-                                height: 30px;
-                                border-radius: 50%;
-                                img{
-                                    width: 100%;
-                                    height: 100%;
-                                    border-radius: 50%;
-                                    object-fit: cover;
-                                }
-                            }
-                            form{
-                                width: 100%;
-                                input{
-                                    border-bottom: 2px solid #ccc;
-                                    background: none;
-                                    outline: none;
-                                    margin-bottom: 10px;
-                                    color: white;
-                                    width: 100%;
-                                    &::placeholder{
-                                        color: #ccc;
-                                        padding-left: 5px;
-                                    }
-                                }
-                                .replyBtns{
-                                    display: flex;
-                                    column-gap: 10px;
-                                    justify-content: end;
-                                    button:nth-child(1){
-                                        padding: 3px 10px;
-                                        border-radius: 7px;
-                                        background: rgb(185, 80, 80);
-                                        font-size: 13px;
-                                        color: white;
-                                            &:hover{
-                                                background: rgb(206, 78, 78);
-                                                }
-                                    }
-                                    button:nth-child(2){
-                                        padding: 3px 10px;
-                                        border-radius: 7px;
-                                        background: #107DDB;
-                                        font-size: 13px;
-                                        color: white;
-                                            &:hover{
-                                                background: #0d6ec4;
-                                                }
-                                    }
-                                }
-                            }
-                        }
+                        height: 100%;
+                        border-radius: 50%;
+                        object-fit: cover;
+                      }
                     }
+                    form {
+                      width: 100%;
+                      input {
+                        border-bottom: 2px solid #ccc;
+                        background: none;
+                        outline: none;
+                        margin-bottom: 10px;
+                        color: white;
+                        width: 100%;
+                        &::placeholder {
+                          color: #ccc;
+                          padding-left: 5px;
+                        }
+                      }
+                      .replyBtns {
+                        display: flex;
+                        column-gap: 10px;
+                        justify-content: end;
+                        button:nth-child(1) {
+                          padding: 3px 10px;
+                          border-radius: 7px;
+                          background: rgb(185, 80, 80);
+                          font-size: 13px;
+                          color: white;
+                          &:hover {
+                            background: rgb(206, 78, 78);
+                          }
+                        }
+                        button:nth-child(2) {
+                          padding: 3px 10px;
+                          border-radius: 7px;
+                          background: #107ddb;
+                          font-size: 13px;
+                          color: white;
+                          &:hover {
+                            background: #0d6ec4;
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
+              }
             }
+          }
         }
+      }
     }
+  }
 }
