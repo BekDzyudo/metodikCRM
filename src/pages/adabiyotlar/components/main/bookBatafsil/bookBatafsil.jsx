@@ -56,7 +56,7 @@ export function BookBatafsil() {
   const { data, isPending, error } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/edu-prof/adabiyotlar/${id}/`
   );
-  console.log(data);
+  // console.log(data);
 
   // add comment funck
   function addComment(commentId) {
@@ -277,16 +277,16 @@ export function BookBatafsil() {
                             <div className="commentTitle">{comment.text}</div>
                             <div className="btns">
                               <div className="like">
-                                <span>
+                                <span onClick={()=>setLike()}>
                                   <BiLike />
                                 </span>
-                                <span>{comment.like}</span>
+                                <span>{comment.like > 0 ? comment.like : ""}</span>
                               </div>
                               <div className="disLike">
                                 <span>
                                   <BiDislike />
                                 </span>
-                                <span>{comment.dislike}</span>
+                                <span>{comment.dislike > 0 ? comment.dislike : ""}</span>
                               </div>
                               <button onClick={() => handleActive(index)}>
                                 Javob yozish
