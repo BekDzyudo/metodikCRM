@@ -175,29 +175,34 @@ export function BookBatafsil() {
                         <Comments key={comment.id} comment={comment} index={index}/> 
                       );
                     })}
-                  <ul className="pagenation">
-                    <Pagination
-                      sx={{
-                        "& .MuiPaginationItem-root": {
-                          color: "white",
-                          "&:hover": {
-                            backgroundColor: "white",
-                            color: "blue",
-                          },
-                          "&.Mui-selected": {
-                            backgroundColor: "white",
-                            color: "blue",
-                            fontWeight: "600px",
-                            fontSize: "20px",
-                          },
-                        },
-                      }}
-                      count={Math.ceil(data?.count/10)}
-                      color="primary"
-                      size="large"
-                      onChange={handlePagination}
-                    ></Pagination>
-                  </ul>
+                    {
+                      data?.count > 10 && (
+                        <ul className="pagenation">
+                        <Pagination
+                          sx={{
+                            "& .MuiPaginationItem-root": {
+                              color: "white",
+                              "&:hover": {
+                                backgroundColor: "white",
+                                color: "blue",
+                              },
+                              "&.Mui-selected": {
+                                backgroundColor: "white",
+                                color: "blue",
+                                fontWeight: "600px",
+                                fontSize: "20px",
+                              },
+                            },
+                          }}
+                          count={Math.ceil(data?.count/10)}
+                          color="primary"
+                          size="large"
+                          onChange={handlePagination}
+                        ></Pagination>
+                      </ul>
+                      )
+                    }
+                 
                 </div>
               </div>
             </div>

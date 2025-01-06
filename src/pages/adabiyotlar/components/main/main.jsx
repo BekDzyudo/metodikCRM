@@ -115,29 +115,35 @@ export function MainAdabiyot() {
                 ))
               )}
             </div>
-            <ul className="pagenation">
-              <Pagination
-                sx={{
-                  "& .MuiPaginationItem-root": {
-                    color: "white",
-                    "&:hover": {
-                      backgroundColor: "white",
-                      color: "blue",
+            {
+              adabiyotlar.total_pages > 1 && 
+              (
+                <ul className="pagenation">
+                <Pagination
+                  sx={{
+                    "& .MuiPaginationItem-root": {
+                      color: "white",
+                      "&:hover": {
+                        backgroundColor: "white",
+                        color: "blue",
+                      },
+                      "&.Mui-selected": {
+                        backgroundColor: "white",
+                        color: "blue",
+                        fontWeight: "600px",
+                        fontSize: "20px",
+                      },
                     },
-                    "&.Mui-selected": {
-                      backgroundColor: "white",
-                      color: "blue",
-                      fontWeight: "600px",
-                      fontSize: "20px",
-                    },
-                  },
-                }}
-                count={adabiyotlar.total_pages}
-                color="primary"
-                size="large"
-                onChange={handlePagination}
-              ></Pagination>
-            </ul>
+                  }}
+                  count={adabiyotlar.total_pages}
+                  color="primary"
+                  size="large"
+                  onChange={handlePagination}
+                ></Pagination>
+              </ul>
+              )
+            }
+           
           </>
         )}
       </div>

@@ -179,7 +179,6 @@ function App() {
             },
           ],
         },
-
         {
           path: "Adabiyotlar",
           element: <AdabiyotlarAll />,
