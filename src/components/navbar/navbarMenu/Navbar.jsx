@@ -8,13 +8,8 @@ function Navbar() {
       <nav>
         <ul className="nav-menu links" id="nav">
           <li>
-            <NavLink className="nav-link" to="/">
-              Biz haqimizda
-            </NavLink>
-          </li>
-          <li>
             <NavLink className="nav-link" to="/MeyoriySahifa">
-              Me’yoriy-huquqiy hujjatlar
+              Me’yoriy hujjatlar
             </NavLink>
           </li>
           <li>
@@ -25,6 +20,11 @@ function Navbar() {
           <li>
             <NavLink className="nav-link" to="/Talim-Standartlari-Fanlar">
               Ta'lim standartlari va fanlar
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="nav-link" to="/raqamli-talim-resurslari">
+              Raqamli ta'lim resurslari
             </NavLink>
           </li>
           <li>

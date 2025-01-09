@@ -42,6 +42,11 @@ import { RegisterTeacher } from "./pages/Auth/register/RegisterTeacher";
 import { RegisterStudent } from "./pages/Auth/register/RegisterStudent";
 import { RegParolTiklash } from "./pages/Auth/register/regParolTiklash";
 import { RegNewParol } from "./pages/Auth/register/regNewParol";
+import RTRLayout from "./pages/rtr/RTRLayout";
+import RTRHome from "./pages/rtr/RTRHome";
+import BoshlangichTalim from "./pages/rtr/daraja1/BoshlangichTalim";
+import OrtaTalim from "./pages/rtr/daraja2/OrtaTalim";
+import MaxsusTalim from "./pages/rtr/daraja3/MaxsusTalim";
 
 function App() {
   const {auth} = useContext(AuthContext)
@@ -178,6 +183,28 @@ function App() {
               element: <OquvAmaliyot />,
             },
           ],
+        },
+        {
+          path: "raqamli-talim-resurslari",
+          element: <RTRLayout/>,
+          children: [
+            {
+              index: true,
+              element: <RTRHome/>
+            },
+            {
+              path: "boshlangich-professional-talim",
+              element: <BoshlangichTalim/>
+            },
+            {
+              path: "orta-professional-talim",
+              element: <OrtaTalim/>
+            },
+            {
+              path: "orta-maxsus-professional-talim",
+              element: <MaxsusTalim/>
+            }
+          ]
         },
         {
           path: "Adabiyotlar",

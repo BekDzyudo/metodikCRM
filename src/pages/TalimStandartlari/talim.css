@@ -31,6 +31,8 @@
 .talim_searchs {
   margin-top: 85px !important;
   display: flex;
+  align-items: center;
+  column-gap: 30px;
 }
 
 .talim_search {
@@ -39,28 +41,20 @@
 .talim_search input {
   border-radius: 5px;
   border: 1px solid #ced9ed;
-  width: 360px;
-  padding: 5px 0 5px 30px;
-  color: #d9d9d9;
-  font-size: 14px;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 15px;
   font-weight: 400;
   outline: none;
-}
-.talim_search i {
-  position: absolute;
-  z-index: 999;
-  top: 5px;
-  left: 5px;
-  color: #d9d9d9;
 }
 
 .data_select {
   display: flex;
-  margin-top: -7px;
+  column-gap: 30px;
 }
 
 .dropdown {
-  margin: 0 0 0 30px;
+  /* margin: 0 0 0 30px; */
   z-index: 10000;
   min-width: 230px;
   position: relative;
@@ -77,9 +71,9 @@
   justify-content: space-between;
   padding: 10px;
   border: 1px solid #7ed0fe;
-  border-radius: 15px;
+  border-radius: 10px;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 .dropdown-content {
@@ -101,20 +95,13 @@
   color: #fff;
 }
 
-/* button {
-    z-index: -1;
-    display: block;
-    width: 300px;
-    margin: 0 auto;
-  } */
-
 .talim_box {
   margin-top: 70px !important;
   display: flex;
+  column-gap: 30px;
 }
 .talim_menu {
-  width: auto;
-  height: auto;
+  width: 100%;
   border: 3px solid #fff;
   border-radius: 20px;
   padding: 15px 20px;
@@ -163,16 +150,17 @@
 .talim_cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 20px;
 }
 
 .talim_cards a:hover {
   color: #fff;
 }
 .talim_card {
-  width: 299px !important;
+  /* width: 299px !important; */
+  width: 31%;
   height: 187px;
-  border-radius: 25px;
+  border-radius: 15px;
   background: rgba(243, 243, 243, 0.45);
   padding: 10px 10px 10px 25px;
   color: #fff;

@@ -24,12 +24,11 @@ function TalimStandartSahifa() {
         </div>
       </div>
       <div className="row">
-        <div className="talim_searchs">
-          <div className="talim_search">
-            <i className="bi bi-search"></i>
+        <div className="talim_searchs col-12">
+          <div className="talim_search col-3">
             <input type="search" placeholder="izlash" />
           </div>
-          <div className="data_select">
+          <div className="data_select col-9">
             <div className="dropdown">
               <div
                 onClick={(e) => {
