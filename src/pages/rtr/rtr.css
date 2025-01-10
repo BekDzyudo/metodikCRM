@@ -23,6 +23,8 @@
     height: 100%;
     object-fit: cover;
     scale: 1;
+    border-radius: 5px;
+
 }
 .rtrHomeRow .card:nth-child(1):hover .image img{
     scale: 1.05;
@@ -50,46 +52,174 @@
 }
 
 /* ========================== */
-
-.block .content{
+.block{
+    display: flex;
+    column-gap: 30px;
 }
-.block .content .card{
-    width: 30%;
+.sidebar{
+    padding: 0 !important;
+    width: 25%;
+}
+.sidebar .malumot_card{
+    width: 100%;
+}
+.sidebar .isActive{
+    width: 100%;
+}
+.block .content{
+    padding: 0 !important;
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.block .content .cardd{
+    width: 31.5%;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
-    height: min-content !important;
+    row-gap: 10px;
+    background: white;
 }
-.block .content .card .image{
+.block .content .cardd .image{
     width: 100%;
-    height: 50%;
-    border-radius: 0px 0px 15px 15px;
+    height: 60%;
+    border-radius:15px 15px 0px 0px;
+
 }
-.block .content .card .image img{
+.block .content .cardd .image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius:15px 15px 0px 0px;
+    scale: 1;
 }
-.block .content .card .data{
-    height: 50%;
+/* .block .content .cardd .image img:hover{
+    scale: 1.05;
+} */
+.block .content .cardd .data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40%;
+    padding: 0px 15px 15px;
+    margin-bottom: 5px;
 }
-.block .content .card .data .title{
-    font-size: 18px;
+.block .content .cardd .data .title{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
     font-weight: 600;
     color: #05096e;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 10px;
+    margin-bottom: 5px !important;
 }
-.block .content .card .data .desc{
+.block .content .cardd .data .desc{
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     color: black;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 5px;
+    line-height: 16px;
 }
-.block .content .card .data .btns{
+.block .content .cardd .data .btns{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 15px;
+}
+.block .content .cardd .data .btns div:nth-child(1){
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+.block .content .cardd .data .btns div:nth-child(1) span{
+    color: #05096e;
+}
+.block .content .cardd .data .btns div:nth-child(2){
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+.block .content .cardd .data .btns div:nth-child(2) span{
+    color: #05096e;
+}
+
+/* ========================= */
+
+.blockDetail{
+    display: flex;
+    column-gap: 30px;
+}
+.GTitle{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px !important;
+}
+.sidebarDetail{
+    padding: 0 !important;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.sidebarDetail .malumot_card{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.sidebarDetail .malumot_card span{
+    color: #05096e;
+    font-weight: bold;
+    font-size: large;
+}
+.sidebarDetail .isActive{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.sidebarDetail .isActive span{
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+.blockDetail .contentDetail{
+    padding: 0 !important;
+    width: 85%;
+}
+.contentDetail .detailNav{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+.detailNav li a{
+    padding: 12px 20px;
+    border-radius: 5px;
+    background-color: #326695;
+    color: white;
+    font-family: 'PT Sans';
+    font-size: 20px;
+}
+.contentDetail .themeTitle{
+    text-align: center;
+    margin: 40px 0px 30px !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+.contentDetail .textFon{
+    background-color: white;
+    width: 100%;
+    padding: 30px 20px;
+}
+.contentDetail .textFon p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    color: black;
 }

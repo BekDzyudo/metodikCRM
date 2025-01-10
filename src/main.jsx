@@ -7,17 +7,20 @@ import { PortfolioProvider } from "./pages/profil/components/contexts/editPortfo
 import { MalumotProvider } from "./pages/profil/components/contexts/editMalumotlarContext.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { GlobalProvider } from "./contexts/GlobalContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
-  <AuthProvider>
-    <PortfolioProvider>
-      <MalumotProvider>
-        <App />
-        <ToastContainer position="bottom-right"/>
-      </MalumotProvider>
-    </PortfolioProvider>
+    <AuthProvider>
+      <GlobalProvider>
+        <PortfolioProvider>
+          <MalumotProvider>
+            <App />
+            <ToastContainer position="bottom-right" />
+          </MalumotProvider>
+        </PortfolioProvider>
+      </GlobalProvider>
     </AuthProvider>
   </>
 );

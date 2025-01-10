@@ -47,6 +47,7 @@ import RTRHome from "./pages/rtr/RTRHome";
 import BoshlangichTalim from "./pages/rtr/daraja1/BoshlangichTalim";
 import OrtaTalim from "./pages/rtr/daraja2/OrtaTalim";
 import MaxsusTalim from "./pages/rtr/daraja3/MaxsusTalim";
+import BoshlangichTalimDetail from "./pages/rtr/daraja1/BoshlangichTalimDetail";
 
 function App() {
   const {auth} = useContext(AuthContext)
@@ -194,7 +195,11 @@ function App() {
             },
             {
               path: "boshlangich-professional-talim",
-              element: <BoshlangichTalim/>
+              element: <BoshlangichTalim/>,
+            },
+            {
+              path: "boshlangich-professional-talim/:id",
+              element: <BoshlangichTalimDetail/>
             },
             {
               path: "orta-professional-talim",
