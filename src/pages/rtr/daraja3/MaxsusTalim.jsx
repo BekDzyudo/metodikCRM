@@ -22,8 +22,10 @@ function MaxsusTalim() {
     `https://rtr.profedu.uz/api/v1/rtr_base_app/subject-list/3/level/?general_subject=${category}&page=${page}`
   );
 
-  const {data: sidebar} = useGetFetch("https://rtr.profedu.uz/api/v1/rtr_base_app/category-level-list/")
-
+  const { data: sidebar } = useGetFetch(
+    "https://rtr.profedu.uz/api/v1/rtr_base_app/category-level-list/"
+  );
+  
   return (
     <div className="container">
       <div className="top">
@@ -34,39 +36,48 @@ function MaxsusTalim() {
         </div>
       </div>
       <div className="block">
-        <div className="sidebar">
-          <button
-            className={active == -1 ? "isActive" : "malumot_card"}
-            onClick={() => {
-              handleActive(-1);
-              setCategory("");
-            }}
-          >
-            <p>Barchasi</p>
-          </button>
-          {sidebar &&
-            sidebar[0]?.general_subjects.map((item, index) => {
-              return (
-                <button
-                  className={active == index ? "isActive" : "malumot_card"}
-                  key={item.id}
-                  onClick={() => {
-                    handleActive(index);
-                    setCategory(item.id);
-                  }}
-                >
-                  <p>{item.title}</p>
-                </button>
-              );
-            })}
-        </div>
+        {sidebar && (
+          <div className="sidebar">
+            {sidebar[2]?.general_subjects.length > 1 && (
+              <button
+                className={active == -1 ? "isActive" : "malumot_card"}
+                onClick={() => {
+                  handleActive(-1);
+                  setCategory("");
+                }}
+              >
+                <p>Barchasi</p>
+              </button>
+            )}
+            {sidebar &&
+              sidebar[2]?.general_subjects.map((item, index) => {
+                return (
+                  <button
+                    className={active == index ? "isActive" : "malumot_card"}
+                    key={item.id}
+                    onClick={() => {
+                      handleActive(index);
+                      setCategory(item.id);
+                    }}
+                  >
+                    <p>{item.title}</p>
+                  </button>
+                );
+              })}
+          </div>
+        )}
+
         <div className="content">
           {isPending && <PageLoader />}
           {error && <div className="noData">{error}</div>}
           {data?.results.length ? (
             data.results.map((item) => {
               return (
-                <Link to={`/raqamli-talim-resurslari/orta-maxsus-professional-talim/${item.id}`} className="cardd" key={item.id}>
+                <Link
+                  to={`/raqamli-talim-resurslari/orta-maxsus-professional-talim/${item.id}`}
+                  className="cardd"
+                  key={item.id}
+                >
                   <div className="image">
                     <img src={item.photo} alt="" />
                   </div>
@@ -109,7 +120,10 @@ function MaxsusTalim() {
           )}
 
           {data?.total_pages > 1 && (
-            <ul className="pagenation" style={{width:"100%", justifyContent:"center"}}>
+            <ul
+              className="pagenation"
+              style={{ width: "100%", justifyContent: "center" }}
+            >
               <Pagination
                 sx={{
                   "& .MuiPaginationItem-root": {

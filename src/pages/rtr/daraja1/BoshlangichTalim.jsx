@@ -34,32 +34,36 @@ function BoshlangichTalim() {
         </div>
       </div>
       <div className="block">
-        <div className="sidebar">
-          <button
-            className={active == -1 ? "isActive" : "malumot_card"}
-            onClick={() => {
-              handleActive(-1);
-              setCategory("");
-            }}
-          >
-            <p>Barchasi</p>
-          </button>
-          {sidebar &&
-            sidebar[0]?.general_subjects.map((item, index) => {
-              return (
-                <button
-                  className={active == index ? "isActive" : "malumot_card"}
-                  key={item.id}
-                  onClick={() => {
-                    handleActive(index);
-                    setCategory(item.id);
-                  }}
-                >
-                  <p>{item.title}</p>
-                </button>
-              );
-            })}
-        </div>
+      {sidebar && (
+          <div className="sidebar">
+            {sidebar[0]?.general_subjects.length > 1 && (
+              <button
+                className={active == -1 ? "isActive" : "malumot_card"}
+                onClick={() => {
+                  handleActive(-1);
+                  setCategory("");
+                }}
+              >
+                <p>Barchasi</p>
+              </button>
+            )}
+            {sidebar &&
+              sidebar[0]?.general_subjects.map((item, index) => {
+                return (
+                  <button
+                    className={active == index ? "isActive" : "malumot_card"}
+                    key={item.id}
+                    onClick={() => {
+                      handleActive(index);
+                      setCategory(item.id);
+                    }}
+                  >
+                    <p>{item.title}</p>
+                  </button>
+                );
+              })}
+          </div>
+        )}
         <div className="content">
           {isPending && <PageLoader />}
           {error && <div className="noData">{error}</div>}
