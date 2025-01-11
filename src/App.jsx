@@ -48,6 +48,8 @@ import BoshlangichTalim from "./pages/rtr/daraja1/BoshlangichTalim";
 import OrtaTalim from "./pages/rtr/daraja2/OrtaTalim";
 import MaxsusTalim from "./pages/rtr/daraja3/MaxsusTalim";
 import BoshlangichTalimDetail from "./pages/rtr/daraja1/BoshlangichTalimDetail";
+import OrtaTalimDetail from "./pages/rtr/daraja2/OrtaTalimDetail";
+import MaxsusTalimDetail from "./pages/rtr/daraja3/MaxsusTalimDetail"
 
 function App() {
   const {auth} = useContext(AuthContext)
@@ -56,9 +58,9 @@ function App() {
     {
       path: "/",
       element: (
-        <ProtectedRoute auth = {auth}>
+        // <ProtectedRoute auth = {auth}>
           <MainLayouts />
-        </ProtectedRoute>
+        // </ProtectedRoute>
       ),
       children: [
         {
@@ -206,8 +208,16 @@ function App() {
               element: <OrtaTalim/>
             },
             {
+              path: "orta-professional-talim/:id",
+              element: <OrtaTalimDetail/>
+            },
+            {
               path: "orta-maxsus-professional-talim",
               element: <MaxsusTalim/>
+            },
+            {
+              path: "orta-maxsus-professional-talim/:id",
+              element: <MaxsusTalimDetail/>
             }
           ]
         },

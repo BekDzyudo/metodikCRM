@@ -188,21 +188,25 @@
 .blockDetail .contentDetail{
     padding: 0 !important;
     width: 85%;
+    
 }
 .contentDetail .detailNav{
     display: flex;
+    justify-content: start;
     align-items: center;
     column-gap: 10px;
     margin: 0;
     padding: 0;
 }
 .detailNav li a{
-    padding: 12px 20px;
+    font-family: 'Montserrat' !important;
+    padding: 12px 5px;
     border-radius: 5px;
     background-color: #326695;
     color: white;
     font-family: 'PT Sans';
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 500;
 }
 .contentDetail .themeTitle{
     text-align: center;
@@ -222,4 +226,22 @@
     font-size: 20px;
     text-align: justify;
     color: black;
+}
+.media{
+display: flex;
+justify-content: center;
+height: 600px;
+}
+.mediaContent{
+    width: 100% !important;
+    height: auto !important;
+}
+.korgazma{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.korgazma img{
+    width: 100%;
+    height: auto;
 }

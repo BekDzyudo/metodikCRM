@@ -5,7 +5,7 @@ import useGetFetch from "../../../hooks/useGetFetch";
 import PageLoader from "../../../Loader/PageLoader";
 import ReactPlayer from "react-player";
 
-function BoshlangichTalimDetail() {
+function OrtaTalimDetail() {
   const { id } = useParams();
   const [active, setActive] = useState(0);
   const [material, setMaterial] = useState("maruza");
@@ -25,6 +25,7 @@ function BoshlangichTalimDetail() {
     }
   }, [data]);
 
+
   function SwitchCase(btn) {
     switch (btn) {
       case "maruza":
@@ -39,6 +40,7 @@ function BoshlangichTalimDetail() {
         return setMaterial("maruza");
     }
   }
+  
 
   return (
     <div className="container">
@@ -49,22 +51,22 @@ function BoshlangichTalimDetail() {
             Raqamli ta'lim resurslari
           </Link>
           <Link
-            to="/raqamli-talim-resurslari/boshlangich-professional-talim"
+            to="/raqamli-talim-resurslari/orta-professional-talim"
             className="bosh"
           >
-            Boshlang'ich professional ta'lim
+            O'rta professional ta'lim
           </Link>
         </div>
         <div className="right">
-          {data?.author && (
-            <Link
-              to={data?.author?.file}
-              target="blank"
-              style={{ borderBottom: "1px solid white" }}
-            >
-              Muallif guvohnomasi
-            </Link>
-          )}
+          {
+                      data?.author && <Link
+                      to={data?.author?.file}
+                      target="blank"
+                      style={{ borderBottom: "1px solid white" }}
+                    >
+                      Muallif guvohnomasi
+                    </Link>
+                    }
         </div>
       </div>
 
@@ -114,9 +116,7 @@ function BoshlangichTalimDetail() {
 
                   {theme.presentation && (
                     <li>
-                      <Link to={theme.presentation} target="_blank">
-                        Taqdimotlar
-                      </Link>
+                      <Link to={theme.presentation} target="_blank">Taqdimotlar</Link>
                     </li>
                   )}
 
@@ -138,9 +138,7 @@ function BoshlangichTalimDetail() {
 
                   {theme.educational_technologies && (
                     <li>
-                      <Link to={theme.educational_technologies} target="_blank">
-                        Ta'lim texnologiyalari
-                      </Link>
+                      <Link to={theme.educational_technologies} target="_blank">Ta'lim texnologiyalari</Link>
                     </li>
                   )}
 
@@ -167,9 +165,13 @@ function BoshlangichTalimDetail() {
                 )}
                 {material == "korgazma" && (
                   <div className="korgazma">
-                    {theme.show_material.map((item) => {
-                      return <img key={item.id} src={item.content} alt="" />;
-                    })}
+                    {
+                        theme.show_material.map((item)=>{
+                            return(
+                                <img key={item.id} src={item.content} alt="" />
+                            )
+                        })
+                    }
                   </div>
                 )}
                 {material == "savol" && (
@@ -190,4 +192,4 @@ function BoshlangichTalimDetail() {
   );
 }
 
-export default BoshlangichTalimDetail;
+export default OrtaTalimDetail;

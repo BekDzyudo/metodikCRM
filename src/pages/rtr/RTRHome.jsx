@@ -1,15 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import hudud from "../../images/img/hudud.jpg";
 import useGetFetch from "../../hooks/useGetFetch";
 import PageLoader from "../../Loader/PageLoader";
-import { GlobalContext } from "../../contexts/GlobalContext";
 
 function RTRHome() {
   const {data, isPending, error} = useGetFetch("https://rtr.profedu.uz/api/v1/rtr_base_app/category-level-list/")
-  console.log(data);
-
-  const {setBoshlangichSidebar, setOrtaSidebar, setMaxsusSidebar} = useContext(GlobalContext)
 
 if(data){
   localStorage.setItem("boshlangich", JSON.stringify(data[0].general_subjects))
@@ -31,19 +27,19 @@ if(data){
      {
       data && (
         <div className="rtrHomeRow">
-        <Link to="boshlangich-professional-talim" className="card" onClick={()=>setBoshlangichSidebar(data[0].general_subjects)}>
+        <Link to="boshlangich-professional-talim" className="card">
           <div className="image">
             <img src={hudud} alt="" />
           </div>
           <h2>{data[0].title}</h2>
         </Link>
-        <Link to="orta-professional-talim" className="card" onClick={()=>setOrtaSidebar(data[1].general_subjects)}>
+        <Link to="orta-professional-talim" className="card">
           <div className="image">
             <img src={hudud} alt="" />
           </div>
           <h2>{data[1].title}</h2>
         </Link>
-        <Link to="orta-maxsus-professional-talim" className="card" onClick={()=>setMaxsusSidebar(data[2].general_subjects)}>
+        <Link to="orta-maxsus-professional-talim" className="card">
           <div className="image">
             <img src={hudud} alt="" />
           </div>

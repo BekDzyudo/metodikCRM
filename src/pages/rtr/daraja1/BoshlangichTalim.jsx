@@ -1,14 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { FaRegPlayCircle } from "react-icons/fa";
-import { GlobalContext } from "../../../contexts/GlobalContext";
 import useGetFetch from "../../../hooks/useGetFetch";
 import PageLoader from "../../../Loader/PageLoader";
 import { Pagination } from "@mui/material";
 
 function BoshlangichTalim() {
-  const { boshlangichSidebar } = useContext(GlobalContext);
   const [active, setActive] = useState(-1);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
@@ -23,6 +21,8 @@ function BoshlangichTalim() {
   const { data, isPending, error } = useGetFetch(
     `https://rtr.profedu.uz/api/v1/rtr_base_app/subject-list/1/level/?general_subject=${category}&page=${page}`
   );
+
+  const {data: sidebar} = useGetFetch("https://rtr.profedu.uz/api/v1/rtr_base_app/category-level-list/")
 
   return (
     <div className="container">
@@ -44,8 +44,8 @@ function BoshlangichTalim() {
           >
             <p>Barchasi</p>
           </button>
-          {boshlangichSidebar &&
-            boshlangichSidebar.map((item, index) => {
+          {sidebar &&
+            sidebar[0]?.general_subjects.map((item, index) => {
               return (
                 <button
                   className={active == index ? "isActive" : "malumot_card"}
