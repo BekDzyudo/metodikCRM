@@ -4,6 +4,7 @@ import { GrNext } from "react-icons/gr";
 import useGetFetch from "../../../hooks/useGetFetch";
 import PageLoader from "../../../Loader/PageLoader";
 import ReactPlayer from "react-player";
+import DOMPurify from "dompurify"
 
 function MaxsusTalimDetail() {
   const { id } = useParams();
@@ -40,6 +41,18 @@ function MaxsusTalimDetail() {
         return setMaterial("maruza");
     }
   }
+
+  const processContent = (htmlContent) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, "text/html");
+    doc.querySelectorAll("img").forEach((img) => {
+      const src = img.getAttribute("src");
+      if (src && !src.startsWith("http")) {
+        img.setAttribute("src", "https://rtr.profedu.uz" + src);
+      }
+    });
+    return doc.body.innerHTML;
+  };
 
   return (
     <div className="container">
@@ -119,7 +132,7 @@ function MaxsusTalimDetail() {
                     </li>
                   )}
 
-                  {theme.show_material && (
+                  {theme.show_material.length !== 0 && (
                     <li>
                       <Link onClick={() => SwitchCase("korgazma")}>
                         Ko'rgazma materiallar
@@ -150,7 +163,7 @@ function MaxsusTalimDetail() {
                 <h2 className="themeTitle">{theme.title}</h2>
                 {material == "maruza" && (
                   <div className="textFon">
-                    <p dangerouslySetInnerHTML={{ __html: theme.content }}></p>
+                   <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(processContent(theme.content)) }}></div>
                   </div>
                 )}
                 {material == "media" && (
