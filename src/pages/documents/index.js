@@ -1,0 +1,8 @@
+export {default as LayoutDocument} from "./LayoutDocument"
+export {default as ApprovedDocument} from "./ApprovedDocument"
+export {default as ApprovedDokumentDetail} from "./ApprovedDokumentDetail"
+export {default as Documents} from "./Documents"
+export {default as IncomingDocuments} from "./IncomingDocument"
+export {default as IncomingDocumentDetail} from "./IncomingDocumentDetail"
+export {default as ReturnedDocument} from "./ReturnedDocument"
+export {default as ReturnedDocumentDetail} from "./ReturnedDocumentDetail"

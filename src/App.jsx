@@ -50,6 +50,7 @@ import MaxsusTalim from "./pages/rtr/daraja3/MaxsusTalim";
 import BoshlangichTalimDetail from "./pages/rtr/daraja1/BoshlangichTalimDetail";
 import OrtaTalimDetail from "./pages/rtr/daraja2/OrtaTalimDetail";
 import MaxsusTalimDetail from "./pages/rtr/daraja3/MaxsusTalimDetail"
+import {ApprovedDocument, Documents, ApprovedDokumentDetail, IncomingDocuments, IncomingDocumentDetail, LayoutDocument, ReturnedDocument, ReturnedDocumentDetail} from "./pages/documents/index"
 
 function App() {
   const {auth} = useContext(AuthContext)
@@ -248,6 +249,41 @@ function App() {
               element: <YangiliklarDetail />,
             },
           ],
+        },
+        {
+          path: "Document",
+          element: <LayoutDocument />,
+          children: [
+            {
+              path: "documents",
+              element: <Documents />
+            },
+            {
+              path: "IncomingDocuments",
+              element: <IncomingDocuments />
+            },
+            {
+              path: "IncomingDocumentDetail",
+              element: <IncomingDocumentDetail />
+            },
+            {
+              path: "ReturnedDocument",
+              element: <ReturnedDocument />
+            },
+            {
+              path: "ReturnedDocumentDetail",
+              element: <ReturnedDocumentDetail />
+            },
+            {
+              path: "ApprovedDocument",
+              element: <ApprovedDocument />
+            },
+            {
+              path: "ApprovedDocumentDetail",
+              element: <ApprovedDokumentDetail />
+            }
+    
+          ]
         },
         {
           path: "Contact",

@@ -1,0 +1,25 @@
+.profilHeader{
+    width: 100%;
+    margin-bottom: 100px;
+    margin-top: 0px;
+}
+  ul {
+    display: flex;
+    gap: 35px;
+    padding: 0;
+  }
+  
+  li .nav-link {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .nav-menu a:hover {
+    color: #05cbd6;
+  }
+  #nav .active{
+    color: #05cbd6;
+  }
