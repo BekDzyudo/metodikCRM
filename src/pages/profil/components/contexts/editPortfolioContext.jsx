@@ -7,8 +7,9 @@ export function PortfolioProvider({children}){
     const [blok, setBlok] = useState(false);
     const [Addblok, setAddBlok] = useState(false);
     const [render, setRender] = useState(null);
+    const [addhujjat, setAddHujjat] = useState(false);
     return (
-        <PortfolioContext.Provider value={{editObj, setEditObj, blok, setBlok, render, setRender,Addblok,setAddBlok,AddObj,setAddObj}}>
+        <PortfolioContext.Provider value={{editObj, setEditObj, blok, setBlok, render, setRender,Addblok,setAddBlok, AddObj, setAddObj, addhujjat, setAddHujjat}}>
             {children}
         </PortfolioContext.Provider>
     )

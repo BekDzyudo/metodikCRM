@@ -5,10 +5,11 @@ import { Portfolio } from "./components/portfolio";
 import { TeacherFiles } from "./components/teacherFiles";
 import { EditPortfolio } from "./components/modal/editPortfolio";
 import { EditMalumotlar } from "./components/modal/editMalumotlar";
-import { AddPortfolio } from "./components/modal/addPortfolio";
+import { AddMalumotHujjatlar } from "./components/modal/addMalumotHujjatlar";
 
 import Footer from "../../components/footer/Footer";
 import { Header } from "./components/header/header";
+import { AddPortfolio } from "./components/modal/addPortfolio";
 
 
 export function Profil() {
@@ -18,14 +19,14 @@ export function Profil() {
         <div className="container">
           <Header />
           <main className="main">
-
             <Portfolio />
-            <TeacherFiles />
+            {/* <TeacherFiles /> */}
           </main>
 
+          <AddPortfolio/>
           <EditPortfolio />
           <EditMalumotlar />
-          <AddPortfolio />
+          <AddMalumotHujjatlar />
         </div>
       </div>
       <Footer />

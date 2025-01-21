@@ -28,10 +28,6 @@ ul {
   margin-bottom: 40px;
   .container {
     .main {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      column-gap: 30px;
       .teacherInfo {
         width: 25%;
         display: flex;
@@ -40,10 +36,19 @@ ul {
  
       }
       .portfolio {
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        row-gap: 10px;
+        padding-bottom: 200px;
+        width: 100%;
+      display: flex;
+      justify-content: space-between;
+      column-gap: 50px;
+      .noData{
+        width: 100%;
+        font-size: 50px;
+        margin-top: 100px;
+        color: white;
+        opacity: 0.5;
+        text-align: center;
+      }
         .reyting {
           display: flex;
           flex-direction: column;
@@ -249,9 +254,19 @@ ul {
         }
         .addPortfolioBtn {
           border-radius: 6px;
-          background: #12b3d7;
+          background: white;
           padding: 10px 20px;
           color: #fff;
+          display: flex;
+          justify-content: center;
+          .btnImg{
+            display: flex;
+            column-gap: 20px;
+            align-items: center;
+          }
+          p{
+            color: #1383d3;
+          }
         }
                 .document_new {
                   margin: 0 0 50px 0;
@@ -633,6 +648,10 @@ ul {
           }
           .rightInput {
             width: 33%;
+            #editoquvMeyoriyIshlar{
+              border: 1px solid red;
+              background: red;
+            }
             label {
               color: #000;
               font-family: Open Sans;

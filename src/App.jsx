@@ -59,9 +59,9 @@ function App() {
     {
       path: "/",
       element: (
-        // <ProtectedRoute auth = {auth}>
+        <ProtectedRoute auth = {auth}>
           <MainLayouts />
-        // </ProtectedRoute>
+        </ProtectedRoute>
       ),
       children: [
         {
