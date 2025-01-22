@@ -2,12 +2,17 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import exitIcon from "../../../../images/exitIcon.svg"
 import { PortfolioContext } from '../contexts/editPortfolioContext'
 import { AuthContext } from '../../../../contexts/AuthContext';
+import useGetFetchProfil from "../../../../hooks/useGetFetchProfil"
 
 export function EditPortfolio() {
     const {editObj, blok, setBlok, setRender} = useContext(PortfolioContext);
-    console.log(editObj);
-    const {auth} = useContext(AuthContext)
+    const {auth, userName} = useContext(AuthContext)
 
+    const { data: userData } = useGetFetchProfil(
+        `${import.meta.env.VITE_BASE_URL}/user-data/`
+      );
+      
+    
     const [editilmiyDaraja, setEditilmiyDaraja] = useState();
     const [editmusobaqaGolibi,setEditmusobaqaGolibi] = useState();
     const [editworldSkillsMutaxassis, setEditworldSkillsMutaxassis] = useState();
@@ -21,6 +26,7 @@ export function EditPortfolio() {
     const [edituslubiyQollanma, setUslubiyQollanma] = useState();
     const [editdavlatMukofot, setDavlatMukofot] = useState();
     const [editmultimediaMateriallar, setMultimediaMateriallar] = useState();
+    const [editTilBilish, setTilBilish] = useState();
     const editForm = useRef();
     const saveBtn = useRef();
 
@@ -38,6 +44,7 @@ export function EditPortfolio() {
         setUslubiyQollanma(editObj.uslubiy_qollanmalar)
         setDavlatMukofot(editObj.davlat_mukofotlari)
         setMultimediaMateriallar(editObj.multimedialar)
+        setTilBilish(editObj.til_sertifikatlari)
   },[editObj])
   
     
@@ -46,22 +53,24 @@ export function EditPortfolio() {
 
         let newObj = {
             id:editObj.id,
-            ilmiyDaraja: editilmiyDaraja,
-            musobaqaGolibi: editmusobaqaGolibi,
-            worldSkillsMutaxassis: editworldSkillsMutaxassis,
-            yaratganPraktiklari: edityaratganPraktiklari,
-            ishStaji: editishStaji,
-            ilmiyUnvoni: editilmiyUnvoni,
-            oquvMeyoriyIshlar: editoquvMeyoriyIshlar,
-            korgazma:editkorgazma,
-            chopEtilgan: editchopEtilgan,
-            chiqarganMaqola: editchiqarganMaqola,
-            uslubiyQollanma: edituslubiyQollanma,
-            davlatMukofot: editdavlatMukofot,
-            multimediaMateriallar: editmultimediaMateriallar
+            user: userData.id,
+            ilmiy_daraja: editilmiyDaraja,
+            musobaqalar: editmusobaqaGolibi,
+            world_skills_mutaxasis: editworldSkillsMutaxassis,
+            yaratgan_praktik: edityaratganPraktiklari,
+            ish_staji: editishStaji,
+            ilmiy_unvon: editilmiyUnvoni,
+            uquv_meyoriy_ishlarda_qatnashganligi: editoquvMeyoriyIshlar,
+            korgazma_materiallari:editkorgazma,
+            uquv_qollanmalar: editchopEtilgan,
+            maqolalar: editchiqarganMaqola,
+            uslubiy_qollanmalar: edituslubiyQollanma,
+            davlat_mukofotlari: editdavlatMukofot,
+            multimedialar: editmultimediaMateriallar,
+            til_sertifikatlari: editTilBilish
         }
-        
-        fetch(`${import.meta.env.VITE_BASE_URL}/profil/${editObj.id}`,{
+            
+        fetch(`${import.meta.env.VITE_BASE_URL}/profil/${editObj.id}/`,{
             method: "PUT",
             body: JSON.stringify(newObj),
             headers: {
@@ -70,20 +79,22 @@ export function EditPortfolio() {
               },
         })
         .then(res =>{
-            if(!res.ok) throw new Error("nimadir xato");
+            if(!res.ok) {
+                return res.json().then(err => {
+                    throw new Error(err || res.statusText || "Unknown error");
+                });
+            }
             return res.json();
         })
         .then(data =>{
-            // setRender(data)
             console.log(data);
-            
         })
         .catch(err => console.log(err))
         .finally(()=>{
             saveBtn.current.innerHTML = "Edit"
             editForm.current.reset()
             setBlok(false)
-
+            window.location.reload()
         })
         saveBtn.current.innerHTML = `<div style="width: 20px; height: 20px; margin-top:5px;"  class="spinner-border text-light" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -121,11 +132,17 @@ export function EditPortfolio() {
                     <input type="number" id="chopQilinganQollanma" value={editchopEtilgan} onChange={(e)=>{
                         setChopetilgan(e.target.value)
                     }}/>
+                    <br/><br/>
+                    <label htmlFor="tilSertifikat">Til bilish sertifikatlari:</label>
+                    <input type="text" id="tilSertifikat" value={editTilBilish} onChange={(e)=>{
+                        setTilBilish(e.target.value)
+                    }}/>
+                    <p className='warn'>Iltimos vergul (,) bilan ajratib yozing!</p>
                 </div>
                 <div className="centerInput">
                     <label htmlFor="editworldSkillsMutaxassis">Worldskills mutaxassisi</label>
-                    <input type="text" id="editworldSkillsMutaxassis" value={editworldSkillsMutaxassis == null ? "" : editworldSkillsMutaxassis} onChange={(e)=>{
-                        setEditworldSkillsMutaxassis(e.target.value)
+                    <input type="checkbox" id="editworldSkillsMutaxassis" checked={editworldSkillsMutaxassis} onChange={()=>{
+                        setEditworldSkillsMutaxassis(!editworldSkillsMutaxassis)
                     }}/><br/><br/>
                     <label htmlFor="edityaratganPraktiklari">Yaratgan praktiklar:</label>
                     <input type="text" id="edityaratganPraktiklari"  value={edityaratganPraktiklari} onChange={(e)=>{
@@ -151,9 +168,9 @@ export function EditPortfolio() {
                     <input type="text" id="editilmiyUnvoni"  value={editilmiyUnvoni} onChange={(e)=>{
                         setEditilmiyUnvoni(e.target.value)
                     }}/><br/><br/>
-                    <label htmlFor="editoquvMeyoriyIshlar">O'quv-me'yoriy ishlashda qatnashganligi:</label>
-                    <input type="checkbox" checked={editoquvMeyoriyIshlar} id="editoquvMeyoriyIshlar" value={editoquvMeyoriyIshlar} onChange={(e)=>{
-                        setEditoquvMeyoriyIshlar(e.target.value)
+                    <label htmlFor="editoquvMeyoriyIshlar">O'quv-me'yoriy ishlarda qatnashganligi:</label>
+                    <input type="checkbox" checked={editoquvMeyoriyIshlar} id="editoquvMeyoriyIshlar" onChange={()=>{
+                        setEditoquvMeyoriyIshlar(!editoquvMeyoriyIshlar)
                     }}/><br/><br/>
                     <label htmlFor="davlatMukofot">Davlat mukofotlari:</label>
                     <input type="number" id="davlatMukofot" value={editdavlatMukofot} onChange={(e)=>{

@@ -14,6 +14,7 @@ export const AuthProvider = ({children}) =>{
   const isTokenExpired = (token) => {
     try {
       const decoded = jwtDecode(token);
+      
       setName({
         name: decoded.first_name,
         userImage: decoded.image,
@@ -44,10 +45,9 @@ export const AuthProvider = ({children}) =>{
   // refresh
   const refresh = async () => {
     const refreshToken = localStorage.getItem("refreshToken");
-  
     // Refresh token mavjudligini va muddati tugaganligini tekshirish
     if (!refreshToken || isTokenExpired(refreshToken)) {
-      logout(); // Muddati tugagan bo‘lsa, logout qilish
+      logout();
       return;
     }
   
@@ -60,7 +60,6 @@ export const AuthProvider = ({children}) =>{
         logout(); // Refresh token noto‘g‘ri bo‘lsa, logout qilish
       }
     } catch (error) {
-      console.error("Error refreshing tokens:", error);
       logout();
     }
   };
@@ -82,7 +81,7 @@ export const AuthProvider = ({children}) =>{
   }, []);
 
   return (
-    <AuthContext.Provider value={{auth, login, logout, refresh, userName}}>
+    <AuthContext.Provider value={{auth, login, logout, refresh, isTokenExpired, userName}}>
         {children}
     </AuthContext.Provider>
   )

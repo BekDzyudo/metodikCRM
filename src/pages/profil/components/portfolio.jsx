@@ -20,7 +20,7 @@ import { Pagination } from "@mui/material";
 import useGetFetch from "../../../hooks/useGetFetch";
 import { AuthContext } from "../../../contexts/AuthContext";
 import PageLoader from "../../../Loader/PageLoader";
-import useGetFetchProfil from "../../../hooks/useGetFetchProfil"
+import useGetFetchProfil from "../../../hooks/useGetFetchProfil";
 
 export function Portfolio() {
   getPortfolio();
@@ -53,160 +53,189 @@ export function Portfolio() {
 
   // ====================================================
 
-  const {data, isPending, error} = useGetFetchProfil(`${import.meta.env.VITE_BASE_URL}/profil/`)
+  const { data, isPending, error } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/profil/`
+  );
+
+  const { data: user } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/user-data/`
+  );
 
   return (
-    <div className="portfolio">
-      {isPending && <PageLoader/>}
-      {error && <div className="noData">{error}</div>}
-      {data && (
-        <>
-          <div className="portfolioList">
-            <div className="portfolioItem">
-              <div className="portfolioTitle">
-                <h4>REYTING: 26</h4>
-                <img
-                  src={editIcon}
-                  id="editIconPortfolioBtn"
-                  alt=""
-                  onClick={() => {
-                    setBlok(true)
-                    setEditObj(data)
-                  }}
-                />
-              </div>
+    <div className="allPortfolio">
+      <div className="portfolio">
+          {isPending && <PageLoader />}
+          {/* {error && <div className="noData">{error}</div>} */}
+          {data && (
+            <>
+              <div className="portfolioList">
+                <div className="portfolioItem">
+                  <div className="portfolioTitle">
+                    <h4>REYTING: 26</h4>
+                    <img
+                      src={editIcon}
+                      id="editIconPortfolioBtn"
+                      alt=""
+                      onClick={() => {
+                        setBlok(true);
+                        setEditObj(data);
+                      }}
+                    />
+                  </div>
 
-              <div className="portfolioDesc">
-                <div className="teacherBlok">
-                  <div className="teacherImg">
-                    <img src={telba} alt="img" />
-                  </div>
-                  <div>
-                    <div className="teachername">
-                      <h4>
-                        Xakimov Sardor <br />
-                        G‘ayrat o‘g‘li
-                      </h4>
-                      <p>Qora-Qol 2-so’nli texnikumi</p>
+                  <div className="portfolioDesc">
+                    {user && (
+                      <div className="teacherBlok">
+                        <div className="teacherImg">
+                          <img src={user.image} alt="img" />
+                        </div>
+                        <div>
+                          <div className="teachername">
+                            <h4>{user.last_name + " " + user.first_name}</h4>
+                            <p>
+                              {user.region?.name +
+                                " viloyati, " +
+                                user.district?.name +
+                                " tumani, " +
+                                user.college?.name}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    <div className="portfolioLeft">
+                      <div className="portfolioChild">
+                        <div className="portfolioIcon">
+                          <img src={ilmiyDaraja} alt="" />
+                        </div>
+                        <div className="portfolioItemDesc">
+                          <h4>Ilmiy daraja:</h4>
+                          <p>{data.ilmiy_daraja}</p>
+                        </div>
+                      </div>
+                      <div className="portfolioChild">
+                        <div className="portfolioIcon">
+                          <img src={ilmiyUnvon} alt="" />
+                        </div>
+                        <div className="portfolioItemDesc">
+                          <h4>Ilmiy unvon:</h4>
+                          <p>{data.ilmiy_unvon}</p>
+                        </div>
+                      </div>
+                      <div className="portfolioChild">
+                        <div className="portfolioIcon">
+                          <img src={yaratganPraktiklar} alt="" />
+                        </div>
+                        <div className="portfolioItemDesc">
+                          <h4>Yaratgan praktiklar:</h4>
+                          <p>{data.yaratgan_praktik}</p>
+                        </div>
+                      </div>
+                      <div className="portfolioChild">
+                        <div className="portfolioIcon">
+                          <img src={worldSkills} alt="" />
+                        </div>
+                        <div className="portfolioItemDesc">
+                          <h4>Worldskills mutaxassis:</h4>
+                          <p>
+                            {data.world_skills_mutaxasis
+                              ? "Mutaxassis"
+                              : "Mutaxassis emas"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="portfolioRight">
+                      <div className="portfolioChild">
+                        <div className="portfolioIcon">
+                          <img src={staj} alt="" />
+                        </div>
+                        <div className="portfolioItemDesc">
+                          <h4>Ta'lim sohasidagi umumiy ish staji:</h4>
+                          <p>{data.ish_staji}</p>
+                        </div>
+                      </div>
+                      <div className="portfolioChild">
+                        <div className="portfolioIcon">
+                          <img src={oquvMeyoriyQatnashish} alt="" />
+                        </div>
+                        <div className="portfolioItemDesc">
+                          <h4>O'quv-me'yoriy ishlashda qatnashganligi:</h4>
+                          <p>
+                            {data.uquv_meyoriy_ishlarda_qatnashganligi
+                              ? "Qatnashgan"
+                              : "Qatnashmagan"}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="portfolioChild">
+                        <div className="portfolioIcon">
+                          <img src={musobaqaGolibi} alt="" />
+                        </div>
+                        <div className="portfolioItemDesc">
+                          <h4>Musobaqa g'olibi:</h4>
+                          <p>{data.musobaqalar}</p>
+                        </div>
+                      </div>
+                      <div className="portfolioChild">
+                        <div className="portfolioIcon">
+                          <img src={musobaqaGolibi} alt="" />
+                        </div>
+                        <div className="portfolioItemDesc">
+                          <h4>Til bilish sertifikati:</h4>
+                          <p>{data.til_sertifikatlari}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="portfolioLeft">
-                  <div className="portfolioChild">
-                    <div className="portfolioIcon">
-                      <img src={ilmiyDaraja} alt="" />
-                    </div>
-                    <div className="portfolioItemDesc">
-                      <h4>Ilmiy daraja:</h4>
-                      <p>{data.ilmiy_daraja}</p>
-                    </div>
-                  </div>
-                  <div className="portfolioChild">
-                    <div className="portfolioIcon">
-                      <img src={ilmiyUnvon} alt="" />
-                    </div>
-                    <div className="portfolioItemDesc">
-                      <h4>Ilmiy unvon:</h4>
-                      <p>{data.ilmiy_unvon}</p>
-                    </div>
-                  </div>
-                  <div className="portfolioChild">
-                    <div className="portfolioIcon">
-                      <img src={yaratganPraktiklar} alt="" />
-                    </div>
-                    <div className="portfolioItemDesc">
-                      <h4>Yaratgan praktiklar:</h4>
-                      <p>{data.yaratgan_praktik}</p>
-                    </div>
-                  </div>
-                  <div className="portfolioChild">
-                    <div className="portfolioIcon">
-                      <img src={worldSkills} alt="" />
-                    </div>
-                    <div className="portfolioItemDesc">
-                      <h4>Worldskills mutaxassis:</h4>
-                      <p>{data.world_skills_mutaxasis}</p>
-                    </div>
-                  </div>
+              </div>
+              <div className="achievements">
+                <div className="achievementsItemOne">
+                  <img src={korgazmaMateriallari} alt="" />
+                  <p>Ko'rgazma materiallari:</p>
+                  <span>{data.korgazma_materiallari}</span>
                 </div>
-                <div className="portfolioRight">
-                  <div className="portfolioChild">
-                    <div className="portfolioIcon">
-                      <img src={staj} alt="" />
-                    </div>
-                    <div className="portfolioItemDesc">
-                      <h4>Ta'lim sohasidagi umumiy ish staji:</h4>
-                      <p>{data.ish_staji}</p>
-                    </div>
+                <div className="achievementsItem">
+                  <div className="imgCircle">
+                    <img src={chopEttirganQollanmasi} alt="" />
                   </div>
-                  <div className="portfolioChild">
-                    <div className="portfolioIcon">
-                      <img src={oquvMeyoriyQatnashish} alt="" />
-                    </div>
-                    <div className="portfolioItemDesc">
-                      <h4>O'quv-me'yoriy ishlashda qatnashganligi:</h4>
-                      <p>{data.uquv_meyoriy_ishlarda_qatnashganligi}</p>
-                    </div>
+                  <p>Chop ettirgan o'quv qo'llanmalari:</p>
+                  <span>{data.uquv_qollanmalar}</span>
+                </div>
+                <div className="achievementsItem">
+                  <div className="imgCircle">
+                    <img src={chiqarganMaqolalari} alt="" />
                   </div>
-                  <div className="portfolioChild">
-                    <div className="portfolioIcon">
-                      <img src={musobaqaGolibi} alt="" />
-                    </div>
-                    <div className="portfolioItemDesc">
-                      <h4>Musobaqa g'olibi:</h4>
-                      <p>{data.musobaqalar}</p>
-                    </div>
+                  <p>Chiqargan maqolalari:</p>
+                  <span>{data.maqolalar}</span>
+                </div>
+                <div className="achievementsItem">
+                  <div className="imgCircle">
+                    <img src={uslubiyQollanmalari} alt="" />
                   </div>
+                  <p>Uslubiy qo'llanmalar:</p>
+                  <span>{data.uslubiy_qollanmalar}</span>
+                </div>
+                <div className="achievementsItem">
+                  <div className="imgCircle">
+                    <img src={davlatMukofotlari} alt="" />
+                  </div>
+                  <p>Davlat mukofotlari:</p>
+                  <span>{data.davlat_mukofotlari}</span>
+                </div>
+                <div className="achievementsItem">
+                  <div className="imgCircle">
+                    <img src={multimediaMateriallari} alt="" />
+                  </div>
+                  <p>Multimedia materiallari:</p>
+                  <span>{data.multimedialar}</span>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="achievements">
-            <div className="achievementsItemOne">
-              <img src={korgazmaMateriallari} alt="" />
-              <p>Ko'rgazma materiallari:</p>
-              <span>{data.korgazma_materiallari}</span>
-            </div>
-            <div className="achievementsItem">
-              <div className="imgCircle">
-                <img src={chopEttirganQollanmasi} alt="" />
-              </div>
-              <p>Chop ettirgan o'quv qo'llanmalari:</p>
-              <span>{data.uquv_qollanmalar}</span>
-            </div>
-            <div className="achievementsItem">
-              <div className="imgCircle">
-                <img src={chiqarganMaqolalari} alt="" />
-              </div>
-              <p>Chiqargan maqolalari:</p>
-              <span>{data.maqolalar}</span>
-            </div>
-            <div className="achievementsItem">
-              <div className="imgCircle">
-                <img src={uslubiyQollanmalari} alt="" />
-              </div>
-              <p>Uslubiy qo'llanmalar:</p>
-              <span>{data.uslubiy_qollanmalar}</span>
-            </div>
-            <div className="achievementsItem">
-              <div className="imgCircle">
-                <img src={davlatMukofotlari} alt="" />
-              </div>
-              <p>Davlat mukofotlari:</p>
-              <span>{data.davlat_mukofotlari}</span>
-            </div>
-            <div className="achievementsItem">
-              <div className="imgCircle">
-                <img src={multimediaMateriallari} alt="" />
-              </div>
-              <p>Multimedia materiallari:</p>
-              <span>{data.multimedialar}</span>
-            </div>
-          </div>
-        </>
-      )}
-
-      {/* <div className="document_new">
+            </>
+          )}
+      </div>
+      <div className="document_new">
         <div className="jadval_top">
           <div className="jadval_name">
             <h4>Materiallarni qoshish</h4>
@@ -393,7 +422,7 @@ export function Portfolio() {
           </table>
           <Pagination count={10} color="primary"></Pagination>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
