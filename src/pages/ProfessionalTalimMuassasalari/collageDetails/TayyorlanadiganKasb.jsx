@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import useGetFetch from "../../../hooks/useGetFetch";
 import PageLoader from "../../../Loader/PageLoader";
 import { BiSolidCommentError } from "react-icons/bi";
 
 export default function TayyorlanadiganKasb() {
+  const {collageId, tumanId, muassasaId} = useParams()  
+  
   const [active0, setActive0] = useState(true);
   const [active1, setActive1] = useState(false);
   const [active2, setActive2] = useState(false);
@@ -15,7 +17,7 @@ export default function TayyorlanadiganKasb() {
     data: kasbArr,
     isPending,
     error,
-  } = useGetFetch(`${import.meta.env.VITE_BASE_URL}/mutaxasisliklar/${type ? "?type="+type : ""}`);
+  } = useGetFetch(`${import.meta.env.VITE_BASE_URL}/kasb-mutaxasisslik/${collageId}/${type ? "?type="+type : ""}`);
 
   if (error) {
     return (
@@ -30,7 +32,7 @@ export default function TayyorlanadiganKasb() {
       {isPending && <PageLoader />}
       {kasbArr?.length ? (
         <>
-          <div className="malumot_body-btn">
+          {/* <div className="malumot_body-btn">
             <div className="kasb-top-btn">
             <div className="malumot_top">
                 <NavLink
@@ -78,21 +80,19 @@ export default function TayyorlanadiganKasb() {
                 </NavLink>
               </div>
             </div>
-            {/* <div className="kasb-search">
-              <form action="#">
-                <input type="search" placeholder="Izlash..." />
-              </form>
-            </div> */}
-          </div>
+          </div> */}
           <div className="malumot_body">
-            {kasbArr.map((kasb) => {
+            {kasbArr.map((item, index) => {
               return (
-                <Link key={kasb.id} className="kasb_card">
+                <Link 
+                to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/tayyorlanadigan-kasblar/${item?.kasb?.id}`}
+                key={index} 
+                className="kasb_card">
                   <div className="kasb_img">
-                    <img src={kasb.image} alt="" />
+                    <img src={item.kasb.image} alt="" />
                   </div>
                   <div>
-                    <p>{kasb.name}</p>
+                    <h3>{item.kasb.name}</h3>
                   </div>
                 </Link>
               );

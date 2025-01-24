@@ -5,7 +5,6 @@ import {jwtDecode} from "jwt-decode"
 export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) =>{
-  const [userName, setName] = useState(null)
     const [auth, setAuth] = useState({
         refreshToken: localStorage.getItem("refreshToken") || null,
         accessToken: localStorage.getItem("accessToken") || null,
@@ -14,12 +13,6 @@ export const AuthProvider = ({children}) =>{
   const isTokenExpired = (token) => {
     try {
       const decoded = jwtDecode(token);
-      
-      setName({
-        name: decoded.first_name,
-        userImage: decoded.image,
-        userId: decoded.user_id
-      });
       
       const currentTime = Date.now() / 1000; // Hozirgi vaqtni sekundda olamiz
       return decoded.exp < currentTime; // Token muddati tugaganmi?
@@ -30,7 +23,7 @@ export const AuthProvider = ({children}) =>{
   };
 
   // login
-  const login = (data) => {
+  const login = (data) => { 
     setAuth({refreshToken: data.refresh, accessToken: data.access});
     localStorage.setItem("accessToken", data.access);
     localStorage.setItem("refreshToken", data.refresh);
@@ -81,7 +74,7 @@ export const AuthProvider = ({children}) =>{
   }, []);
 
   return (
-    <AuthContext.Provider value={{auth, login, logout, refresh, isTokenExpired, userName}}>
+    <AuthContext.Provider value={{auth, login, logout, refresh, isTokenExpired}}>
         {children}
     </AuthContext.Provider>
   )

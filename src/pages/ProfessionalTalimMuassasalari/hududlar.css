@@ -237,6 +237,7 @@
 .malumot_cards {
   display: flex;
   margin-bottom: 100px;
+  column-gap: 50px;
 }
 .malumot_cards .sidebar{
   display: flex;
@@ -343,26 +344,38 @@ width: 40%;
 .kasb_card{
   border-radius: 10px;
   width: 31%;
-  height: 380px;
+  min-height: 250px;
   background: #326695;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+  row-gap: 15px;
+  padding: 15px;
+}
+.kasb_card:hover .kasb_img img{
+  scale: 1.06;
+  transition: 0.5s;
 }
 .kasb_card .kasb_img{
-  max-height: 300px;
+  height: 160px;
 }
 .kasb_card .kasb_img img{
   border-radius: 5px;
+  scale: 1;
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
-.kasb_card p{
+.kasb_card h3{
   font-size: 16px;
   color: white;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.kasb_card p{
+  font-size: 14px;
+  color: white;
+  font-weight: 400;
+  text-align: center;
 }
 .malumot_table .table_top {
   background: var(--light-grey-1, #f7fafd);
@@ -498,6 +511,58 @@ width: 40%;
   font-size: 14px;
   font-weight: 500;
 }
+/* pedagoglar tarkibi */
+
+.pedagog_body {
+  display: flex;
+  row-gap: 30px;
+  column-gap: 30px;
+  flex-grow: 3;
+  flex-wrap: wrap;
+ }
+ .pedagog_card{
+   border-radius: 10px;
+   width: 31%;
+   min-height: 250px;
+   background: #326695;
+   display: flex;
+   flex-direction: column;
+   row-gap: 15px;
+   /* align-items: center; */
+   padding: 15px;
+ }
+ .pedagog_card:hover .pedagog_img img{
+   scale: 1.06;
+   transition: 0.5s;
+ }
+ .pedagog_card .pedagog_img{
+   height: 220px;
+ }
+ .pedagog_card .pedagog_img img{
+   border-radius: 5px;
+   scale: 1;
+   object-fit: cover;
+   width: 100%;
+   height: 100%;
+ }
+ .pedagog_card h2{
+  font-size: 16px;
+  color: #ccc;
+  font-weight: 600;
+  margin-bottom: 4px !important;
+}
+ .pedagog_card h3{
+   font-size: 18px;
+   color: white;
+   font-weight: 600;
+   margin-bottom: 10px !important;
+ }
+ .pedagog_card p{
+   font-size: 14px;
+   color: white;
+   font-weight: 400;
+   text-align: center;
+ }
 
 /* world skills detail */
 .detail{
@@ -596,4 +661,27 @@ width: 40%;
   font-size: 14px;
   font-weight: 700;
 }
+.kasbDetail{
+  display: flex;
+  justify-content: space-between;
+  column-gap: 30px;
 
+}
+.kasbDetail .commentKasb{
+width: 40%;
+}
+.kasbDetail .kasb-cards{
+  width: 60%;
+}
+.kasbDetail .kasb-cards h4{
+  color: white;
+}
+.kasbTitle{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: white;
+  font-size: 30px !important;
+  margin-bottom: 25px !important;
+  padding: 0 !important;
+  /* text-align: center; */
+}

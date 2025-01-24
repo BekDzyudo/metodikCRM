@@ -51,6 +51,7 @@ import BoshlangichTalimDetail from "./pages/rtr/daraja1/BoshlangichTalimDetail";
 import OrtaTalimDetail from "./pages/rtr/daraja2/OrtaTalimDetail";
 import MaxsusTalimDetail from "./pages/rtr/daraja3/MaxsusTalimDetail"
 import {ApprovedDocument, Documents, ApprovedDokumentDetail, IncomingDocuments, IncomingDocumentDetail, LayoutDocument, ReturnedDocument, ReturnedDocumentDetail} from "./pages/documents/index"
+import TayyorlanadiganKasbDetails from "./pages/ProfessionalTalimMuassasalari/collageDetails/TayyorlanadiganKasbDetails";
 
 function App() {
   const {auth} = useContext(AuthContext)
@@ -149,6 +150,10 @@ function App() {
                 {
                   path: "tayyorlanadigan-kasblar",
                   element: <TayyorlanadiganKasb/>
+                },
+                {
+                  path: "tayyorlanadigan-kasblar/:kasbId",
+                  element: <TayyorlanadiganKasbDetails/>
                 }
               ]
             },

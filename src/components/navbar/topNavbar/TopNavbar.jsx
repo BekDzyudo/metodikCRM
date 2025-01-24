@@ -3,15 +3,16 @@ import logowhite from "../../../images/img/PTRI-new-logotype2-white.svg";
 import "./TopNavbar.css";
 import { NavLink } from "react-router-dom";
 import DropDawnProfile from "./DropDawnProfile";
-import user from "../../../images/img/username.png"
+import userImageLocal from "../../../images/img/username.png"
 import { PiSignIn } from "react-icons/pi";
-import { AuthContext } from "../../../contexts/AuthContext";
-
+import useGetFetchProfil from "../../../hooks/useGetFetchProfil"
 
 
 function TopNavbar() {
   const [openProfil, setOpinPofil] = useState(false);
-  const {userName} = useContext(AuthContext)
+  const { data: user } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/user-data/`
+  );
 
   return (
     <div className="container">
@@ -46,9 +47,9 @@ function TopNavbar() {
           </div>
           <div className="userName" onClick={() => setOpinPofil((prev) => !prev)}>
             <div className="userimg">
-              <img src={ userName ? `http://192.168.101.175:3000/media/${userName.userImage}` : user} alt="rasm" />
+              <img src={ user?.image ? user.image : userImageLocal} alt="rasm" />
             </div>
-            <p>{ userName ? userName.name : "" }</p>
+            <p>{ user?.first_name ? user.first_name : "" }</p>
             {
               openProfil && <DropDawnProfile />
             }
