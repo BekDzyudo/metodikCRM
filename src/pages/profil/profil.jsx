@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./profil.scss";
 
 import { Portfolio } from "./components/portfolio";
-import { TeacherFiles } from "./components/teacherFiles";
 import { EditPortfolio } from "./components/modal/editPortfolio";
 import { EditMalumotlar } from "./components/modal/editMalumotlar";
 import { AddMalumotHujjatlar } from "./components/modal/addMalumotHujjatlar";
@@ -20,7 +19,6 @@ export function Profil() {
           <Header />
           <main className="main">
             <Portfolio />
-            {/* <TeacherFiles /> */}
           </main>
 
           <AddPortfolio/>

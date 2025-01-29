@@ -484,8 +484,7 @@ ul {
         .savePortfolioModalBtn {
           display: flex;
           gap: 5px;
-          flex-direction: column;
-          align-items: center;
+          justify-content: flex-end;
           #savePortfolioBtn {
             border: none;
             border-radius: 10px;
@@ -517,11 +516,11 @@ ul {
           textarea {
             border: 1px solid #b5b5b5;
             width: 100%;
-            height: 165px;
+            max-height: 165px;
             font-size: 14px;
             font-weight: 400;
             padding: 10px;
-            resize: none;
+            // resize: none;
             outline: none;
           }
         }
@@ -655,6 +654,10 @@ ul {
               box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
               outline: none;
               padding: 0px 5px;
+            }
+            #addFile{
+              background: none;
+              border: 3px solid yellow !important;
             }
           }
           .rightInput {

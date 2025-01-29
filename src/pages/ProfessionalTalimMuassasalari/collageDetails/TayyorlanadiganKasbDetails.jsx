@@ -8,6 +8,21 @@ function TayyorlanadiganKasbDetails() {
   const { data } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/kasb/${kasbId}/`
   );
+
+  const month = [
+    "Yanvar",
+    "Fevral",
+    "Mart",
+    "Aprel",
+    "May",
+    "Iyun",
+    "Iyul",
+    "Avgust",
+    "Sentabr",
+    "Oktabr",
+    "Noyabr",
+    "Dekabr",
+  ];
   
   return (
     <>
@@ -33,7 +48,17 @@ function TayyorlanadiganKasbDetails() {
                 <div key={item.id} className="talim_detail-card">
                   <div className="talim_detail-title">
                     <p>{item.name}</p>
-                    <span>So’ngi o’zgartirilgan sana: 14-Fevral, 2022-yil</span>
+                    <span>
+                    So'ngi o'zgartirilgan sana: {" "}
+                    {new Date(item.created_at).getDate() < 10
+                        ? "0" + new Date(item.created_at).getDate()
+                        : new Date(item.created_at).getDate()}
+                      -
+                     {month[new Date(item.created_at).getMonth()]}
+                      , {" "}
+                      {new Date(item.created_at).getFullYear()}-yil
+                      
+                    </span>
                   </div>
                   <div className="talim_detail-btn">
                     <Link target="blanck" to={item.file}>Yuklab olish</Link>
@@ -46,24 +71,6 @@ function TayyorlanadiganKasbDetails() {
               <h1>Hozircha fayl yuklanmagan</h1> <BiSolidCommentError />{" "}
             </div>
           )}
-          {/* <div className="talim_detail-card">
-          <div className="talim_detail-title">
-            <p>O'quv fanlari yoki modullar</p>
-            <span>So’ngi o’zgartirilgan sana: 14-Fevral, 2022-yil</span>
-          </div>
-          <div className="talim_detail-btn">
-            <Link>Yuklab olish</Link>
-          </div>
-        </div>
-        <div className="talim_detail-card">
-          <div className="talim_detail-title">
-            <p>O'quv dastur</p>
-            <span>So’ngi o’zgartirilgan sana: 14-Fevral, 2022-yil</span>
-          </div>
-          <div className="talim_detail-btn">
-            <Link>Yuklab olish</Link>
-          </div>
-        </div> */}
         </div>
       </div>
     </>
