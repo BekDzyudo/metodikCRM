@@ -1,31 +1,42 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import exitIcon from "../../../../images/exitIcon.svg";
 import { PortfolioContext } from "../contexts/editPortfolioContext";
+import useGetFetchProfil from "../../../../hooks/useGetFetchProfil";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 export function AddMalumotHujjatlar() {
   const { addhujjat, setAddHujjat, setAddObj } = useContext(PortfolioContext);
+  const {auth} = useContext(AuthContext)
+
+  const { data: user } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/user-data/`
+  );
+  // console.log(user);
+  
 
   let hujjatTuri = useRef();
   let fanNomi = useRef();
   let addFile = useRef();
   let komment = useRef();
-  let regTeacherFileForm = useRef()
-  let saveBtn = useRef()
+  let regTeacherFileForm = useRef();
+  let saveBtn = useRef();
 
   function AddSaveTeacherFile() {
     let newObj = {
-        hujjatTuri: hujjatTuri.current.value,
-        fanNomi: fanNomi.current.value,
-        addFile: addFile.current.value,
-        komment: komment.current.value,
+      hujjatTuri: hujjatTuri.current.value,
+      fanNomi: fanNomi.current.value,
+      addFile: addFile.current.files[0],
+      komment: komment.current.value,
     };
+    console.log(newObj);
+    
     let errorArr = Object.keys(newObj).filter((key) => {
-      return !newObj[key];
+      if(key !== "komment") return !newObj[key];
     });
     errorArr.forEach((item) => {
       document.getElementById(`${item}`).classList.add("errorBorder");
     });
-    Array.from(regPortfolioForm.current).forEach((item) => {
+    Array.from(regTeacherFileForm.current).forEach((item) => {
       item.addEventListener("change", (e) => {
         if (e.target.value) {
           item.classList.remove("errorBorder");
@@ -34,26 +45,44 @@ export function AddMalumotHujjatlar() {
         }
       });
     });
+    const formData = new FormData();
     if (errorArr.length == 0) {
+      formData.append("kategoriya_material", newObj.hujjatTuri);
+      formData.append("fan", newObj.fanNomi);
+      formData.append("file", newObj.addFile);
+      formData.append("comment", newObj.komment);
+      formData.append("teacher", user?.id);
+      
       fetch(
-        `https://metodiktaminlashplatform-ed37a-default-rtdb.firebaseio.com/portfolio.json`,
+        `${import.meta.env.VITE_BASE_URL}/birlashma/material-create/`,
         {
           method: "POST",
-          body: JSON.stringify(newObj),
+          body: formData,
+          headers: {
+            // "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + auth.accessToken,
+          },
         }
       )
         .then((res) => {
-          if (!res.ok) throw new Error("nimadir xato");
+          if (!res.ok) {
+            return res.json().then(err => {
+              console.log(err);
+              
+              // throw new Error(res || "Unknown error");
+          });
+          }
           return res.json();
         })
         .then((data) => {
-          setAddObj(data);
+          console.log(data);
+          
         })
         .catch((err) => {
           console.log(err);
         })
         .finally(() => {
-          regPortfolioForm.current.reset();
+          regTeacherFileForm.current.reset();
           saveBtn.current.innerHTML = "Saqlash";
           setAddHujjat(false);
         });
@@ -62,6 +91,17 @@ export function AddMalumotHujjatlar() {
          </div>`;
     }
   }
+
+
+
+  const { data: hujjatlar } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/birlashma/kategoriya-material/`
+  );
+
+  const { data: fanlar } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/shared_app/fanlar/${user?.id}`
+  );
+
   return (
     addhujjat && (
       <div className="addPortfolio">
@@ -75,56 +115,66 @@ export function AddMalumotHujjatlar() {
               onClick={() => setAddHujjat(false)}
             />
           </div>
-          <form action="" className="addPortfolioForm" ref={regTeacherFileForm}>
+          <form encType="multipart/form-data" action="" className="addPortfolioForm" ref={regTeacherFileForm}>
             <div className="leftInput">
               <label htmlFor="ilmiyDaraja">Hujjat turi</label>
               <br />
-              <select name="" id="hujjatTuri" ref={hujjatTuri}>
-              <option value="" disabled selected>
+              <select name="" id="hujjatTuri" ref={hujjatTuri} defaultValue="">
+                <option value="" disabled>
                   Hujjat turini tanlang
                 </option>
-                <option value="Raqamli ta‘lim resusrlari">
-                  Raqamli ta‘lim resusrlari
-                </option>
-                <option value="2">2</option>
+                {hujjatlar &&
+                  hujjatlar.map((hujjat) => {
+                    return (
+                      <option key={hujjat.id} value={hujjat.id}>
+                        {hujjat.name}
+                      </option>
+                    );
+                  })}
               </select>
               <br />
               <br />
               <label htmlFor=""></label>
               <div className="textarea">
-                <textarea ref={komment} id="komment" placeholder="Komentariya..."></textarea>
+                <textarea
+                  ref={komment}
+                  id="komment"
+                  placeholder="Komentariya..."
+                ></textarea>
               </div>
             </div>
             <div className="centerInput">
               <label htmlFor="musobaqaGolibi">Fan nomi</label>
-              <select name="" id="fanNomi" ref={fanNomi}>
-                <option selected value="" disabled>
-                    Fan nomini tanlang
+              <select name="" id="fanNomi" ref={fanNomi} defaultValue="">
+                <option value="" disabled>
+                  Fan nomini tanlang
                 </option>
-                <option value=" Bulung'ur tumani 2-sonli kasb-hunar maktabi">
-                  Psixologiya
-                </option>
-                <option value=" Bulung'ur tumani 2-sonli kasb-hunar maktabi">
-                  hamshiralik ishi
-                </option>
+                {fanlar &&
+                  fanlar.map((fan) => {
+                    return (
+                      <option key={fan.id} value={fan.id}>
+                        {fan.name}
+                      </option>
+                    );
+                  })}
               </select>
               <br />
               <br />
               <label htmlFor="myfile" className="custom-file-upload">
                 Fayl biriktirish
               </label>
-              <input type="file" ref={addFile} id="addFile" style={{padding:0, boxShadow:"none"}}/>
+              <input type="file" ref={addFile} id="addFile"/>
             </div>
           </form>
-            <div className="savePortfolioModalBtn">
-              <button
-                id="savePortfolioBtn"
-                ref={saveBtn}
-                onClick={AddSaveTeacherFile}
-              >
-                Yuborish
-              </button>
-            </div>
+          <div className="savePortfolioModalBtn">
+            <button
+              id="savePortfolioBtn"
+              ref={saveBtn}
+              onClick={AddSaveTeacherFile}
+            >
+              Saqlash
+            </button>
+          </div>
         </div>
       </div>
     )
