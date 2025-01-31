@@ -47,11 +47,20 @@ export function AddMalumotHujjatlar() {
     });
     const formData = new FormData();
     if (errorArr.length == 0) {
+      formData.append("teacher", user?.id);
       formData.append("kategoriya_material", newObj.hujjatTuri);
       formData.append("fan", newObj.fanNomi);
       formData.append("file", newObj.addFile);
       formData.append("comment", newObj.komment);
-      formData.append("teacher", user?.id);
+
+      console.log({
+        kategoriya_material: newObj.hujjatTuri,
+      fan: newObj.fanNomi,
+      file: newObj.addFile,
+      comment: newObj.komment,
+      teacher: user?.id
+      });
+      
       
       fetch(
         `${import.meta.env.VITE_BASE_URL}/birlashma/material-create/`,
@@ -68,8 +77,6 @@ export function AddMalumotHujjatlar() {
           if (!res.ok) {
             return res.json().then(err => {
               console.log(err);
-              
-              // throw new Error(res || "Unknown error");
           });
           }
           return res.json();

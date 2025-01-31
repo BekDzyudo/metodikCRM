@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { PortfolioContext } from "./contexts/editPortfolioContext";
 import { Link } from "react-router-dom";
 import { Pagination } from "swiper/modules";
+import useGetFetchProfil from "../../../hooks/useGetFetchProfil"
 
 export function TeacherFiles() {
 
@@ -10,6 +11,13 @@ export function TeacherFiles() {
   
   const [isActivesohasi, setIsActivesohasi] = useState(false);
   const [selectedsohasi, setIsSelectedsohasi] = useState("Qaytarilgan");
+
+  const { data: user } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/user-data/`
+  );
+  const {data} = useGetFetchProfil(`${import.meta.env.VITE_BASE_URL}/birlashma/material/${user?.id}`)
+  console.log(data);
+  
 
   return (
        <div className="document_new">
