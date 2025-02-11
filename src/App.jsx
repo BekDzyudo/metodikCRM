@@ -34,7 +34,7 @@ import MainLayouts from "./layouts/MainLayouts";
 import { HududlarLayout, Viloyatlar, Tumanlar, Muassasalar, MuassasaMalumotiLayout } from "./pages/ProfessionalTalimMuassasalari";
 import {UmumiyMalumotlar, MuassasaUstav, VasiylikKengash, PedagogTarkib, Rivojlanish, WorldSkills, WorldSkillsDetail, QisqaKurs, QisqaKursDetail, TayyorlanadiganKasb} from "./pages/ProfessionalTalimMuassasalari/collageDetails";
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 // import { RegisterSelect, RegisterTeacher, RegisterStudent } from "./pages/Auth/register";
 import { RegisterSelect } from "./pages/Auth/register/RegisterSelect";
@@ -52,10 +52,12 @@ import OrtaTalimDetail from "./pages/rtr/daraja2/OrtaTalimDetail";
 import MaxsusTalimDetail from "./pages/rtr/daraja3/MaxsusTalimDetail"
 import {ApprovedDocument, Documents, ApprovedDokumentDetail, IncomingDocuments, IncomingDocumentDetail, LayoutDocument, ReturnedDocument, ReturnedDocumentDetail} from "./pages/documents/index"
 import TayyorlanadiganKasbDetails from "./pages/ProfessionalTalimMuassasalari/collageDetails/TayyorlanadiganKasbDetails";
+import useGetFetchProfil from "./hooks/useGetFetchProfil"
 
 function App() {
-  const {auth} = useContext(AuthContext)
-  
+  const {auth, userData} = useContext(AuthContext)
+
+
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -257,7 +259,7 @@ function App() {
         },
         {
           path: "Document",
-          element: <LayoutDocument />,
+          element: userData?.user_roles == "metodist" ? <LayoutDocument /> : <Navigate to="*"/>,
           children: [
             {
               path: "documents",
@@ -295,8 +297,8 @@ function App() {
           element: <Contact />,
         },
         {
-          path: "Profil",
-          element: <Profil />,
+          path: "profil",
+          element: userData?.user_roles == "teacher" ? <Profil /> : <Navigate to="*"/>,
         },
         {
           path: "regPortfolio",
@@ -349,14 +351,8 @@ function App() {
 
   return (
     <RouterProvider router={routes} />
-
-    // {/* <FanOqituvchi /> */}
-    //   {/* <OquvAmaliyot /> */}
-    //   {/* <OquvMateriallarToplami /> */}
-    //   {/* <UmumiyKasbiy /> */}
-    //   {/* <UmumKasbiyDetail /> */}
-    // </>
   );
+
 }
 
 export default App;

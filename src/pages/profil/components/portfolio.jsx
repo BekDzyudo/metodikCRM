@@ -38,7 +38,7 @@ export function Portfolio() {
     <div className="allPortfolio">
       <div className="portfolio">
           {isPending && <PageLoader />}
-          {/* {error && <div className="noData">{error}</div>} */}
+          {error && <div className="noData">{error}</div>}
           {data && (
             <>
               <div className="portfolioList">

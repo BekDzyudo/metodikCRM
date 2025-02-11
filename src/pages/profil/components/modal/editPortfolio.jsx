@@ -2,15 +2,10 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import exitIcon from "../../../../images/exitIcon.svg"
 import { PortfolioContext } from '../contexts/editPortfolioContext'
 import { AuthContext } from '../../../../contexts/AuthContext';
-import useGetFetchProfil from "../../../../hooks/useGetFetchProfil"
 
 export function EditPortfolio() {
-    const {editObj, blok, setBlok, setRender} = useContext(PortfolioContext);
-    const {auth, userName} = useContext(AuthContext)
-
-    const { data: userData } = useGetFetchProfil(
-        `${import.meta.env.VITE_BASE_URL}/user-data/`
-      );
+    const {editObj, blok, setBlok} = useContext(PortfolioContext);
+    const {auth, userData} = useContext(AuthContext)
       
     
     const [editilmiyDaraja, setEditilmiyDaraja] = useState();
@@ -53,7 +48,7 @@ export function EditPortfolio() {
 
         let newObj = {
             id:editObj.id,
-            user: userData.id,
+            user: userData.userId,
             ilmiy_daraja: editilmiyDaraja,
             musobaqalar: editmusobaqaGolibi,
             world_skills_mutaxasis: editworldSkillsMutaxassis,

@@ -7,7 +7,6 @@ function useGetFetch(url) {
   const [error, setError] = useState(null);
 
   const { auth, refresh, isTokenExpired } = useContext(AuthContext);
-  
 
   useEffect(() => {
     const refreshToken = localStorage.getItem("refreshToken");
@@ -48,13 +47,6 @@ function useGetFetch(url) {
         }
 
         setIsPending(false);
-
-        // if (!req.ok) {
-        //   throw new Error(req.statusText);
-        // }
-        // const data = await req.json();
-        // setData(data);
-        // setIsPending(false);
       } catch (err) {
         setError(err.message);
         console.log(err.message);

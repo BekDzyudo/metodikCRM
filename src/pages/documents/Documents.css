@@ -245,12 +245,14 @@
   border-collapse: collapse !important;
   background-origin: padding-box;
   border: 0;
+  height: auto;
 }
 
 .document_table table td,
 th {
   border: none !important;
   text-align: center;
+  padding: 20px 0px;
 }
 
 .document_table .table .table-header {
@@ -263,9 +265,11 @@ th {
 .document_table .table .table-header th {
   color: #2f80ed;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   background: #ddd;
+  font-family: 'Montserrat', sans-serif;
+  padding: 20px 0px;
 }
 .document_table .table tr:nth-child(even) {
   background: #f8f8f8;
@@ -275,7 +279,7 @@ th {
 }
 
 .document_table .table td {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   color: #333;
 }
@@ -287,22 +291,49 @@ th {
 }
 
 .document_table .table tr .new {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+
+}
+.document_table .table tr .new p {
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  width: 100%;
+  margin-top: 5px !important;
+}
+.document_table .table tr .new .neww {
+  background: #0f66d8;
+  font-size: 14px;
+  color: white;
+  min-width: 100px;
+  padding: 3px 5px;
+  border-radius: 15px;
+}
+.document_table .table tr .new .success {
+  background: green;
+  font-size: 14px;
+  color: white;
+  min-width: 100px;
+  padding: 3px 5px;
+  border-radius: 15px;
+}
+.document_table .table tr .new .otkaz {
+  background: rgb(201, 9, 9);
+  font-size: 14px;
+  color: white;
+  min-width: 100px;
+  padding: 3px 5px;
+  border-radius: 15px;
 }
 .document_table .table td a {
   background: none;
   color: #2f80ed;
-  text-transform: uppercase;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
 }
-
-.document_table .table td b {
-  background: none;
-  font-size: 14px;
-  font-weight: 500;
+.document_table .table td a:hover {
+  color: #0f66d8;
 }
 .document_table .table td p {
   color: #fff;
@@ -315,25 +346,6 @@ th {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.document_table .table td .rad {
-  border-radius: 10px;
-  background: red;
-  color: #fff;
-  white-space: nowrap;
-  width: 80%;
-}
-
-.document_table .table td .tasdiq {
-  border-radius: 10px;
-  background: #02fe0c;
-  color: #fff;
-  white-space: nowrap;
-  width: 80%;
-}
-.document_table .table td p svg {
-  margin-right: 5px;
 }
 
 .document_table nav {

@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from "react";
+import React, {createContext, useState, useEffect, useContext} from "react";
 import { refreshAccessToken } from "../components/authentication/auth";
 import {jwtDecode} from "jwt-decode"
 
@@ -9,17 +9,20 @@ export const AuthProvider = ({children}) =>{
         refreshToken: localStorage.getItem("refreshToken") || null,
         accessToken: localStorage.getItem("accessToken") || null,
       });
+    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userData")) || null)
+      
 
   const isTokenExpired = (token) => {
-    try {
-      const decoded = jwtDecode(token);
-      
-      const currentTime = Date.now() / 1000; // Hozirgi vaqtni sekundda olamiz
-      return decoded.exp < currentTime; // Token muddati tugaganmi?
-    } catch (error) {
-      console.error("Error decoding token:", error);
-      return true; // Agar token noto'g'ri bo'lsa, uni muddati tugagan deb hisoblaymiz
-    }
+      try {
+        const decoded = jwtDecode(token);
+        
+        const currentTime = Date.now() / 1000; // Hozirgi vaqtni sekundda olamiz
+        return decoded.exp < currentTime; // Token muddati tugaganmi?
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        return true; // Agar token noto'g'ri bo'lsa, uni muddati tugagan deb hisoblaymiz
+      }
+
   };
 
   // login
@@ -27,12 +30,34 @@ export const AuthProvider = ({children}) =>{
     setAuth({refreshToken: data.refresh, accessToken: data.access});
     localStorage.setItem("accessToken", data.access);
     localStorage.setItem("refreshToken", data.refresh);
+
+    fetch(`${import.meta.env.VITE_BASE_URL}/user-data/`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + data.access,
+      },
+    })
+    .then((res)=>{
+      if(!res.ok){
+        throw new Error(res);
+      }
+      return res.json()
+    })
+    .then((data)=>{
+      setUserData({userId: data.id, user_roles: data.user_roles})
+      localStorage.setItem("userData", JSON.stringify({userId: data.id, user_roles: data.user_roles}))
+    })
+    .catch((err)=>{
+      console.log(err);
+      
+    })
   };
 
   // logout
   const logout = () => {
     setAuth({ accessToken: null, refreshToken: null });
     localStorage.clear();
+    setUserData(null);
   };
 
   // refresh
@@ -74,7 +99,7 @@ export const AuthProvider = ({children}) =>{
   }, []);
 
   return (
-    <AuthContext.Provider value={{auth, login, logout, refresh, isTokenExpired}}>
+    <AuthContext.Provider value={{auth, login, logout, refresh, isTokenExpired, userData}}>
         {children}
     </AuthContext.Provider>
   )

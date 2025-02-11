@@ -6,12 +6,7 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 
 export function AddMalumotHujjatlar() {
   const { addhujjat, setAddHujjat, setAddObj } = useContext(PortfolioContext);
-  const {auth} = useContext(AuthContext)
-
-  const { data: user } = useGetFetchProfil(
-    `${import.meta.env.VITE_BASE_URL}/user-data/`
-  );
-  // console.log(user);
+  const {auth, userData} = useContext(AuthContext)
   
 
   let hujjatTuri = useRef();
@@ -28,7 +23,6 @@ export function AddMalumotHujjatlar() {
       addFile: addFile.current.files[0],
       komment: komment.current.value,
     };
-    console.log(newObj);
     
     let errorArr = Object.keys(newObj).filter((key) => {
       if(key !== "komment") return !newObj[key];
@@ -47,19 +41,11 @@ export function AddMalumotHujjatlar() {
     });
     const formData = new FormData();
     if (errorArr.length == 0) {
-      formData.append("teacher", user?.id);
+      formData.append("teacher", userData?.userId);
       formData.append("kategoriya_material", newObj.hujjatTuri);
       formData.append("fan", newObj.fanNomi);
       formData.append("file", newObj.addFile);
       formData.append("comment", newObj.komment);
-
-      console.log({
-        kategoriya_material: newObj.hujjatTuri,
-      fan: newObj.fanNomi,
-      file: newObj.addFile,
-      comment: newObj.komment,
-      teacher: user?.id
-      });
       
       
       fetch(
@@ -92,6 +78,7 @@ export function AddMalumotHujjatlar() {
           regTeacherFileForm.current.reset();
           saveBtn.current.innerHTML = "Saqlash";
           setAddHujjat(false);
+          window.location.reload()
         });
       saveBtn.current.innerHTML = `<div style="width: 20px; height: 20px; margin-top:5px;"  class="spinner-border text-light" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -106,7 +93,7 @@ export function AddMalumotHujjatlar() {
   );
 
   const { data: fanlar } = useGetFetchProfil(
-    `${import.meta.env.VITE_BASE_URL}/shared_app/fanlar/${user?.id}`
+    `${import.meta.env.VITE_BASE_URL}/shared_app/fanlar/${userData?.userId}`
   );
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import useGetFetch from "../../../hooks/useGetFetchProfil";
+import useGetFetch from "../../../hooks/useGetFetch";
 import { Link, useParams } from "react-router-dom";
 import { BiSolidCommentError } from "react-icons/bi";
 
