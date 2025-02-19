@@ -13,7 +13,7 @@ function TopNavbar() {
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
-
+  
   return (
     <div className="container">
       <div className="bar">

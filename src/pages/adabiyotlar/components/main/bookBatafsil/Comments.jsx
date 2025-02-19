@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 function Comments({ comment, index }) {
   const replyCommentForm = useRef();
   const [replyText, setReplyText] = useState("");
-  const { userName } = useContext(AuthContext);
+  const { userData } = useContext(AuthContext);
   const { id } = useParams();
 
   // reply comments
@@ -28,7 +28,7 @@ function Comments({ comment, index }) {
   // reply funck
   const handleReply = (commentId) => {
     let obj = {
-      user: userName.userId,
+      user: userData.userId,
       adabiyot: id,
       text: replyText,
       reply_comment: commentId,

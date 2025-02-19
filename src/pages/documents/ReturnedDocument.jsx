@@ -202,15 +202,16 @@ export default function ReturnedDocument() {
                                 )}
 
                                 <p>
-                                  {new Date(item.created_at).getDate() < 10
+                                {new Date(item.created_at).getDate() < 10
                                     ? "0" + new Date(item.created_at).getDate()
                                     : new Date(item.created_at).getDate()}
-                                  .{new Date(item.created_at).getMonth() + 1}.
+                                  .{new Date(item.created_at).getMonth() + 1 < 10 ?
+                                  "0" + (new Date(item.created_at).getMonth() + 1) : new Date(item.created_at).getMonth() + 1}.
                                   {new Date(item.created_at).getFullYear()}
                                 </p>
                               </td>
                               <td>
-                                <Link to="/Document/IncomingDocumentDetail">
+                                <Link to="">
                                   Chatga o'tish{" "}
                                   <MdNavigateNext
                                     style={{ fontSize: "16px" }}
@@ -218,7 +219,7 @@ export default function ReturnedDocument() {
                                 </Link>
                               </td>
                               <td>
-                                <Link target="_blanck" to={item.file}>
+                                <Link to={`/Document/DocumentDetail/${item.id}`}>
                                   Ko'rish
                                 </Link>{" "}
                               </td>

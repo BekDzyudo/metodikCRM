@@ -10,7 +10,9 @@ import { Pagination, ToggleButton } from "@mui/material";
 import Comments from "./Comments";
 
 export function BookBatafsil() {
-  const { userName } = useContext(AuthContext);
+  const { userData } = useContext(AuthContext);
+  console.log(userData);
+  
   const { id } = useParams();
   // ref
   const userCommentText = useRef();
@@ -41,7 +43,7 @@ export function BookBatafsil() {
   // add comment funck
   function addComment(commentId) {
     let obj = {
-      user: userName.userId,
+      user: userData.userId,
       adabiyot: id,
       text: userCommentText.current.value,
       reply_comment: commentId,

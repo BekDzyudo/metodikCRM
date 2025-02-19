@@ -50,7 +50,7 @@ import MaxsusTalim from "./pages/rtr/daraja3/MaxsusTalim";
 import BoshlangichTalimDetail from "./pages/rtr/daraja1/BoshlangichTalimDetail";
 import OrtaTalimDetail from "./pages/rtr/daraja2/OrtaTalimDetail";
 import MaxsusTalimDetail from "./pages/rtr/daraja3/MaxsusTalimDetail"
-import {ApprovedDocument, Documents, ApprovedDokumentDetail, IncomingDocuments, IncomingDocumentDetail, LayoutDocument, ReturnedDocument, ReturnedDocumentDetail} from "./pages/documents/index"
+import {ApprovedDocument, Documents, ApprovedDokumentDetail, IncomingDocuments, DocumentDetail, LayoutDocument, ReturnedDocument, ReturnedDocumentDetail} from "./pages/documents/index"
 import TayyorlanadiganKasbDetails from "./pages/ProfessionalTalimMuassasalari/collageDetails/TayyorlanadiganKasbDetails";
 import useGetFetchProfil from "./hooks/useGetFetchProfil"
 
@@ -270,25 +270,25 @@ function App() {
               element: <IncomingDocuments />
             },
             {
-              path: "IncomingDocumentDetail",
-              element: <IncomingDocumentDetail />
+              path: "DocumentDetail/:id",
+              element: <DocumentDetail />
             },
             {
               path: "ReturnedDocument",
               element: <ReturnedDocument />
             },
-            {
-              path: "ReturnedDocumentDetail",
-              element: <ReturnedDocumentDetail />
-            },
+            // {
+            //   path: "ReturnedDocumentDetail",
+            //   element: <ReturnedDocumentDetail />
+            // },
             {
               path: "ApprovedDocument",
               element: <ApprovedDocument />
             },
-            {
-              path: "ApprovedDocumentDetail",
-              element: <ApprovedDokumentDetail />
-            }
+            // {
+            //   path: "ApprovedDocumentDetail",
+            //   element: <ApprovedDokumentDetail />
+            // }
     
           ]
         },

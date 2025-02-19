@@ -89,6 +89,30 @@
   margin-top: 25px;
   border-top: 0.5px solid #bdbdbd;
 }
+.bordertop .document_new .neww {
+  background: #0f66d8;
+  font-size: 14px;
+  color: white;
+  min-width: 80px;
+  padding: 3px 5px;
+  border-radius: 15px;
+}
+.bordertop .document_new .success {
+  background: green;
+  font-size: 14px;
+  color: white;
+  min-width: 80px;
+  padding: 3px 5px;
+  border-radius: 15px;
+}
+.bordertop .document_new .otkaz {
+  background: rgb(201, 9, 9);
+  font-size: 14px;
+  color: white;
+  min-width: 80px;
+  padding: 3px 5px;
+  border-radius: 15px;
+}
 
 .document_cards .document_card {
   display: flex;
@@ -411,19 +435,25 @@ th {
   margin-top: 30px;
 }
 
-.incoming_file span a {
+.incoming_file span:nth-child(1) a {
   color: #2e94f1;
+  display: flex;
+  align-items: center;
 }
 
 .incoming_name {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
-
+.incoming_name .incoming_box{
+  margin-bottom: 20px;
+}
 .incoming_name .incoming_box,
 .incoming_name .incoming_box p {
   margin-left: auto;
   flex-direction: row-reverse;
+  text-align: right;
 }
 
 .incoming_textarea {
@@ -435,7 +465,7 @@ th {
   border: 1px solid var(--Gray-4, #bdbdbd);
   background: var(--Backgrounds-Primary, #fff);
   width: 100%;
-  height: 180px;
+  height: 100px;
   resize: none;
   outline: none;
   padding: 10px;
@@ -450,7 +480,7 @@ th {
 
 .incoming_textarea .custom-file-upload {
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 7px 20px;
   border-radius: 6px;
   border: 1px solid #2e94f1;
   background: #fff;
@@ -463,10 +493,21 @@ th {
 .incoming_textarea .custom-file-upload svg {
   margin-right: 5px;
 }
+.incoming_textarea .commentSendBtns{
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  justify-content: end;
+}
+.incoming_textarea .commentSendBtns .commentSend{
+  background: #2e94f1;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 
 .incoming_buttons {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
