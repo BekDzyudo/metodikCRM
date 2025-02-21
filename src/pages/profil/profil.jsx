@@ -9,6 +9,7 @@ import { AddMalumotHujjatlar } from "./components/modal/addMalumotHujjatlar";
 import Footer from "../../components/footer/Footer";
 import { Header } from "./components/header/header";
 import { AddPortfolio } from "./components/modal/addPortfolio";
+import ChatModal from "./components/modal/chat/ChatModal";
 
 
 export function Profil() {
@@ -25,6 +26,7 @@ export function Profil() {
           <EditPortfolio />
           <EditMalumotlar />
           <AddMalumotHujjatlar />
+          <ChatModal/>
         </div>
       </div>
       <Footer />

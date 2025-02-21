@@ -5,8 +5,10 @@ import { Pagination } from "swiper/modules";
 import useGetFetchProfil from "../../../hooks/useGetFetchProfil";
 import { MdNavigateNext } from "react-icons/md";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { MalumotContext } from "./contexts/editMalumotlarContext";
 
 export function TeacherFiles() {
+  const { setChatModalActive } = useContext(MalumotContext);
   const { setAddHujjat } = useContext(PortfolioContext);
   const {userData} = useContext(AuthContext)
 
@@ -126,7 +128,7 @@ export function TeacherFiles() {
                       </p>
                     </td>
                     <td>
-                      <Link to="/Document/IncomingDocumentDetail">
+                      <Link onClick={()=>setChatModalActive(true)}>
                         Chatga o'tish{" "}
                         <MdNavigateNext style={{ fontSize: "16px" }} />
                       </Link>
