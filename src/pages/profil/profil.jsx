@@ -26,7 +26,7 @@ export function Profil() {
           <EditPortfolio />
           <EditMalumotlar />
           <AddMalumotHujjatlar />
-          <ChatModal/>
+          {/* <ChatModal/> */}
         </div>
       </div>
       <Footer />

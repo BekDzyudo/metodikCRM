@@ -1,16 +1,61 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FiCheckSquare, FiDownload, FiHome, FiUpload } from "react-icons/fi";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useGetFetchProfil from "../../hooks/useGetFetchProfil";
 import Chat from "./chat/Chat";
+import { AuthContext } from "../../contexts/AuthContext";
+import { toast } from "react-toastify";
 
 export default function DocumentDetail() {
   const { id } = useParams();
+  const { auth, refresh, isTokenExpired } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const { data: Material } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/birlashma/material-detail/${id}/`
   );
-console.log(Material);
+
+
+  function qabulQilindi(){
+    fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/material-update/${id}/`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: "Bearer " + auth.accessToken,
+      },
+      body: JSON.stringify({holat: 'tasdiqlandi'}),
+    })
+    .then(async(res)=>{
+      const errorObj = await res.json();        
+        if (!res.ok) throw new Error(JSON.stringify(errorObj));
+        return res;
+    })
+    .then((data)=>{
+      toast.success("Material tasdiqlandi")
+      navigate("/Document/documents")
+    })
+    .catch((err)=>console.log(JSON.parse(err.message)))
+  }
+  function radEtildi(){
+    fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/material-update/${id}/`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: "Bearer " + auth.accessToken,
+      },
+      body: JSON.stringify({holat: 'rad_etildi'}),
+    })
+    .then(async(res)=>{
+      const errorObj = await res.json();        
+        if (!res.ok) throw new Error(JSON.stringify(errorObj));
+        return res;
+    })
+    .then((data)=>{
+      toast.success("Material rad etildi")
+      navigate("/Document/documents")
+    })
+    .catch((err)=>console.log(JSON.parse(err.message)))
+  }
 
   return (
     <div className="container">
@@ -140,7 +185,7 @@ console.log(Material);
                         <div className="incoming_file">
                           <p>biriktirilgan fayl</p>
                           <span>
-                            <span>{Material?.kategoriya_material?.name}:</span>
+                            <span>{Material?.kategoriya_material?.name}</span>
 
                             <Link target="blanck" to={Material.file}>
                               {" "}
@@ -171,12 +216,19 @@ console.log(Material);
                             <span>{Material?.fan.name}</span>
                           </div>
                         </div>
-                        <div className="incoming_buttons">
+                        {/* ============== */}
+                        {
+                          Math.floor(new Date(Material?.updated_at).getTime()/1000) == Math.floor(new Date(Material?.created_at).getTime()/1000) && (
+                          <div className="incoming_buttons">
                           <div className="rejection">
-                            <Link className="acceptance">qabul qilish</Link>
-                            <button className="btn">rad etish</button>
+                            <Link className="acceptance" onClick={qabulQilindi}>qabul qilish</Link>
+                            <button className="rent" onClick={radEtildi}>rad etish</button>
                           </div>
                         </div>
+                          )
+                        }
+                        
+                        {/* ============== */}
                       </div>
                     </div>
                     <hr />

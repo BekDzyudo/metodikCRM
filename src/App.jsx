@@ -50,9 +50,12 @@ import MaxsusTalim from "./pages/rtr/daraja3/MaxsusTalim";
 import BoshlangichTalimDetail from "./pages/rtr/daraja1/BoshlangichTalimDetail";
 import OrtaTalimDetail from "./pages/rtr/daraja2/OrtaTalimDetail";
 import MaxsusTalimDetail from "./pages/rtr/daraja3/MaxsusTalimDetail"
+import Rating from "./pages/teacherRating/TeacherRating"
 import {ApprovedDocument, Documents, ApprovedDokumentDetail, IncomingDocuments, DocumentDetail, LayoutDocument, ReturnedDocument, ReturnedDocumentDetail} from "./pages/documents/index"
 import TayyorlanadiganKasbDetails from "./pages/ProfessionalTalimMuassasalari/collageDetails/TayyorlanadiganKasbDetails";
 import useGetFetchProfil from "./hooks/useGetFetchProfil"
+import ChatModal from "./pages/profil/components/modal/chat/ChatModal";
+import Materiallar from "./pages/materiallar/Materiallar";
 
 function App() {
   const {auth, userData} = useContext(AuthContext)
@@ -258,6 +261,10 @@ function App() {
           ],
         },
         {
+          path: "rating",
+          element: <Rating/>
+        },
+        {
           path: "Document",
           element: userData?.user_roles == "metodist" ? <LayoutDocument /> : <Navigate to="*"/>,
           children: [
@@ -293,9 +300,13 @@ function App() {
           ]
         },
         {
-          path: "Contact",
-          element: <Contact />,
+          path: "materiallar",
+          element: <Materiallar/>
         },
+        // {
+        //   path: "Contact",
+        //   element: <Contact />,
+        // },
         {
           path: "profil",
           element: userData?.user_roles == "teacher" ? <Profil /> : <Navigate to="*"/>,

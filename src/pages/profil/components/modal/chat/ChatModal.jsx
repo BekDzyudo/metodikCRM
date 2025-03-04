@@ -1,55 +1,48 @@
 import React, { useContext, useRef, useState } from "react";
 import "./chatModal.scss";
 import "react-chat-elements/dist/main.css";
-import { MalumotContext } from "../../contexts/editMalumotlarContext";
-import { IoClose } from "react-icons/io5";
-import useGetFetchProfil from "../../../../../hooks/useGetFetchProfil"
+import useGetFetchProfil from "../../../../../hooks/useGetFetchProfil";
 import { AuthContext } from "../../../../../contexts/AuthContext";
+import { useParams } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
+import { MalumotContext } from "../../contexts/editMalumotlarContext";
 
-function ChatModal() {
-    const enterInput = useRef()
-    const { chatModalActive, setChatModalActive } = useContext(MalumotContext);
-    const [inputText, setInputText] = useState("");
-    const {userData} = useContext(AuthContext)
+function ChatModal({materialId}) {
+  const { chatActiveModal, setChatActiveModal } = useContext(MalumotContext);
+  const enterInput = useRef();
+  const [inputText, setInputText] = useState("");
+  const { userData } = useContext(AuthContext);
 
-  const { data: Materiallar } = useGetFetchProfil(
-    `${import.meta.env.VITE_BASE_URL}/birlashma/material/${userData?.userId}`
+  const { data: Material } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/birlashma/material-detail/${materialId}/`
   );
 
-  const testArr = [
-    {
-      user: "teacher",
-      text: "salom materialimni tekshirib bering iltimos",
-    },
-    {
-      user: "metodist",
-      text: "material qoniqarli",
-    },
-  ];
-
-  function sendData(){
-    if(inputText){
-      fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/muhokama-create/`,{
+  const { data: user } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/user-data/`
+  );
+  function sendData() {
+    if (inputText) {
+      fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/muhokama-create/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({text: inputText, teacher: userData?.userId, material: Materiallar.id})
+        body: JSON.stringify({
+          text: inputText,
+          teacher: userData?.userId,
+          material: Material.id,
+        }),
       })
-      .then((res)=>{
-        const errorObj = res.json();
+        .then((res) => {
+          const errorObj = res.json();
           if (!res.ok) throw new Error(JSON.stringify(errorObj));
           return res;
-      })
-      .then((data)=>{
-        console.log(data);
-        
-      })
-      .catch((err)=>console.log(err)
-      )
-      .finally(()=>{
-        setInputText("");
-        enterInput.current.value = ""
-        // location.reload()
-      })
+        })
+        .then((data) => {})
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setInputText("");
+          enterInput.current.value = "";
+          // location.reload();
+        });
     }
   }
 
@@ -76,12 +69,12 @@ function ChatModal() {
   }
 
   return (
-    chatModalActive && (
+    chatActiveModal && (
       <div className="modal">
         <div className="chat-container">
           <div className="head">
             <div className="meanAvatar">
-              <img src={userData?.image} alt="Avatar" />
+              <img src="" alt="Avatar" />
               <div className="desc">
                 <h3>{userData?.last_name + " " + userData?.first_name}</h3>
                 {userData?.online ? (
@@ -91,19 +84,20 @@ function ChatModal() {
                 )}
               </div>
             </div>
-            <IoClose onClick={()=>setChatModalActive(false)} style={{fontSize:"24px", color:"white", cursor:"pointer"}}/>
+            <IoClose
+              style={{ color: "white", fontSize: "24px", cursor: "pointer" }}
+              onClick={() => setChatActiveModal(false)}
+            />
           </div>
           <div className="chat-body">
-            {testArr.map((item, index) => {
+            {Material?.muhokamalar?.map((item) => {
               return (
                 <div
-                  key={index}
-                  className={
-                    item.metodist ? "message" : "message owner"
-                  }
+                  key={item.id}
+                  className={item.metodist?.id ? "message" : "message owner"}
                 >
                   <div className="messageInfo">
-                    <img src="https://picsum.photos/458/354?image=0" alt="" />
+                    <img src={item.metodist?.id ? item.metodist?.image : user.image} alt="" />
                   </div>
                   <div className="messageContent">
                     <p>{item.text}</p>
@@ -114,7 +108,7 @@ function ChatModal() {
           </div>
           <div className="foot">
             <input
-            ref={enterInput}
+              ref={enterInput}
               type="text"
               placeholder="Xabar yozing..."
               onChange={(e) => setInputText(e.target.value)}

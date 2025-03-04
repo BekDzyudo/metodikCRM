@@ -9,22 +9,23 @@ function Chat({ userData, muhokama, materialId }) {
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
-
+  
   function sendData(){
     if(inputText){
       fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/muhokama-create/`,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({text: inputText, metodist: user.id, material: materialId})
+        body: JSON.stringify({text: inputText, metodist_id: user.id, material: materialId})
       })
-      .then((res)=>{
-        const errorObj = res.json();
+      .then(async(res)=>{
+        const errorObj = await res.json();        
           if (!res.ok) throw new Error(JSON.stringify(errorObj));
           return res;
       })
       .then((data)=>{
+        console.log(data);
       })
-      .catch((err)=>console.log(err)
+      .catch((err)=>console.log(JSON.parse(err.message))
       )
       .finally(()=>{
         setInputText("");
@@ -79,7 +80,7 @@ function Chat({ userData, muhokama, materialId }) {
               className={item.teacher ? "message" : "message owner"}
             >
               <div className="messageInfo">
-                <img src={item.teacher ? userData.image : user?.image} alt="" />
+                <img src={item.teacher ? userData?.image : item.metodist?.image} alt="" />
               </div>
               <div className="messageContent">
                 <p>{item.text}</p>

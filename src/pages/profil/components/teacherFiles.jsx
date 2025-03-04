@@ -6,14 +6,16 @@ import useGetFetchProfil from "../../../hooks/useGetFetchProfil";
 import { MdNavigateNext } from "react-icons/md";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { MalumotContext } from "./contexts/editMalumotlarContext";
+import ChatModal from "./modal/chat/ChatModal";
 
 export function TeacherFiles() {
-  const { setChatModalActive } = useContext(MalumotContext);
   const { setAddHujjat } = useContext(PortfolioContext);
   const {userData} = useContext(AuthContext)
+  const {setChatActiveModal} = useContext(MalumotContext)
 
   const [isActivesohasi, setIsActivesohasi] = useState(false);
   const [selectedsohasi, setIsSelectedsohasi] = useState("Qaytarilgan");
+  const [detailId, setDetailId] = useState(null)
 
   const { data: Materiallar } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/birlashma/material/${userData?.userId}`
@@ -128,7 +130,10 @@ export function TeacherFiles() {
                       </p>
                     </td>
                     <td>
-                      <Link onClick={()=>setChatModalActive(true)}>
+                      {/* to={`/profil/${item.id}`} */}
+                      <Link onClick={()=>{
+                        setDetailId(item.id)
+                        setChatActiveModal(true)}}>
                         Chatga o'tish{" "}
                         <MdNavigateNext style={{ fontSize: "16px" }} />
                       </Link>
@@ -146,6 +151,7 @@ export function TeacherFiles() {
           </div>
         </div>
       )}
+      <ChatModal materialId = {detailId}/>
     </>
   );
 }

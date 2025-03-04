@@ -532,11 +532,6 @@ th {
   text-align: center;
 }
 
-.incoming_buttons button:hover {
-  background: #ff0202;
-  color: #fff;
-}
-
 .acceptance {
   padding: 10px;
   border-radius: 6px;
@@ -548,7 +543,17 @@ th {
   font-weight: 500;
   text-align: center;
 }
-
+.rent {
+  padding: 10px;
+  border-radius: 6px;
+  background: #ff0202;
+  width: 130px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
 /*  ReturnedDocument */
 
 .document_new-rad {

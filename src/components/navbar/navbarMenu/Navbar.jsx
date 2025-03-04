@@ -32,14 +32,24 @@ function Navbar() {
               Adabiyotlar
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink className="nav-link" to="/Yangiliklar">
               Yangiliklar
             </NavLink>
-          </li>
+          </li> */}
           <li>
+            <NavLink className="nav-link" to="/rating">
+              Reyting
+            </NavLink>
+          </li>
+          {/* <li>
             <NavLink className="nav-link" to="/Contact">
               Bog‘lanish
+            </NavLink>
+          </li> */}
+          <li>
+            <NavLink className="nav-link" to="/materiallar">
+              Materiallar
             </NavLink>
           </li>
         </ul>

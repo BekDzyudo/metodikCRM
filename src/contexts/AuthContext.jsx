@@ -22,7 +22,6 @@ export const AuthProvider = ({children}) =>{
         console.error("Error decoding token:", error);
         return true; // Agar token noto'g'ri bo'lsa, uni muddati tugagan deb hisoblaymiz
       }
-
   };
 
   // login
