@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TopNavbar from "../../components/navbar/topNavbar/TopNavbar";
 import Navbar from "../../components/navbar/navbarMenu/Navbar";
 import FooterWhite from "../../components/footer/FooterWhite";
 import "./materiallar.scss";
 import useGetFetch from "../../hooks/useGetFetchProfil";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FiDownload } from "react-icons/fi";
 import { FaEye } from "react-icons/fa";
 
@@ -14,6 +14,7 @@ function Materiallar() {
   const [yunalish, setYunalish] = useState("");
   const [kasb, setKasb] = useState("");
   const [fan, setFan] = useState("");
+  const [materialTypestate, setMaterialTypestate] = useState("");
 
   const { data: bilim_soha } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/edu-prof/bilim-soha/`
@@ -27,6 +28,7 @@ function Materiallar() {
   const { data: kasb_mutaxassislik } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/edu-prof/kasb-va-mutaxassislik/`
   );
+
   const { data: fanlar } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/edu-prof/fan/`
   );
@@ -35,8 +37,35 @@ function Materiallar() {
     `${import.meta.env.VITE_BASE_URL}/birlashma/kategoriya-material/`
   );
 
+  const [buttons, setButtons] = useState([]);
+  const [barchasi, setBarchasi] = useState(true);
+  useEffect(() => {
+    if (materialType && materialType.length > 0) {
+      setTimeout(() => {
+        setButtons(
+          materialType?.map((item) => {
+            return { name: item.name, id: item.id, active: false };
+          })
+        );
+      }, 100);
+    }
+  }, [materialType]);
+
+  function toggleBtn(id) {
+    setButtons(
+      buttons.map((btn) => {
+        return btn.id === id
+          ? { ...btn, active: !btn.active }
+          : { ...btn, active: false };
+      })
+    );
+  }
+
   const { data: materialList } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/birlashma/material-list/`
+    `${
+      import.meta.env.VITE_BASE_URL
+    }/birlashma/material-list/?kategoriya_material=${materialTypestate}&fan=${fan}&fan__kasb_va_mutaxassislik__talim_yunalish__talim_soha__bilim_soha=${bilim}&fan__kasb_va_mutaxassislik__talim_yunalish__talim_soha=${talim}&fan__kasb_va_mutaxassislik__talim_yunalish=${yunalish}&
+    fan__kasb_va_mutaxassislik=${kasb}`
   );
 console.log(materialList);
 
@@ -143,111 +172,66 @@ console.log(materialList);
         <div className="contentBlock">
           <div className="sidebar">
             <NavLink
-              to=""
+              onClick={() => {
+                setButtons(
+                  buttons.map((btn) => {
+                    return { ...btn, active: false };
+                  })
+                );
+                setMaterialTypestate("");
+              }}
               end
-              className={({ isActive }) =>
-                isActive ? "isActive" : "malumot_card"
+              className={
+                buttons?.every((btn) => btn.active == false)
+                  ? "isActive"
+                  : "malumot_card"
               }
             >
               <p>Barchasi</p>
             </NavLink>
-            {materialType &&
-              materialType.map((item) => {
+            {buttons &&
+              buttons.map((item) => {
                 return (
                   <NavLink
-                  key={item.id}
-                    to=""
+                    onClick={() => {
+                      setMaterialTypestate(item.id);
+                      toggleBtn(item?.id);
+                    }}
+                    key={item?.id}
                     end
-                    className={({ isActive }) =>
-                      isActive ? "isActive" : "malumot_card"
-                    }
+                    className={item?.active ? "isActive" : "malumot_card"}
                   >
-                    <p>{item.name}</p>
+                    <p>{item?.name}</p>
                   </NavLink>
                 );
               })}
           </div>
           <div className="content">
-            <div className="cardMaterial">
-              <h2>
-                <span>Maruza matni</span>
-              </h2>
-              <h1>Texnik chizmachilik</h1>
-              <div className="btnShow">
-                <button>
-                  Ko'rish{" "}
-                  <span>
-                    <FaEye />
-                  </span>
-                </button>
-                <button>
-                  Yuklab olish{" "}
-                  <span>
-                    <FiDownload />
-                  </span>
-                </button>
-              </div>
-            </div>
-            <div className="cardMaterial">
-              <h2>
-                <span>Maruza matni</span>
-              </h2>
-              <h1>Texnik chizmachilik</h1>
-              <div className="btnShow">
-                <button>
-                  Ko'rish{" "}
-                  <span>
-                    <FaEye />
-                  </span>
-                </button>
-                <button>
-                  Yuklab olish{" "}
-                  <span>
-                    <FiDownload />
-                  </span>
-                </button>
-              </div>
-            </div>
-            <div className="cardMaterial">
-              <h2>
-                <span>Maruza matni</span>
-              </h2>
-              <h1>Texnik chizmachilik</h1>
-              <div className="btnShow">
-                <button>
-                  Ko'rish{" "}
-                  <span>
-                    <FaEye />
-                  </span>
-                </button>
-                <button>
-                  Yuklab olish{" "}
-                  <span>
-                    <FiDownload />
-                  </span>
-                </button>
-              </div>
-            </div>
-            <div className="cardMaterial">
-              <h2>
-                <span>Maruza matni</span>
-              </h2>
-              <h1>Texnik chizmachilik</h1>
-              <div className="btnShow">
-                <button>
-                  Ko'rish{" "}
-                  <span>
-                    <FaEye />
-                  </span>
-                </button>
-                <button>
-                  Yuklab olish{" "}
-                  <span>
-                    <FiDownload />
-                  </span>
-                </button>
-              </div>
-            </div>
+            {materialList &&
+              materialList.map((item) => {
+                return (
+                  <div key={item.id} className="cardMaterial">
+                    <h2>
+                      <span>{item.kategoriya_material?.name}</span>
+                    </h2>
+                    <h1>{item.fan?.name}</h1>
+                    <div className="btnShow">
+                      <Link to={`/materiallarDetail/${item.id}`}>
+                        Ko'rish{" "}
+                        <span>
+                          <FaEye />
+                        </span>
+                      </Link>
+                      <Link to={item.file} download={true}>
+                        Yuklab olish{" "}
+                        <span>
+                          <FiDownload />
+                        </span>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>

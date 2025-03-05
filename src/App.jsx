@@ -56,6 +56,7 @@ import TayyorlanadiganKasbDetails from "./pages/ProfessionalTalimMuassasalari/co
 import useGetFetchProfil from "./hooks/useGetFetchProfil"
 import ChatModal from "./pages/profil/components/modal/chat/ChatModal";
 import Materiallar from "./pages/materiallar/Materiallar";
+import MaterialDetail from "./pages/materiallar/MaterialDetail";
 
 function App() {
   const {auth, userData} = useContext(AuthContext)
@@ -302,6 +303,10 @@ function App() {
         {
           path: "materiallar",
           element: <Materiallar/>
+        },
+        {
+          path: "materiallarDetail/:id",
+          element: <MaterialDetail/>
         },
         // {
         //   path: "Contact",
