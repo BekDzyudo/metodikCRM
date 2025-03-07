@@ -20,10 +20,11 @@
           padding: 5px 20px;
           height: 60px;
           border-radius: 8px 8px 0px 0px;
-          background-color: #5e5c5c;
+          background-color: white;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          border-bottom: 1px solid #ccc;
           .meanAvatar{
             display: flex;
             align-items: center;
@@ -36,12 +37,12 @@
             }
             h3{
               font-size: 18px;
-              color: white;
+              color: #1178cc;
               font-weight: 600;
             }
             p{
               font-size: 13px;
-              color: #f1f1f1;
+              color: #818181;
             }
           }
         }
@@ -49,7 +50,7 @@
           padding: 20px 20px;
           height: calc(100% - 120px);
           overflow-y: scroll;
-          background-color: #447caa;
+          background-color: white;
           .message{
             display: flex;
             column-gap: 10px;
@@ -73,7 +74,7 @@
               }
               p{
                 padding: 10px 20px !important;
-                background-color: white;
+                background-color: rgb(186, 205, 240);
                 border-radius: 0px 10px 10px 10px;
                 max-width: max-content;
                 font-weight: 400;
@@ -119,14 +120,14 @@
           padding: 2px 20px;
           height: 60px;
           border-radius: 0px 0px 8px 8px;
-          background-color: #6e6e6e;
+          background-color: #ccc;
           display: flex;
           justify-content: space-between;
           input{
             width: 100%;
            outline: none; 
            background: none;
-           color: #f1f1f1;
+           color: black;
            &::placeholder{
             color: #a7a4a4;
            }

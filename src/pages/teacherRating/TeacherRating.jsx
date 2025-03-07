@@ -19,21 +19,20 @@ function TeacherRating() {
     `${import.meta.env.VITE_BASE_URL}/edu-prof/bilim-soha/`
   );
   const { data: talim_soha } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/edu-prof/talim-soha/`
+    `${import.meta.env.VITE_BASE_URL}/edu-prof/talim-soha/?bilim_soha=${bilim}`
   );
   const { data: talim_yunalish } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/edu-prof/talim-yunalish/`
+    `${import.meta.env.VITE_BASE_URL}/edu-prof/talim-yunalish/?talim_soha=${talim}`
   );
   const { data: kasb_mutaxassislik } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/edu-prof/kasb-va-mutaxassislik/`
+    `${import.meta.env.VITE_BASE_URL}/edu-prof/kasb-va-mutaxassislik/?talim_yunalish=${yunalish}`
   );
   const { data: fanlar } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/edu-prof/fan/`
+    `${import.meta.env.VITE_BASE_URL}/edu-prof/fan/?kasb_va_mutaxassislik=${kasb}`
   );
   const { data: reyting } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/reyting_app/reyting/?bilim_soha=${bilim}&talim_soha=${talim}&talim_yunalish=${yunalish}&kasb_va_mutaxasislik=${kasb}&fan=${fan}`
   );
-
 
   return (
     <div className="rating_bg">

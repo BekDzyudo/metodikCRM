@@ -89,8 +89,13 @@
                 font-weight: 600;
               }
         }
-        .content{
-            width: 75%;
+        .contents{
+          display: flex;
+          flex-direction: column;
+          width: 75%;
+          row-gap: 50px;
+          .content{
+            width: 100%;
             display: flex;
             column-gap: 20px;
             flex-wrap: wrap;
@@ -161,6 +166,12 @@
                   }
                 }
             }
+          }
+          .paginationn{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
         }
       }
     }

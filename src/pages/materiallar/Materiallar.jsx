@@ -7,6 +7,7 @@ import useGetFetch from "../../hooks/useGetFetchProfil";
 import { Link, NavLink } from "react-router-dom";
 import { FiDownload } from "react-icons/fi";
 import { FaEye } from "react-icons/fa";
+import { Pagination } from "@mui/material";
 
 function Materiallar() {
   const [bilim, setBilim] = useState("");
@@ -20,17 +21,22 @@ function Materiallar() {
     `${import.meta.env.VITE_BASE_URL}/edu-prof/bilim-soha/`
   );
   const { data: talim_soha } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/edu-prof/talim-soha/`
+    `${import.meta.env.VITE_BASE_URL}/edu-prof/talim-soha/?bilim_soha=${bilim}`
   );
   const { data: talim_yunalish } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/edu-prof/talim-yunalish/`
+    `${
+      import.meta.env.VITE_BASE_URL
+    }/edu-prof/talim-yunalish/?talim_soha=${talim}`
   );
   const { data: kasb_mutaxassislik } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/edu-prof/kasb-va-mutaxassislik/`
+    `${
+      import.meta.env.VITE_BASE_URL
+    }/edu-prof/kasb-va-mutaxassislik/?talim_yunalish=${yunalish}`
   );
-
   const { data: fanlar } = useGetFetch(
-    `${import.meta.env.VITE_BASE_URL}/edu-prof/fan/`
+    `${
+      import.meta.env.VITE_BASE_URL
+    }/edu-prof/fan/?kasb_va_mutaxassislik=${kasb}`
   );
 
   const { data: materialType } = useGetFetch(
@@ -67,7 +73,10 @@ function Materiallar() {
     }/birlashma/material-list/?kategoriya_material=${materialTypestate}&fan=${fan}&fan__kasb_va_mutaxassislik__talim_yunalish__talim_soha__bilim_soha=${bilim}&fan__kasb_va_mutaxassislik__talim_yunalish__talim_soha=${talim}&fan__kasb_va_mutaxassislik__talim_yunalish=${yunalish}&
     fan__kasb_va_mutaxassislik=${kasb}`
   );
-console.log(materialList);
+
+  function handlePagination(e, p) {
+    setPage(p);
+  }
 
   return (
     <div className="materiallar">
@@ -206,32 +215,60 @@ console.log(materialList);
                 );
               })}
           </div>
-          <div className="content">
-            {materialList &&
-              materialList.map((item) => {
-                return (
-                  <div key={item.id} className="cardMaterial">
-                    <h2>
-                      <span>{item.kategoriya_material?.name}</span>
-                    </h2>
-                    <h1>{item.fan?.name}</h1>
-                    <div className="btnShow">
-                      <Link to={`/materiallarDetail/${item.id}`}>
-                        Ko'rish{" "}
-                        <span>
-                          <FaEye />
-                        </span>
-                      </Link>
-                      <Link to={item.file} download={true}>
-                        Yuklab olish{" "}
-                        <span>
-                          <FiDownload />
-                        </span>
-                      </Link>
+          <div className="contents">
+            <div className="content">
+              {materialList?.results &&
+                materialList.results.map((item) => {
+                  return (
+                    <div key={item.id} className="cardMaterial">
+                      <h2>
+                        <span>{item.kategoriya_material?.name}</span>
+                      </h2>
+                      <h1>{item.fan?.name}</h1>
+                      <div className="btnShow">
+                        <Link to={`/materiallarDetail/${item.id}`}>
+                          Ko'rish{" "}
+                          <span>
+                            <FaEye />
+                          </span>
+                        </Link>
+                        <Link to={item.file} download={true} target="_blank">
+                          Yuklab olish{" "}
+                          <span>
+                            <FiDownload />
+                          </span>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+            </div>
+            {materialList?.total_pages > 1 && (
+              <div className="paginationn">
+                <Pagination
+                  style={{ margin: 0, padding: 0 }}
+                  sx={{
+                    "& .MuiPaginationItem-root": {
+                      color: "white",
+                      "&:hover": {
+                        backgroundColor: "white",
+                        color: "blue",
+                      },
+                      "&.Mui-selected": {
+                        backgroundColor: "white",
+                        color: "blue",
+                        fontWeight: "600px",
+                        fontSize: "20px",
+                      },
+                    },
+                  }}
+                  count={materialList?.total_pages}
+                  color="primary"
+                  size="large"
+                  onChange={handlePagination}
+                ></Pagination>
+              </div>
+            )}
           </div>
         </div>
       </div>

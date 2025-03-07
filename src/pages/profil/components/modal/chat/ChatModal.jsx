@@ -20,6 +20,7 @@ function ChatModal({materialId}) {
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
+  
   function sendData() {
     if (inputText) {
       fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/muhokama-create/`, {
@@ -85,7 +86,7 @@ function ChatModal({materialId}) {
               </div>
             </div>
             <IoClose
-              style={{ color: "white", fontSize: "24px", cursor: "pointer" }}
+              style={{ color: "cornflowerblue", fontSize: "24px", cursor: "pointer" }}
               onClick={() => setChatActiveModal(false)}
             />
           </div>
