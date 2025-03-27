@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Home.css";
 import {Header} from "../../../components"
 import Fon from "../../../images/img/Fon.png";
 import home_video from "../../../../public/video/home_video.mp4"
 
 function Home() {
+  const myVideo = useRef()
+  // myVideo.current?.playbackRate = 0.75
+  
   return (
     <div className="homeBag">
-      <video className="home_video" loop muted autoPlay src={home_video}></video>
+      <video className="home_video" ref={myVideo} loop muted autoPlay src={home_video}></video>
       <Header/>
       <div className="container">
         <div className="row">

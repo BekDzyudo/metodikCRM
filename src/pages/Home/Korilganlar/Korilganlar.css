@@ -21,6 +21,9 @@
     padding: 30px 20px 30px 30px;
     margin: 0 10px;
   }
+  .korilgan_card:hover{
+    box-shadow: 0px 5px 10px #ccc;
+  }
   
   .korilgan_card-box .col-4:nth-last-child(2) {
     margin-top: 50px;
@@ -29,19 +32,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    column-gap: 20px;
   }
   .korilgan_title {
     width: 75%;
   }
-  .korilgan_card-body p {
-    font-size: 20px;
+  .korilgan_card-body .fish h6{
+    color: #1485d5;
+    font-size: 12px;
+  }
+  .korilgan_card-body .fish p {
+    font-size: 18px;
     font-weight: 700;
     color: #333;
     line-height: normal;
+    margin-bottom: 15px !important;
   }
-  .korilgan_card-body span {
+  .korilgan_card-body .teacherhudud h6{
+    color: #1485d5;
+    font-size: 12px;
+  }
+  .korilgan_card-body .teacherhudud span {
     color: #333;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -66,14 +79,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    column-gap: 20px;
   }
-  .korilgan_bottom span {
+  .korilgan_bottom .fan h6{
     color: #1485d5;
-    font-size: 15px;
+    font-size: 12px;
+  }
+  .korilgan_bottom .fan p {
+    color: #333;
+    font-size: 16px;
     font-weight: 500;
   }
-  .korilgan_bottom i {
-    margin-right: 5px;
-    font-size: 20px;
+  .korilgan_bottom .reyting h6{
+    color: #1485d5;
+    font-size: 12px;
+  }
+  .korilgan_bottom .reyting p {
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
   }
   

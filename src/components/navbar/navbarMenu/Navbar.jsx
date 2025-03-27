@@ -7,11 +7,16 @@ function Navbar() {
     <div className="container">
       <nav>
         <ul className="nav-menu links" id="nav">
-          <li>
+        <li>
+            <NavLink className="nav-link" to="/">
+              Bosh sahifa
+            </NavLink>
+          </li>
+          {/* <li>
             <NavLink className="nav-link" to="/MeyoriySahifa">
               Me’yoriy hujjatlar
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink className="nav-link" to="/viloyatlar">
               Professional ta'lim muassasalari

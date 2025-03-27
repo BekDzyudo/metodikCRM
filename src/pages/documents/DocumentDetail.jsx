@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FiCheckSquare, FiDownload, FiHome, FiUpload } from "react-icons/fi";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useGetFetchProfil from "../../hooks/useGetFetchProfil";
@@ -8,53 +8,90 @@ import { toast } from "react-toastify";
 
 export default function DocumentDetail() {
   const { id } = useParams();
-  const { auth, refresh, isTokenExpired } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { auth, refresh, isTokenExpired } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
 
   const { data: Material } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/birlashma/material-detail/${id}/`
   );
+  const { data: notification } = useGetFetchProfil(
+    `${import.meta.env.VITE_BASE_URL}/notification_app/notification-list`
+  );
 
 
-  function qabulQilindi(){
-    fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/material-update/${id}/`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: "Bearer " + auth.accessToken,
-      },
-      body: JSON.stringify({holat: 'tasdiqlandi'}),
-    })
-    .then(async(res)=>{
-      const errorObj = await res.json();        
-        if (!res.ok) throw new Error(JSON.stringify(errorObj));
-        return res;
-    })
-    .then((data)=>{
-      toast.success("Material tasdiqlandi")
-      navigate("/Document/documents")
-    })
-    .catch((err)=>console.log(JSON.parse(err.message)))
+
+  if (notification) {
+    notification.forEach((item, index) => {
+      if (item.material == Material?.id) {
+          fetch(
+            `${
+              import.meta.env.VITE_BASE_URL
+            }/notification_app/notification-update/${item.id}`,
+            {
+              method: "PATCH",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                is_read: true,
+              }),
+            }
+          )
+            .then((res) => {
+              if (!res.ok) throw new Error(res.statusText);
+              return res.json();
+            })
+            .then((data) => {
+              // setMessages(true);
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
+      }
+    });
   }
-  function radEtildi(){
-    fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/material-update/${id}/`, {
-      method: 'PATCH',
+
+  function qabulQilindi() {
+    fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/material-update/${id}/`, {
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: "Bearer " + auth.accessToken,
       },
-      body: JSON.stringify({holat: 'rad_etildi'}),
+      body: JSON.stringify({ holat: "tasdiqlandi" }),
     })
-    .then(async(res)=>{
-      const errorObj = await res.json();        
+      .then(async (res) => {
+        const errorObj = await res.json();
         if (!res.ok) throw new Error(JSON.stringify(errorObj));
         return res;
+      })
+      .then((data) => {
+        toast.success("Material tasdiqlandi");
+        navigate("/Document/documents");
+      })
+      .catch((err) => console.log(JSON.parse(err.message)));
+  }
+  function radEtildi() {
+    fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/material-update/${id}/`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + auth.accessToken,
+      },
+      body: JSON.stringify({ holat: "rad_etildi" }),
     })
-    .then((data)=>{
-      toast.success("Material rad etildi")
-      navigate("/Document/documents")
-    })
-    .catch((err)=>console.log(JSON.parse(err.message)))
+      .then(async (res) => {
+        const errorObj = await res.json();
+        if (!res.ok) throw new Error(JSON.stringify(errorObj));
+        return res;
+      })
+      .then((data) => {
+        toast.success("Material rad etildi");
+        navigate("/Document/documents");
+      })
+      .catch((err) => console.log(JSON.parse(err.message)));
   }
 
   return (
@@ -97,7 +134,11 @@ export default function DocumentDetail() {
                           Asosiy
                         </Link>
                       </li>
-                      <li className={`${Material?.holat == "yangi" ? "active" : ""}`}>
+                      <li
+                        className={`${
+                          Material?.holat == "yangi" ? "active" : ""
+                        }`}
+                      >
                         <Link to="/Document/IncomingDocuments">
                           <FiDownload
                             style={{
@@ -109,7 +150,11 @@ export default function DocumentDetail() {
                           Kiruvchi hujjatlar
                         </Link>
                       </li>
-                      <li className={`${Material?.holat == "rad_etildi" ? "active" : ""}`}>
+                      <li
+                        className={`${
+                          Material?.holat == "rad_etildi" ? "active" : ""
+                        }`}
+                      >
                         <Link to="/Document/ReturnedDocument">
                           <FiUpload
                             style={{
@@ -121,7 +166,11 @@ export default function DocumentDetail() {
                           Qaytgan hujjatlar
                         </Link>
                       </li>
-                      <li className={`${Material?.holat == "tasdiqlandi" ? "active" : ""}`}>
+                      <li
+                        className={`${
+                          Material?.holat == "tasdiqlandi" ? "active" : ""
+                        }`}
+                      >
                         <Link to="/Document/ApprovedDocument">
                           <FiCheckSquare
                             style={{
@@ -217,22 +266,36 @@ export default function DocumentDetail() {
                           </div>
                         </div>
                         {/* ============== */}
-                        {
-                          Math.floor(new Date(Material?.updated_at).getTime()/1000) == Math.floor(new Date(Material?.created_at).getTime()/1000) && (
+                        {Math.floor(
+                          new Date(Material?.updated_at).getTime() / 1000
+                        ) ==
+                          Math.floor(
+                            new Date(Material?.created_at).getTime() / 1000
+                          ) && (
                           <div className="incoming_buttons">
-                          <div className="rejection">
-                            <Link className="acceptance" onClick={qabulQilindi}>qabul qilish</Link>
-                            <button className="rent" onClick={radEtildi}>rad etish</button>
+                            <div className="rejection">
+                              <Link
+                                className="acceptance"
+                                onClick={qabulQilindi}
+                              >
+                                qabul qilish
+                              </Link>
+                              <button className="rent" onClick={radEtildi}>
+                                rad etish
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                          )
-                        }
-                        
+                        )}
+
                         {/* ============== */}
                       </div>
                     </div>
                     <hr />
-                    <Chat userData={Material?.teacher} muhokama={Material?.muhokamalar} materialId={Material.id}/>
+                    <Chat
+                      userData={Material?.teacher}
+                      muhokama={Material?.muhokamalar}
+                      materialId={Material.id}
+                    />
                   </div>
                 </div>
               </>

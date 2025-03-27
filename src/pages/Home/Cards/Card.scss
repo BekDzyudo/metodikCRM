@@ -1,0 +1,186 @@
+.doira {
+  position: relative;
+  margin-top: 250px;
+  .container {
+    .row {
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .card {
+          margin: 50px 30px;
+          padding: 20px;
+          width: 400px;
+          height: 400px !important;
+          background: #ffffff;
+          box-shadow: 0px 10px 60px rgba(38, 45, 118, 0.1);
+          border-radius: 20px !important;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none !important;
+          .card_img {
+            position: absolute;
+            top: -50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-shadow: 0px 10px 40px rgba(54, 61, 136, 0.06);
+          }
+          .slateblue {
+            background: #5b72ee;
+            border: 3px solid #5b72ee;
+            svg {
+              color: white;
+            }
+          }
+          .orange {
+            background: #f48c06;
+            border: 3px solid #f48c06;
+            svg {
+              color: white;
+            }
+          }
+          .deepskyblue {
+            background: #29b9e7;
+            border: 3px solid #29b9e7;
+            svg {
+              color: white;
+            }
+          }
+          .pink {
+            background: #f3627c;
+            border: 3px solid #f3627c;
+            svg {
+              color: white;
+            }
+          }
+          .yellow {
+            border: 3px solid #ffcb05;
+            background: #ffcb05;
+            svg {
+              color: white;
+            }
+          }
+          h4 {
+            color: #1483d3;
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            margin-top: 50px !important;
+          }
+          span {
+            text-align: center;
+            color: #696984;
+            font-size: 22px;
+            font-weight: 400;
+          }
+          .birlashma {
+            margin-top: 80px;
+            border-radius: 30px;
+            padding: 10px 30px;
+            background: none;
+            color: #00274c;
+            font-size: 27px;
+            font-weight: 700;
+          }
+        }
+        .muassasalar:hover{
+          transition: all 0.5s;
+          background: #5b72ee;
+          .slateblue {
+            background: white;
+            border: 3px solid #5b72ee;
+            svg {
+              color: #5b72ee;
+            }
+          }
+          h4 {
+            color: white;
+          }
+          .birlashma {
+            background: white;
+            color: #5b72ee;
+          }
+        }
+        .eduprof:hover{
+          transition: all 0.5s;
+          background: #f48c06;
+          .orange {
+            background: white;
+            border: 3px solid #f48c06;
+            svg {
+              color: #f48c06;
+            }
+          }
+          h4 {
+            color: white;
+          }
+          .birlashma {
+            background: white;
+            color: #f48c06;
+          }
+        }
+        .rtr:hover{
+          transition: all 0.5s;
+          background: #29b9e7;
+          .deepskyblue {
+            background: white;
+            border: 3px solid #29b9e7;
+            svg {
+              color: #29b9e7;
+            }
+          }
+          h4 {
+            color: white;
+          }
+          .birlashma {
+            background: white;
+            color: #29b9e7;
+          }
+        }
+        .rating:hover{
+          transition: all 0.5s;
+          background: #f3627c;
+          .pink {
+            background: white;
+            border: 3px solid #f3627c;
+            svg {
+              color: #f3627c;
+            }
+          }
+          h4 {
+            color: white;
+          }
+          .birlashma {
+            background: white;
+            color: #f3627c;
+          }
+        }
+        .material:hover{
+          transition: all 0.5s;
+          background: #ffcb05;
+          .yellow {
+            background: white;
+            border: 3px solid #ffcb05;
+            svg {
+              color: #ffcb05;
+            }
+          }
+          h4 {
+            color: white;
+          }
+          .birlashma {
+            background: white;
+            color: #ffcb05;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -9,8 +9,7 @@ function Korilganlar() {
     <div className="korilgan">
       <div className="container">
         <div className="korilgan_top">
-          <h1>Eng ko‘p ko‘rilganlar</h1>
-          <Pagenation />
+          <h1>Reytingi yuqori o'qituvchilar</h1>
         </div>
         <div className="row">
           <div className="col-12 korilgan_card-box">
@@ -18,21 +17,30 @@ function Korilganlar() {
               <Link>
                 <div className="korilgan_card-body">
                   <div className="korilgan_title">
-                    <p>Mutaxassislik</p>
+                    <div className="fish">
+                      <h6>F.I.SH</h6>
+                      <p>Alijonov Valijon</p>
+                    </div>
+                   <div className="teacherhudud">
+                    <h6>HUDUD</h6>
                     <span>
-                      Tо‘qimachilik ishlab chiqarish (soha bо‘yicha:yigiruv,
-                      tо‘quv, bо‘yoq, tikuv-trikotaj va x.k.)
+                      Buxoro viloyati, Olot tumani, Qurulish kasb hunar maktabi
                     </span>
+                   </div>
                   </div>
                   <div className="korilgan_img">
                     <img src={korilgan} alt="" />
                   </div>
                 </div>
                 <div className="korilgan_bottom">
-                  <span> O'rta professional talim</span>
-                  <span>
-                    <i className="bi bi-eye-fill"></i> 3750
-                  </span>
+                  <div className="fan">
+                    <h6>FAN</h6>
+                    <p> Musiqa va san'at asoslari</p>
+                  </div>
+                  <div className="reyting">
+                    <h6>REYTING</h6>
+                    <p> 3750</p>
+                  </div>
                 </div>
               </Link>
             </div>
@@ -40,21 +48,30 @@ function Korilganlar() {
               <Link>
                 <div className="korilgan_card-body">
                   <div className="korilgan_title">
-                    <p>Mutaxassislik</p>
+                    <div className="fish">
+                      <h6>F.I.SH</h6>
+                      <p>Alijonov Valijon</p>
+                    </div>
+                   <div className="teacherhudud">
+                    <h6>HUDUD</h6>
                     <span>
-                      Tо‘qimachilik ishlab chiqarish (soha bо‘yicha:yigiruv,
-                      tо‘quv, bо‘yoq, tikuv-trikotaj va x.k.)
+                      Buxoro viloyati, Olot tumani, Qurulish kasb hunar maktabi
                     </span>
+                   </div>
                   </div>
                   <div className="korilgan_img">
                     <img src={korilgan} alt="" />
                   </div>
                 </div>
                 <div className="korilgan_bottom">
-                  <span> O'rta professional talim</span>
-                  <span>
-                    <i className="bi bi-eye-fill"></i> 3750
-                  </span>
+                  <div className="fan">
+                    <h6>FAN</h6>
+                    <p> Musiqa va san'at asoslari</p>
+                  </div>
+                  <div className="reyting">
+                    <h6>REYTING</h6>
+                    <p> 3750</p>
+                  </div>
                 </div>
               </Link>
             </div>
@@ -62,21 +79,30 @@ function Korilganlar() {
               <Link>
                 <div className="korilgan_card-body">
                   <div className="korilgan_title">
-                    <p>Mutaxassislik</p>
+                    <div className="fish">
+                      <h6>F.I.SH</h6>
+                      <p>Alijonov Valijon</p>
+                    </div>
+                   <div className="teacherhudud">
+                    <h6>HUDUD</h6>
                     <span>
-                      Tо‘qimachilik ishlab chiqarish (soha bо‘yicha:yigiruv,
-                      tо‘quv, bо‘yoq, tikuv-trikotaj va x.k.)
+                      Buxoro viloyati, Olot tumani, Qurulish kasb hunar maktabi
                     </span>
+                   </div>
                   </div>
                   <div className="korilgan_img">
                     <img src={korilgan} alt="" />
                   </div>
                 </div>
                 <div className="korilgan_bottom">
-                  <span> O'rta professional talim</span>
-                  <span>
-                    <i className="bi bi-eye-fill"></i> 3750
-                  </span>
+                  <div className="fan">
+                    <h6>FAN</h6>
+                    <p> Musiqa va san'at asoslari</p>
+                  </div>
+                  <div className="reyting">
+                    <h6>REYTING</h6>
+                    <p> 3750</p>
+                  </div>
                 </div>
               </Link>
             </div>

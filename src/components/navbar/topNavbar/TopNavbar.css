@@ -50,6 +50,14 @@
   align-items: center;
   justify-content: center;
 }
+#menu-appbar a{
+  display: flex;
+  align-items: center;
+  color: gray !important;
+}
+#menu-appbar a svg{
+  margin-right: 5px;
+}
 .til select {
   border: 1px solid #fff;
   border-radius: 50px;
