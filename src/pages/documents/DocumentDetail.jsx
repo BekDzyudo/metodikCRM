@@ -20,7 +20,6 @@ export default function DocumentDetail() {
   );
 
 
-
   if (notification) {
     notification.forEach((item, index) => {
       if (item.material == Material?.id) {

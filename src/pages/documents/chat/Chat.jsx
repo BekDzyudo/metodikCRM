@@ -1,16 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./chat.scss";
 import "react-chat-elements/dist/main.css";
 import useGetFetchProfil from "../../../hooks/useGetFetchProfil"
 
 function Chat({ userData, muhokama, materialId }) {
+  console.log(userData);
+  const chatEndRef = useRef(null);
   const enterInput = useRef()
   const [inputText, setInputText] = useState("");
+  
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
   
-  function sendData(){
+  function sendData(e){
+    e.preventDefault()
     if(inputText){
       fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/muhokama-create/`,{
         method: "POST",
@@ -30,7 +34,6 @@ function Chat({ userData, muhokama, materialId }) {
       .finally(()=>{
         setInputText("");
         enterInput.current.value = ""
-        location.reload()
       })
     }
   }
@@ -57,6 +60,10 @@ function Chat({ userData, muhokama, materialId }) {
     return `so'ngi faollik ${diffYear} yil oldin`;
   }
 
+    useEffect(()=>{
+      chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [muhokama])
+
   return (
     <div className="chat-container">
       <div className="head">
@@ -75,7 +82,7 @@ function Chat({ userData, muhokama, materialId }) {
       <div className="chat-body">
         {muhokama && muhokama.map((item) => {
           return (
-            <div
+            item.text && <div
               key={item.id}
               className={item.teacher ? "message" : "message owner"}
             >
@@ -88,13 +95,14 @@ function Chat({ userData, muhokama, materialId }) {
             </div>
           );
         })}
+        <div ref={chatEndRef}/>
       </div>
-      <div className="foot">
+      <form className="foot" onSubmit={sendData}>
           <input ref={enterInput} type="text" placeholder="Xabar yozing..." onChange={(e)=>setInputText(e.target.value)}/>
           <div className="sendBtns">
-            <button onClick={sendData}>Send</button>
+            <button type="submit">Send</button>
           </div>
-      </div>
+      </form>
     </div>
   );
 }

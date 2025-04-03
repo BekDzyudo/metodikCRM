@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { PortfolioContext } from "./contexts/editPortfolioContext";
 import { Link } from "react-router-dom";
-import { Pagination } from "swiper/modules";
+import { Pagination } from "@mui/material";
 import useGetFetchProfil from "../../../hooks/useGetFetchProfil";
 import { MdNavigateNext } from "react-icons/md";
 import { AuthContext } from "../../../contexts/AuthContext";
@@ -15,20 +15,24 @@ export function TeacherFiles() {
   const { setChatActiveModal } = useContext(MalumotContext);
 
   const [detailId, setDetailId] = useState(null);
+  const [page, setPage] = useState(1);
 
   const { data: Materiallar } = useGetFetchProfil(
-    `${import.meta.env.VITE_BASE_URL}/birlashma/material/${userData?.userId}`
+    `${import.meta.env.VITE_BASE_URL}/birlashma/material/${userData?.userId}/?page=${page}`
   );
-
 
   const [holat, setHolat] = useState("");
   const handleChange = (e) => {
     setHolat(e.target.value);
   };
+  
+  function handlePagination(e, p) {
+    setPage(p);
+  }
 
   return (
     <>
-      {Materiallar && (
+      {Materiallar?.results && (
         <div className="document_new">
           <div className="jadval_top">
             <div className="jadval_name">
@@ -51,62 +55,13 @@ export function TeacherFiles() {
                   label="Hujjat turi"
                 >
                   <div>
-                  <MenuItem value={20}>Barchasi</MenuItem>
-                  <MenuItem value={20}>Yangi</MenuItem>
-                  <MenuItem value={21}>Tasdiqlangan</MenuItem>
-                  <MenuItem value={22}>Rad etilgan</MenuItem>
+                    <MenuItem value={20}>Barchasi</MenuItem>
+                    <MenuItem value={20}>Yangi</MenuItem>
+                    <MenuItem value={21}>Tasdiqlangan</MenuItem>
+                    <MenuItem value={22}>Rad etilgan</MenuItem>
                   </div>
                 </Select>
               </FormControl>
-              {/* <div className="select_field">
-                <div className="dropdown">
-                  <div
-                    onClick={(e) => {
-                      setIsActivesohasi(!isActivesohasi);
-                    }}
-                    className="select_dropdown-btn"
-                  >
-                    {selectedsohasi}
-                    <span
-                      className={
-                        isActivesohasi ? "fas fa-caret-up" : "fas fa-caret-down"
-                      }
-                    />
-                  </div>
-                  <div
-                    className="dropdown-content"
-                    style={{ display: isActivesohasi ? "block" : "none" }}
-                  >
-                    <div
-                      onClick={(e) => {
-                        setIsSelectedsohasi(e.target.textContent);
-                        setIsActivesohasi(!isActivesohasi);
-                      }}
-                      className="item"
-                    >
-                      Yangi
-                    </div>
-                    <div
-                      className="item"
-                      onClick={(e) => {
-                        setIsSelectedsohasi(e.target.textContent);
-                        setIsActivesohasi(!isActivesohasi);
-                      }}
-                    >
-                      Tasdiqlangan
-                    </div>
-                    <div
-                      className="item"
-                      onClick={(e) => {
-                        setIsSelectedsohasi(e.target.textContent);
-                        setIsActivesohasi(!isActivesohasi);
-                      }}
-                    >
-                      Rad erilgan
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
             <button
               onClick={() => setAddHujjat(true)}
@@ -129,7 +84,7 @@ export function TeacherFiles() {
                 </tr>
               </thead>
               <tbody>
-                {Materiallar.map((item, index) => {
+                {Materiallar?.results.map((item, index) => {
                   return (
                     <tr key={item.id}>
                       <td>{index + 1}</td>
@@ -176,7 +131,13 @@ export function TeacherFiles() {
                 })}
               </tbody>
             </table>
-            {/* <Pagination count={10} color="primary"></Pagination> */}
+            {Materiallar?.total_pages > 1 && (
+              <Pagination
+                count={Materiallar?.total_pages}
+                color="primary"
+                onChange={handlePagination}
+              ></Pagination>
+            )}
           </div>
         </div>
       )}

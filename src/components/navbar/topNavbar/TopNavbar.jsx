@@ -46,36 +46,35 @@ function TopNavbar() {
     setAnchorElNot(null);
   };
   // =================================================
-  const { auth} = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
+  const [notifArr, setNotifArr] = useState([]);
   const [messages, setMessages] = useState(true);
-  // const [notifArr, setNotifArr] = useState(JSON.parse(localStorage.getItem("notification")) || [])
-  const [notifArr, setNotifArr] = useState([])
 
-  
-
-  useEffect(()=>{
+  useEffect(() => {
     if (messages) {
-      fetch( `${import.meta.env.VITE_BASE_URL}/notification_app/notification-list`,{
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + auth.accessToken,
-        },
-      })
-      .then((res)=>{
-        if (!res.ok) throw new Error(res.status);
-        return res.json();
-      })
-      .then((data)=>{
-        // localStorage.setItem("notification", JSON.stringify(data))
-        setNotifArr(data)
-      })
-      .catch((err)=>{
-        console.log(err);
-        
-      })
+      fetch(
+        `${import.meta.env.VITE_BASE_URL}/notification_app/notification-list`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + auth.accessToken,
+          },
+        }
+      )
+        .then((res) => {
+          if (!res.ok) throw new Error(res.status);
+          return res.json();
+        })
+        .then((data) => {
+          // localStorage.setItem("notification", JSON.stringify(data))
+          setNotifArr(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       setMessages(false);
     }
-  }, [messages])
+  }, [messages]);
 
   const socketUrl = `ws://192.168.101.174:3000/ws/notifications/?token=${auth?.accessToken}`;
 
@@ -95,7 +94,7 @@ function TopNavbar() {
     };
 
     socket.onerror = (error) => {
-      console.error("WebSocket yopildi:", error);
+      // console.error("WebSocket yopildi:", error);
     };
 
     // socket.onclose = () => {
@@ -155,54 +154,58 @@ function TopNavbar() {
                 </Badge>
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: "50px", display: "block" }}
-              id="menu-appbar"
-              anchorEl={anchorElNot}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElNot)}
-              onClose={handleCloseNotMenu}
-              MenuListProps={{
-                sx: { display: "block" },
-              }}
-            >
-              {notifArr &&
-                notifArr?.map((item) => {
-                  return (
-                    <MenuItem
-                    key={item.id}
-                      onClick={handleCloseNotMenu}
-                      sx={{ minWidth: "150px" }}
-                    >
-                      <Typography sx={{ textAlign: "center", width: "100%" }}>
-                        <Link to={`/Document/DocumentDetail/${item.material}`}>
-                          <span style={{ fontSize: "14px" }}>
-                            {" "}
-                            <span>
-                              <FaCircle
-                                style={{
-                                  color: "green",
-                                  width: "10px",
-                                  height: "10px",
-                                }}
-                              />
-                            </span>{" "}
-                            {item.fan_name}
-                          </span>
-                        </Link>
-                      </Typography>
-                    </MenuItem>
-                  );
-                })}
-            </Menu>
+            {notifArr.length > 0 && (
+              <Menu
+                sx={{ mt: "50px", display: "block" }}
+                id="menu-appbar"
+                anchorEl={anchorElNot}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElNot)}
+                onClose={handleCloseNotMenu}
+                MenuListProps={{
+                  sx: { display: "block" },
+                }}
+              >
+                {notifArr &&
+                  notifArr?.map((item) => {
+                    return (
+                      <MenuItem
+                        key={item.id}
+                        onClick={handleCloseNotMenu}
+                        sx={{ minWidth: "150px" }}
+                      >
+                        <Typography sx={{ textAlign: "center", width: "100%" }}>
+                          <Link
+                            to={`/Document/DocumentDetail/${item.material}`}
+                          >
+                            <span style={{ fontSize: "14px" }}>
+                              {" "}
+                              <span>
+                                <FaCircle
+                                  style={{
+                                    color: "green",
+                                    width: "10px",
+                                    height: "10px",
+                                  }}
+                                />
+                              </span>{" "}
+                              {item.fan_name}
+                            </span>
+                          </Link>
+                        </Typography>
+                      </MenuItem>
+                    );
+                  })}
+              </Menu>
+            )}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
