@@ -271,6 +271,24 @@
   border: 0;
   height: auto;
 }
+.document_table table .muhokama a{
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 15px 30px 0 0;
+}
+.document_table table .muhokama a .count{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+  padding: 0px 8px;
+  border-radius: 50%;
+}
+.document_table table .muhokama a .count span{
+  font-size: 13px;
+  color: white;
+}
 
 .document_table table td,
 th {

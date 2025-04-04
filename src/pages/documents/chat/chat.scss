@@ -83,12 +83,11 @@
           flex-direction: column;
           row-gap: 20px;
           align-items: flex-end;
-
           img{
             width: 50%;
           }
           p{
-            padding: 10px 20px !important;
+            padding: 5px 20px !important;
             background-color: cornflowerblue;
             border-radius: 10px 0px 10px 10px;
             max-width: max-content;
@@ -96,6 +95,13 @@
             font-weight: 400;
             font-size: 18px;
             font-family: 'Calibri', sans-serif;
+            display: flex;
+                flex-direction: column;
+                row-gap: 2px;
+                span{
+                  color: rgb(57, 57, 139);
+                  font-size: 16px;
+                }
           }
         }
       }

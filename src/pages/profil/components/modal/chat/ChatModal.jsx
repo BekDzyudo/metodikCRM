@@ -3,7 +3,6 @@ import "./chatModal.scss";
 import "react-chat-elements/dist/main.css";
 import useGetFetchProfil from "../../../../../hooks/useGetFetchProfil";
 import { AuthContext } from "../../../../../contexts/AuthContext";
-import { useParams } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { MalumotContext } from "../../contexts/editMalumotlarContext";
 
@@ -14,12 +13,25 @@ function ChatModal({ materialId }) {
   const enterInput = useRef();
   const [inputText, setInputText] = useState("");
   const { userData, auth } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
   const [Material, setMaterial] = useState(null)
+
+  useEffect(()=>{
+    if(!materialId) return
+    fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/material/${materialId}/muhokama-update/`)
+    .then((res) => {
+      if (!res.ok) throw new Error(res.status);
+      return res.json();
+    })
+    .then((data) => {
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }, [materialId])
+  
   
   function lookAtAction(){
     if (!auth?.accessToken || !materialId) return;
-    setLoading(true);
     fetch(
       `${
         import.meta.env.VITE_BASE_URL
@@ -42,7 +54,6 @@ function ChatModal({ materialId }) {
         console.log(err);
       })
       .finally(()=>{
-        setLoading(false);
       });
   }
  
@@ -80,6 +91,7 @@ function ChatModal({ materialId }) {
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
+  
 
   function sendData(e) {
     e.preventDefault()
@@ -111,6 +123,7 @@ function ChatModal({ materialId }) {
   useEffect(()=>{
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [Material?.muhokamalar])
+  
 
   return (
     chatActiveModal && (
@@ -118,7 +131,6 @@ function ChatModal({ materialId }) {
         <div className="chat-container">
           <div className="head">
             <div className="meanAvatar">
-              {/* <img src="" alt="Avatar" /> */}
               <div className="desc">
                 <h3>Chat</h3>
               </div>
@@ -133,7 +145,6 @@ function ChatModal({ materialId }) {
             />
           </div>
           {
-            loading ? <div>loading...</div> :
             <div className="chat-body">
             {Material?.muhokamalar?.map((item) => {
               return (
@@ -151,7 +162,11 @@ function ChatModal({ materialId }) {
                       />
                     </div>
                     <div className="messageContent">
-                      <p>{item.text}</p>
+                      <p>
+                        {
+                          item.metodist && <span>{item.metodist?.first_name + " "+ item.metodist?.last_name}</span> 
+                        }
+                        {item.text}</p>
                     </div>
                   </div>
                 )

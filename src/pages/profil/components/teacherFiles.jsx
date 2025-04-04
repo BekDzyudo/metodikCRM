@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PortfolioContext } from "./contexts/editPortfolioContext";
 import { Link } from "react-router-dom";
 import { Pagination } from "@mui/material";
@@ -10,22 +10,40 @@ import ChatModal from "./modal/chat/ChatModal";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 export function TeacherFiles() {
-  const { setAddHujjat } = useContext(PortfolioContext);
-  const { userData } = useContext(AuthContext);
-  const { setChatActiveModal } = useContext(MalumotContext);
+  const { setAddHujjat, addhujjat } = useContext(PortfolioContext);
+  const { userData, auth } = useContext(AuthContext);
+  const { setChatActiveModal, chatActiveModal } = useContext(MalumotContext);
 
   const [detailId, setDetailId] = useState(null);
   const [page, setPage] = useState(1);
+  const [Materiallar, setMateriallar] = useState(null)
 
-  const { data: Materiallar } = useGetFetchProfil(
-    `${import.meta.env.VITE_BASE_URL}/birlashma/material/${userData?.userId}/?page=${page}`
-  );
+  useEffect(()=>{
+    fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/material/${
+      userData?.userId
+    }/?page=${page}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + auth?.accessToken,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(res.status);
+        return res.json();
+      })
+      .then((data) => {
+        setMateriallar(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [chatActiveModal, page, userData?.userId, auth?.accessToken, addhujjat])
 
   const [holat, setHolat] = useState("");
   const handleChange = (e) => {
     setHolat(e.target.value);
   };
-  
+
   function handlePagination(e, p) {
     setPage(p);
   }
@@ -79,7 +97,7 @@ export function TeacherFiles() {
                   <th>Fan nomi</th>
                   <th>Material turi</th>
                   <th>Holati</th>
-                  <th>Kommentariya</th>
+                  <th>Muhokama</th>
                   <th>Materialni ko'rish</th>
                 </tr>
               </thead>
@@ -112,6 +130,10 @@ export function TeacherFiles() {
                       <td>
                         {/* to={`/profil/${item.id}`} */}
                         <Link
+                          style={{
+                            padding: "15px 30px 0px 0px",
+                            position: "relative",
+                          }}
                           onClick={() => {
                             setDetailId(item.id);
                             setChatActiveModal(true);
@@ -119,6 +141,45 @@ export function TeacherFiles() {
                         >
                           Chatga o'tish{" "}
                           <MdNavigateNext style={{ fontSize: "16px" }} />
+                          {item.count_not_read > 0 &&
+                            item.count_not_read < 10 && (
+                              <span
+                                className="count"
+                                style={{
+                                  position: "absolute",
+                                  top: "0px",
+                                  right: "0px",
+                                  background: "red",
+                                  padding: "0px 8px",
+                                  borderRadius: "50%",
+                                }}
+                              >
+                                <span
+                                  style={{ color: "white", fontSize: "13px" }}
+                                >
+                                  {item.count_not_read}
+                                </span>
+                              </span>
+                            )}
+                            {item.count_not_read > 9 && (
+                              <span
+                                className="count"
+                                style={{
+                                  position: "absolute",
+                                  top: "0px",
+                                  right: "0px",
+                                  background: "red",
+                                  padding: "0px 8px",
+                                  borderRadius: "15px",
+                                }}
+                              >
+                                <span
+                                  style={{ color: "white", fontSize: "13px" }}
+                                >
+                                  {item.count_not_read}
+                                </span>
+                              </span>
+                            )}
                         </Link>
                       </td>
                       <td>

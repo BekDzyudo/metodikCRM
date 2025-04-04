@@ -1,40 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./chat.scss";
 import "react-chat-elements/dist/main.css";
-import useGetFetchProfil from "../../../hooks/useGetFetchProfil"
+import useGetFetchProfil from "../../../hooks/useGetFetchProfil";
+import { MalumotContext } from "../../profil/components/contexts/editMalumotlarContext";
 
-function Chat({ userData, muhokama, materialId }) {
-  console.log(userData);
+function Chat({ userData, muhokama, materialId, materialDetail }) {
   const chatEndRef = useRef(null);
-  const enterInput = useRef()
+  const chatContainerRef = useRef(null);
+  const enterInput = useRef();
   const [inputText, setInputText] = useState("");
-  
+  const { chatActiveModal, setChatActiveModal } = useContext(MalumotContext);
+
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
-  
-  function sendData(e){
-    e.preventDefault()
-    if(inputText){
-      fetch( `${import.meta.env.VITE_BASE_URL}/birlashma/muhokama-create/`,{
+
+  function sendData(e) {
+    e.preventDefault();
+    if (inputText) {
+      fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/muhokama-create/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({text: inputText, metodist_id: user.id, material: materialId})
+        body: JSON.stringify({
+          text: inputText,
+          metodist_id: user.id,
+          material: materialId,
+        }),
       })
-      .then(async(res)=>{
-        const errorObj = await res.json();        
+        .then(async (res) => {
+          const errorObj = await res.json();
           if (!res.ok) throw new Error(JSON.stringify(errorObj));
           return res;
-      })
-      .then((data)=>{
-        console.log(data);
-      })
-      .catch((err)=>console.log(JSON.parse(err.message))
-      )
-      .finally(()=>{
-        setInputText("");
-        enterInput.current.value = ""
-      })
+        })
+        .then((data) => {})
+        .catch((err) => console.log(JSON.parse(err.message)))
+        .finally(() => {
+          setInputText("");
+          enterInput.current.value = "";
+          materialDetail();
+        });
     }
   }
 
@@ -60,12 +64,12 @@ function Chat({ userData, muhokama, materialId }) {
     return `so'ngi faollik ${diffYear} yil oldin`;
   }
 
-    useEffect(()=>{
-      chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, [muhokama])
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [muhokama]);
 
   return (
-    <div className="chat-container">
+    <div className="chat-container" ref={chatContainerRef}>
       <div className="head">
         <div className="meanAvatar">
           <img src={userData?.image} alt="Avatar" />
@@ -79,29 +83,51 @@ function Chat({ userData, muhokama, materialId }) {
           </div>
         </div>
       </div>
+      {/* <div ref={chatEndRef}/> */}
       <div className="chat-body">
-        {muhokama && muhokama.map((item) => {
-          return (
-            item.text && <div
-              key={item.id}
-              className={item.teacher ? "message" : "message owner"}
-            >
-              <div className="messageInfo">
-                <img src={item.teacher ? userData?.image : item.metodist?.image} alt="" />
-              </div>
-              <div className="messageContent">
-                <p>{item.text}</p>
-              </div>
-            </div>
-          );
-        })}
-        <div ref={chatEndRef}/>
+        {muhokama &&
+          muhokama.map((item) => {
+            return (
+              item.text && (
+                <div
+                  key={item.id}
+                  className={item.teacher ? "message" : "message owner"}
+                >
+                  <div className="messageInfo">
+                    <img
+                      src={
+                        item.teacher ? userData?.image : item.metodist?.image
+                      }
+                      alt=""
+                    />
+                  </div>
+                  <div className="messageContent">
+                    <p>
+                      {(item.metodist?.id !== user?.id && item.metodist?.id) && (
+                        <span>
+                          {item.metodist?.first_name +
+                            " " +
+                            item.metodist?.last_name}
+                        </span>
+                      )}
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              )
+            );
+          })}
       </div>
       <form className="foot" onSubmit={sendData}>
-          <input ref={enterInput} type="text" placeholder="Xabar yozing..." onChange={(e)=>setInputText(e.target.value)}/>
-          <div className="sendBtns">
-            <button type="submit">Send</button>
-          </div>
+        <input
+          ref={enterInput}
+          type="text"
+          placeholder="Xabar yozing..."
+          onChange={(e) => setInputText(e.target.value)}
+        />
+        <div className="sendBtns">
+          <button type="submit">Send</button>
+        </div>
       </form>
     </div>
   );

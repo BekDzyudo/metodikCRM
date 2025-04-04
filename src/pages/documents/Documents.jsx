@@ -331,7 +331,6 @@ export default function Documents() {
                           <th>Fan nomi</th>
                           <th>Material turi</th>
                           <th>Holati</th>
-                          <th>Kommentariya</th>
                           <th>Materialni ko'rish</th>
                         </tr>
                       </thead>
@@ -359,22 +358,67 @@ export default function Documents() {
                                   {new Date(item.created_at).getDate() < 10
                                     ? "0" + new Date(item.created_at).getDate()
                                     : new Date(item.created_at).getDate()}
-                                  .{new Date(item.created_at).getMonth() + 1 < 10 ?
-                                  "0" + (new Date(item.created_at).getMonth() + 1) : new Date(item.created_at).getMonth() + 1}.
-                                  {new Date(item.created_at).getFullYear()}
+                                  .
+                                  {new Date(item.created_at).getMonth() + 1 < 10
+                                    ? "0" +
+                                      (new Date(item.created_at).getMonth() + 1)
+                                    : new Date(item.created_at).getMonth() + 1}
+                                  .{new Date(item.created_at).getFullYear()}
                                 </p>
                               </td>
-                              <td>
-                                <Link to="">
-                                  Chatga o'tish{" "}
+                              <td className="muhokama">
+                                <Link
+                                  to={`/Document/DocumentDetail/${item.id}`}
+                                >
+                                  Muhokama
                                   <MdNavigateNext
                                     style={{ fontSize: "16px" }}
                                   />
-                                </Link>
-                              </td>
-                              <td>
-                                <Link to={`/Document/DocumentDetail/${item.id}`}>
-                                  Ko'rish
+                                  {item.count_not_read > 0 &&
+                                    item.count_not_read < 10 && (
+                                      <span
+                                        className="count"
+                                        style={{
+                                          position: "absolute",
+                                          top: "0px",
+                                          right: "0px",
+                                          background: "red",
+                                          padding: "0px 8px",
+                                          borderRadius: "50%",
+                                        }}
+                                      >
+                                        <span
+                                          style={{
+                                            color: "white",
+                                            fontSize: "13px",
+                                          }}
+                                        >
+                                          {item.count_not_read}
+                                        </span>
+                                      </span>
+                                    )}
+                                  {item.count_not_read > 9 && (
+                                    <span
+                                      className="count"
+                                      style={{
+                                        position: "absolute",
+                                        top: "0px",
+                                        right: "0px",
+                                        background: "red",
+                                        padding: "0px 8px",
+                                        borderRadius: "15px",
+                                      }}
+                                    >
+                                      <span
+                                        style={{
+                                          color: "white",
+                                          fontSize: "13px",
+                                        }}
+                                      >
+                                        {item.count_not_read}
+                                      </span>
+                                    </span>
+                                  )}
                                 </Link>{" "}
                               </td>
                             </tr>

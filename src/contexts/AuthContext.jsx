@@ -10,6 +10,33 @@ export const AuthProvider = ({children}) =>{
         accessToken: localStorage.getItem("accessToken") || null,
       });
     const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userData")) || null)
+     const [MaterialMetod, setMaterialMetod] = useState(null)
+
+    // notifMetodist
+    function lookAtActionMetodist(){
+      if (!auth?.accessToken) return;
+      fetch(
+        `${import.meta.env.VITE_BASE_URL}/notification_app/notification-list`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + auth?.accessToken,
+          },
+        }
+      )
+        .then((res) => {
+          if (!res.ok) throw new Error(res.status);
+          return res.json();
+        })
+        .then((data) => {
+          setMaterialMetod(data)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(()=>{
+        });
+    }
       
 
   const isTokenExpired = (token) => {
@@ -98,7 +125,7 @@ export const AuthProvider = ({children}) =>{
   }, []);
 
   return (
-    <AuthContext.Provider value={{auth, login, logout, refresh, isTokenExpired, userData}}>
+    <AuthContext.Provider value={{auth, login, logout, refresh, isTokenExpired, userData, MaterialMetod, lookAtActionMetodist}}>
         {children}
     </AuthContext.Provider>
   )

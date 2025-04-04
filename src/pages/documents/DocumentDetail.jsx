@@ -5,52 +5,74 @@ import useGetFetchProfil from "../../hooks/useGetFetchProfil";
 import Chat from "./chat/Chat";
 import { AuthContext } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
+import useGetFetch from "../../hooks/useGetFetchProfil";
 
 export default function DocumentDetail() {
   const { id } = useParams();
-  const { auth, refresh, isTokenExpired } =
-    useContext(AuthContext);
+  const { auth, lookAtActionMetodist } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [Material, setMaterial] = useState(null);
 
-  const { data: Material } = useGetFetchProfil(
-    `${import.meta.env.VITE_BASE_URL}/birlashma/material-detail/${id}/`
-  );
+  const {data} = useGetFetch(`${import.meta.env.VITE_BASE_URL}/birlashma/material/${id}/muhokama-update/`)
+
+  function materialDetail() {
+    if (!id) return;
+    fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/material-detail/${id}/`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + auth?.accessToken,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(res.status);
+        return res.json();
+      })
+      .then((data) => {
+        setMaterial(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {});
+  }
+  useEffect(() => {
+    if (!id) return;
+    materialDetail();
+  }, [auth?.accessToken, id]);
+
   const { data: notification } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/notification_app/notification-list`
   );
 
-
-  if (notification) {
-    notification.forEach((item, index) => {
-      if (item.material == Material?.id) {
-          fetch(
-            `${
-              import.meta.env.VITE_BASE_URL
-            }/notification_app/notification-update/${item.id}`,
-            {
-              method: "PATCH",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                is_read: true,
-              }),
-            }
-          )
-            .then((res) => {
-              if (!res.ok) throw new Error(res.statusText);
-              return res.json();
-            })
-            .then((data) => {
-              // setMessages(true);
-            })
-            .catch((err) => {
-              console.log(err.message);
-            });
+  const elData = notification?.find((item) => item.material == Material?.id);
+  useEffect(() => {
+    if (!elData) return;
+    fetch(
+      `${import.meta.env.VITE_BASE_URL}/notification_app/notification-update/${
+        elData?.id
+      }`,
+      {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          is_read: true,
+        }),
       }
-    });
-  }
+    )
+      .then((res) => {
+        if (!res.ok) throw new Error(res.statusText);
+        return res.json();
+      })
+      .then((data) => {
+        lookAtActionMetodist();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [elData]);
 
   function qabulQilindi() {
     fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/material-update/${id}/`, {
@@ -294,6 +316,7 @@ export default function DocumentDetail() {
                       userData={Material?.teacher}
                       muhokama={Material?.muhokamalar}
                       materialId={Material.id}
+                      materialDetail={materialDetail}
                     />
                   </div>
                 </div>

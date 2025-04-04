@@ -24,7 +24,8 @@ import { GrDocumentText } from "react-icons/gr";
 import { FaCircle } from "react-icons/fa";
 
 function TopNavbar() {
-  const { logout } = useContext(AuthContext);
+  const { auth, logout, MaterialMetod, lookAtActionMetodist } = useContext(AuthContext);
+  
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
@@ -45,36 +46,11 @@ function TopNavbar() {
   const handleCloseNotMenu = () => {
     setAnchorElNot(null);
   };
-  // =================================================
-  const { auth } = useContext(AuthContext);
-  const [notifArr, setNotifArr] = useState([]);
-  const [messages, setMessages] = useState(true);
-
-  useEffect(() => {
-    if (messages) {
-      fetch(
-        `${import.meta.env.VITE_BASE_URL}/notification_app/notification-list`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + auth.accessToken,
-          },
-        }
-      )
-        .then((res) => {
-          if (!res.ok) throw new Error(res.status);
-          return res.json();
-        })
-        .then((data) => {
-          // localStorage.setItem("notification", JSON.stringify(data))
-          setNotifArr(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      setMessages(false);
-    }
-  }, [messages]);
+  // =================================================\
+  useEffect(()=>{
+      if (!auth?.accessToken) return;
+      lookAtActionMetodist()
+    }, [auth?.accessToken])
 
   const socketUrl = `ws://192.168.101.174:3000/ws/notifications/?token=${auth?.accessToken}`;
 
@@ -89,20 +65,13 @@ function TopNavbar() {
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
+      lookAtActionMetodist()
       // console.log("yangi notification:", data);
-      setMessages(true);
     };
 
     socket.onerror = (error) => {
       // console.error("WebSocket yopildi:", error);
     };
-
-    // socket.onclose = () => {
-    //   console.log("WebSocket connection closed. Reconnecting...");
-    //   setTimeout(() => {
-    //     window.location.reload(); // Yangi bog‘lanish
-    //   }, 1000);
-    // };
 
     return () => {
       socket.close();
@@ -149,12 +118,12 @@ function TopNavbar() {
                 aria-label="show 17 new notifications"
                 color="inherit"
               >
-                <Badge badgeContent={notifArr?.length} color="error">
+                <Badge badgeContent={MaterialMetod?.length} color="error">
                   <NotificationsIcon style={{ color: "white" }} />
                 </Badge>
               </IconButton>
             </Tooltip>
-            {notifArr.length > 0 && (
+            {MaterialMetod?.length > 0 && (
               <Menu
                 sx={{ mt: "50px", display: "block" }}
                 id="menu-appbar"
@@ -174,8 +143,8 @@ function TopNavbar() {
                   sx: { display: "block" },
                 }}
               >
-                {notifArr &&
-                  notifArr?.map((item) => {
+                {MaterialMetod &&
+                  MaterialMetod?.map((item) => {
                     return (
                       <MenuItem
                         key={item.id}

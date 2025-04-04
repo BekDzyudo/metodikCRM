@@ -40,27 +40,28 @@ export function AddMalumotHujjatlar() {
       });
     });
     const formData = new FormData();
+    
     if (errorArr.length == 0) {
-      formData.append("teacher", userData?.userId);
-      formData.append("kategoriya_material", newObj.hujjatTuri);
-      formData.append("fan", newObj.fanNomi);
-      formData.append("file", newObj.addFile);
+
+      formData.append("teacher_id", userData?.userId);
+      formData.append("kategoriya_material_id", newObj.hujjatTuri);
+      formData.append("fan_id", newObj.fanNomi);
+      formData.append("file", newObj.addFile, newObj.addFile.name);
       formData.append("comment", newObj.komment);
-      
-      
+
       fetch(
         `${import.meta.env.VITE_BASE_URL}/birlashma/material-create/`,
         {
           method: "POST",
           body: formData,
           headers: {
-            // "Content-Type": "multipart/form-data",
             Authorization: "Bearer " + auth.accessToken,
           },
         }
       )
         .then((res) => {
-          if (!res.ok) {
+          if (!res.ok)
+            {
             return res.json().then(err => {
               console.log(err);
           });
@@ -68,8 +69,7 @@ export function AddMalumotHujjatlar() {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
-          
+          // console.log(data);
         })
         .catch((err) => {
           console.log(err);
@@ -78,7 +78,7 @@ export function AddMalumotHujjatlar() {
           regTeacherFileForm.current.reset();
           saveBtn.current.innerHTML = "Saqlash";
           setAddHujjat(false);
-          window.location.reload()
+          // window.location.reload()
         });
       saveBtn.current.innerHTML = `<div style="width: 20px; height: 20px; margin-top:5px;"  class="spinner-border text-light" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -157,7 +157,7 @@ export function AddMalumotHujjatlar() {
               <label htmlFor="myfile" className="custom-file-upload">
                 Fayl biriktirish
               </label>
-              <input type="file" ref={addFile} id="addFile"/>
+              <input type="file" ref={addFile} id="addFile" accept="application/pdf"/>
             </div>
           </form>
           <div className="savePortfolioModalBtn">
