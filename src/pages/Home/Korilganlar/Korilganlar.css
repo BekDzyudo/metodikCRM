@@ -1,47 +1,92 @@
-.korilgan_top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.korilgan{
+  margin-bottom: 100px;
+}
   .korilgan_top h1 {
     font-size: 60px;
     font-weight: 700;
     color: #333;
+    text-align: center;
   }
-  
+  .korilgan .row{
+    width: 100%;
+  }
   .korilgan_card-box {
-    margin: 70px 0 150px 0 !important;
+    overflow: hidden;
+    margin: 70px 0 0px 0 !important;
     display: flex;
+    column-gap: 10px;
   }
   
   .korilgan_card {
-    height: 240px;
+    width: 300px;
     border-radius: 25px;
-    background: rgba(243, 243, 243, 0.45);
-    padding: 30px 20px 30px 30px;
-    margin: 0 10px;
+    background: rgba(228, 227, 227, 0.45);
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
   }
   .korilgan_card:hover{
     box-shadow: 0px 5px 10px #ccc;
   }
+  .korilgan_img {
+    width: 100%;
+    height: 200px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+  }
   
-  .korilgan_card-box .col-4:nth-last-child(2) {
-    margin-top: 50px;
+  .korilgan_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px 25px 0px 0px;
   }
-  .korilgan_card-body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 20px;
-  }
+
   .korilgan_title {
-    width: 75%;
+    width: 100%;
+    padding: 10px;
   }
   .korilgan_card-body .fish h6{
     color: #1485d5;
     font-size: 12px;
   }
   .korilgan_card-body .fish p {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    line-height: normal;
+    margin-bottom: 15px !important;
+  }
+  .korilgan_card-body .teacherhudud h6{
+    color: #1485d5;
+    font-size: 12px;
+  }
+  .korilgan_card-body .teacherhudud span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    line-height: normal;
+    margin-bottom: 15px !important;
+  }
+  .korilgan_card-body .fan h6{
+    color: #1485d5;
+    font-size: 12px;
+  }
+  .korilgan_card-body .fan p {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    line-height: normal;
+    margin-bottom: 15px !important;
+  }
+  .korilgan_card-body .reyting h6{
+    color: #1485d5;
+    font-size: 12px;
+  }
+  .korilgan_card-body .reyting p {
     font-size: 18px;
     font-weight: 700;
     color: #333;
@@ -61,42 +106,3 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .korilgan_img {
-    width: 25%;
-    height: 120px;
-    border-radius: 6px;
-  }
-  
-  .korilgan_img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-  }
-  
-  .korilgan_bottom {
-    margin-top: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 20px;
-  }
-  .korilgan_bottom .fan h6{
-    color: #1485d5;
-    font-size: 12px;
-  }
-  .korilgan_bottom .fan p {
-    color: #333;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .korilgan_bottom .reyting h6{
-    color: #1485d5;
-    font-size: 12px;
-  }
-  .korilgan_bottom .reyting p {
-    color: #333;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  

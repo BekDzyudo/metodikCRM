@@ -1,5 +1,5 @@
 .havola {
-    margin: 120px 0;
+    margin: 100px 0;
   }
   .havola_top {
     margin-bottom: 75px;
@@ -8,15 +8,18 @@
     color: #333;
     font-size: 60px;
     font-weight: 700;
+    text-align: center;
   }
   .havola_box {
     display: flex;
     justify-content: space-between;
+
   }
   .havolalar {
     display: flex;
     align-items: center;
-    margin: 0 10px;
+    margin: 0 20px;
+    max-width: 350px;
   }
   .havola_img {
     width: 100px;

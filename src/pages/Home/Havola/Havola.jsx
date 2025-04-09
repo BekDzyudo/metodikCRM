@@ -7,6 +7,7 @@ import havola3 from "../../../images/img/havola3.png";
 import havola4 from "../../../images/img/havola4.png";
 import "./Havola.css";
 import { Link } from "react-router-dom";
+import Marquee from "react-fast-marquee";
 
 function Havola() {
   return (
@@ -14,52 +15,41 @@ function Havola() {
       <div className="container">
         <div className="havola_top">
           <h1>Foydali havolalar</h1>
-          <Pagenation />
         </div>
-        <div className="row">
-          <div className="col-12 havola_box">
-            <div className="col-3">
+            <Marquee className="havola_box" speed={70} pauseOnHover>
               <Link className="havolalar">
-                <div className="havola_img">
-                  <img src={havola1} alt="" />
-                </div>
-                <div className="havola_title">
-                  <p>edx (AQSH)</p>
-                </div>
-              </Link>
-            </div>
-            <div className="col-3">
-              <Link className="havolalar">
-                <div className="havola_img">
-                  <img src={havola2} alt="" />
-                </div>
-                <div className="havola_title">
-                  <p>IRPO (Rossiya)</p>
-                </div>
-              </Link>
-            </div>
-            <div className="col-3">
-              <Link className="havolalar">
-                <div className="havola_img">
-                  <img src={havola3} alt="" />
-                </div>
-                <div className="havola_title">
-                  <p>Coursera (AQSH)</p>
-                </div>
-              </Link>
-            </div>
-            <div className="col-3">
-              <Link className="havolalar">
-                <div className="havola_img">
-                  <img src={havola4} alt="" />
-                </div>
-                <div className="havola_title">
-                  <p>TIKA (Turkiya)</p>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
+                  <div className="havola_img">
+                    <img src={havola1} alt="" />
+                  </div>
+                  <div className="havola_title">
+                    <p>edx (AQSH)</p>
+                  </div>
+                </Link>
+                <Link className="havolalar">
+                  <div className="havola_img">
+                    <img src={havola2} alt="" />
+                  </div>
+                  <div className="havola_title">
+                    <p>IRPO (Rossiya)</p>
+                  </div>
+                </Link>
+                <Link className="havolalar">
+                  <div className="havola_img">
+                    <img src={havola3} alt="" />
+                  </div>
+                  <div className="havola_title">
+                    <p>Coursera (AQSH)</p>
+                  </div>
+                </Link>
+                <Link className="havolalar">
+                  <div className="havola_img">
+                    <img src={havola4} alt="" />
+                  </div>
+                  <div className="havola_title">
+                    <p>TIKA (Turkiya)</p>
+                  </div>
+                </Link>
+            </Marquee>
       </div>
     </div>
   );

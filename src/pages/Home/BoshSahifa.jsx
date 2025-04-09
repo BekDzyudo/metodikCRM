@@ -17,11 +17,11 @@ function BoshSahifa() {
       <Blue />
       <Home />
       <Card />
-      <Yangiliklar />
+      <Mutaxassis />
+      {/* <Yangiliklar /> */}
       <Statistika />
       <Korilganlar />
       <Loyiha />
-      <Mutaxassis />
       <Havola />
       <Footer />
     </div>
