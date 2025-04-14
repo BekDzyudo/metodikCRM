@@ -44,16 +44,16 @@ export default function WorldSkills() {
                   <div className="world_desc">
                     <div className="world_text">
                       <p>{worldSkills.name}</p>
-                      <span>Boshlang‘ich professional ta'lim</span>
+                      {/* <span>Boshlang‘ich professional ta'lim</span> */}
                     </div>
                     <div className="world-btns">
-                      <div className="world_yuklab">
-                        <Link
+                      
+                        <Link className="world_yuklab"
                           to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/worldSkills/${worldSkills.id}`}
                         >
                           Kirish
                         </Link>
-                      </div>
+                      
                       <div className="world_card-bottom">
                         <span>Kasb</span> <span>2023/2024</span>
                       </div>

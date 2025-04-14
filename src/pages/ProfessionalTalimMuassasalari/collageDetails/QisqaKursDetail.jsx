@@ -47,13 +47,13 @@ function QisqaKursDetail() {
             <div className="talim_detail-img">
               <img src={qisqaKursDetailObj.image} alt="" />
             </div>
-            <div className="talim_detail-text">
+            {/* <div className="talim_detail-text">
               <h4>Izohlar</h4>
               <textarea placeholder="Izoh matni..."></textarea>
               <div className="talim_detail-btn">
                 <Link>Yuborish</Link>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="talim_detail-cards">
             <h4>{qisqaKursDetailObj.name}</h4>

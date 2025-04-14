@@ -44,16 +44,16 @@ export default function QisqaKurs() {
                   <div className="world_desc">
                     <div className="world_text">
                       <p>{kurs.name}</p>
-                      <span>Boshlang‘ich professional ta'lim</span>
+                      {/* <span>Boshlang‘ich professional ta'lim</span> */}
                     </div>
                     <div className="world-btns">
-                      <div className="world_yuklab">
-                        <Link
+                      {/* <div > */}
+                        <Link className="world_yuklab"
                           to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/qisqa-muddatli-kurslar/${kurs.id}`}
                         >
                           Kirish
                         </Link>
-                      </div>
+                      {/* </div> */}
                       <div className="world_card-bottom">
                         <span>Kasb</span> <span>2023/2024</span>
                       </div>

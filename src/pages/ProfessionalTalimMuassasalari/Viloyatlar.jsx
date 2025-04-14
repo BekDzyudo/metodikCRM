@@ -28,14 +28,11 @@ function Viloyatlar() {
           </div>
           <div className="hudud_body">
             <h1>Hududlar</h1>
-            <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-              <div className="col-12">
-                <div className="hudud_cards">
+            <div className="row">
                   {regions.map((region) => {
                     const str = region.name.split(" ");
                     return (
-                      <Link className="" to={`/viloyatlar/tumanlar/${region.id}`} key={region.id}>
-                        <div className="hudud_card">
+                      <Link className="hudud_card" to={`/viloyatlar/tumanlar/${region.id}`} key={region.id}>
                           <div className="hudud_card-img">
                             <img src={region.image} alt="" />
                           </div>
@@ -49,12 +46,9 @@ function Viloyatlar() {
                               Batafsil
                             </Link>
                           </div>
-                        </div>
                       </Link>
                     );
                   })}
-                </div>
-              </div>
             </div>
           </div>
         </div>

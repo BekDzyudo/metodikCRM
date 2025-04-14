@@ -32,13 +32,13 @@ function TayyorlanadiganKasbDetails() {
           <div className="talim_detail-img">
             <img src={data?.image} alt="" />
           </div>
-          <div className="talim_detail-text">
+          {/* <div className="talim_detail-text">
             <h4>Izohlar</h4>
             <textarea placeholder="Izoh matni..."></textarea>
             <div className="talim_detail-btn">
               <Link>Yuborish</Link>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="kasb-cards">
           <h4>Ta'lim dasturlari</h4>

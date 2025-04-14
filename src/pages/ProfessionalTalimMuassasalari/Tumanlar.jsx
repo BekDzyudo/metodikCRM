@@ -34,10 +34,10 @@ export default function Tumanlar() {
             </div>
           </div>
           <h1 className="shahar_title">{data.name}</h1>
-          <div className="row row-cols-3 row-cols-lg-4 g-2 g-lg-3">
-            <div className="col-12">
               <div className="muassasa_cards">
-                {data.districts.map((district) => {
+                {
+                  data.districts.length > 0 ?
+                data.districts.map((district) => {
                   return (
                     <Link to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${district.id}`} key={district.id}>
                       <div className="muassasa_card">
@@ -49,10 +49,10 @@ export default function Tumanlar() {
                       </div>
                     </Link>
                   );
-                })}
+                })
+                : <div style={{width:"100%"}}><div className="noData">Tumanlar kiritilmagan</div></div>
+              }
               </div>
-            </div>
-          </div>
         </div>
       )}
     </>

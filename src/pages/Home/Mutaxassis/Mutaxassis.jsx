@@ -42,6 +42,7 @@ function Mutaxassis() {
            }}
            pagination={true}
            modules={[EffectCoverflow, Pagination]}
+          //  autoplay={{ delay: 2000, disableOnInteraction: false }}
            >
             <SwiperSlide className="mutaxasis_user">
               <div className="mutaxasis_img">

@@ -7,12 +7,15 @@
 }
 .rtrHomeRow{
     display: flex;
+    justify-content: space-between;
 }
 .rtrHomeRow .card{
+    width: 30%;
     height: 400px !important;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+    padding: 15px;
 }
 .rtrHomeRow .card .image{
     height: 70%;
