@@ -29,10 +29,10 @@ export default function WorldSkills() {
             <div className="qisqa_title">
               <p>WorldSkills</p> <span>{worldSkillsArr.length}</span>
             </div>
-            <div className="talim_search">
+            {/* <div className="talim_search">
               <i className="bi bi-search"></i>
               <input type="search" placeholder="izlash" />
-            </div>
+            </div> */}
           </div>
           <div className="world_cards">
             {worldSkillsArr.map((worldSkills) => {

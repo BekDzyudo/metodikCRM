@@ -6,6 +6,8 @@ import FooterWhite from "../../components/footer/FooterWhite";
 import telba from "../../images/img/telba.jpg";
 import { Pagination } from "@mui/material";
 import useGetFetch from "../../hooks/useGetFetchProfil";
+import { AiOutlineClear } from "react-icons/ai";
+import PageLoader from "../../Loader/PageLoader";
 
 function TeacherRating() {
   const [bilim, setBilim] = useState("")
@@ -33,19 +35,22 @@ function TeacherRating() {
   const { data: reyting } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/reyting_app/reyting/?bilim_soha=${bilim}&talim_soha=${talim}&talim_yunalish=${yunalish}&kasb_va_mutaxasislik=${kasb}&fan=${fan}`
   );
-
+  
   return (
     <div className="rating_bg">
       <TopNavbar />
       <Navbar />
       <div className="container">
+        {
+          !reyting?.results && <div style={{width:"100%", height:"500px"}}><PageLoader/></div>
+        }
         {reyting?.results && (
           <>
             <div className="rating_filter">
               <h1>Fan o‘qituvchilar reytingi</h1>
               <div className="filterBlok">
                 <select name="" id="" defaultValue="" onChange={(e)=>setBilim(e.target.value)}>
-                  <option value="" disabled style={{color:"white"}}>
+                  <option value="" style={{color:"white"}}>
                     Bilim soha
                   </option>
                   {bilim_soha &&
@@ -58,7 +63,7 @@ function TeacherRating() {
                     })}
                 </select>
                 <select name="" id="" defaultValue="" onChange={(e)=>setTalim(e.target.value)}>
-                  <option disabled value="">
+                  <option value="">
                     Talim soha
                   </option>
                   {talim_soha &&
@@ -71,7 +76,7 @@ function TeacherRating() {
                     })}
                 </select>
                 <select name="" id="" defaultValue="" onChange={(e)=>setYunalish(e.target.value)}>
-                  <option disabled value="">
+                  <option value="">
                     Talim yo'nalish
                   </option>
                   {talim_yunalish &&
@@ -84,7 +89,7 @@ function TeacherRating() {
                     })}
                 </select>
                 <select name="" id="" defaultValue="" onChange={(e)=>setKasb(e.target.value)}>
-                  <option disabled value="">
+                  <option value="">
                     Kasb va mutaxasisliklar
                   </option>
                   {kasb_mutaxassislik &&
@@ -97,7 +102,7 @@ function TeacherRating() {
                     })}
                 </select>
                 <select name="" id="" defaultValue="" onChange={(e)=>setFan(e.target.value)}>
-                  <option disabled value="">
+                  <option value="">
                     Fanlar
                   </option>
                   {fanlar &&
@@ -109,6 +114,7 @@ function TeacherRating() {
                       );
                     })}
                 </select>
+                <button onClick={()=> window.location.reload()}> <AiOutlineClear style={{width:"20px", height:"20px"}}/> Filterni tozalash</button>
               </div>
             </div>
             <div className="content">

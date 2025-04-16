@@ -29,10 +29,10 @@ export default function QisqaKurs() {
             <div className="qisqa_title">
               <p>Qisqa muddatli kurslar</p> <span>{QisqaMuttatliKursArr.length}</span>
             </div>
-            <div className="talim_search">
+            {/* <div className="talim_search">
               <i className="bi bi-search"></i>
               <input type="search" placeholder="izlash" />
-            </div>
+            </div> */}
           </div>
           <div className="world_cards">
             {QisqaMuttatliKursArr.map((kurs) => {

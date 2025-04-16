@@ -8,6 +8,8 @@ import { Link, NavLink } from "react-router-dom";
 import { FiDownload } from "react-icons/fi";
 import { FaEye } from "react-icons/fa";
 import { Pagination } from "@mui/material";
+import { AiOutlineClear } from "react-icons/ai";
+import PageLoader from "../../Loader/PageLoader";
 
 function Materiallar() {
   const [bilim, setBilim] = useState("");
@@ -44,7 +46,6 @@ function Materiallar() {
   );
 
   const [buttons, setButtons] = useState([]);
-  const [barchasi, setBarchasi] = useState(true);
   useEffect(() => {
     if (materialType && materialType.length > 0) {
       setTimeout(() => {
@@ -92,7 +93,7 @@ function Materiallar() {
               defaultValue=""
               onChange={(e) => setBilim(e.target.value)}
             >
-              <option value="" disabled>
+              <option value="">
                 Bilim soha
               </option>
               {bilim_soha &&
@@ -110,7 +111,7 @@ function Materiallar() {
               defaultValue=""
               onChange={(e) => setTalim(e.target.value)}
             >
-              <option disabled value="">
+              <option value="">
                 Talim soha
               </option>
               {talim_soha &&
@@ -128,7 +129,7 @@ function Materiallar() {
               defaultValue=""
               onChange={(e) => setYunalish(e.target.value)}
             >
-              <option disabled value="">
+              <option value="">
                 Talim yo'nalish
               </option>
               {talim_yunalish &&
@@ -146,7 +147,7 @@ function Materiallar() {
               defaultValue=""
               onChange={(e) => setKasb(e.target.value)}
             >
-              <option disabled value="">
+              <option value="">
                 Kasb va mutaxasisliklar
               </option>
               {kasb_mutaxassislik &&
@@ -164,7 +165,7 @@ function Materiallar() {
               defaultValue=""
               onChange={(e) => setFan(e.target.value)}
             >
-              <option disabled value="">
+              <option value="">
                 Fanlar
               </option>
               {fanlar &&
@@ -176,6 +177,7 @@ function Materiallar() {
                   );
                 })}
             </select>
+            <button onClick={()=> window.location.reload()}> <AiOutlineClear style={{width:"20px", height:"20px"}}/> Filterni tozalash</button>
           </div>
         </div>
         <div className="contentBlock">
@@ -217,12 +219,15 @@ function Materiallar() {
           </div>
           <div className="contents">
             <div className="content">
+              {
+                !materialList?.results && <div style={{width:"100%", height:"500px"}}><PageLoader/></div>
+              }
               {materialList?.results &&
                 materialList.results.map((item) => {
                   return (
                     <div key={item.id} className="cardMaterial">
                       <h2>
-                        <span>{item.kategoriya_material?.name}</span>
+                      {item.kategoriya_material?.name}
                       </h2>
                       <h1>{item.fan?.name}</h1>
                       <div className="btnShow">
