@@ -20,7 +20,7 @@ function Card() {
                   <RiSchoolLine style={{width:"45px", height:"45px"}}/>
                 </div>
                 <h4>
-                  Professional ta’lim <br /> muassasalari
+                  Kasbiy ta’lim <br /> muassasalari
                 </h4>
                 <Link className="birlashma slateblue" to="/viloyatlar">Batafsil</Link>
               </div>

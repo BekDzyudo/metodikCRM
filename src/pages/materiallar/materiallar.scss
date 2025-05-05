@@ -140,7 +140,8 @@
                 .btnShow{
                     padding: 0px 10px 5px;
                     display: flex;
-                    justify-content: space-between;
+                    column-gap: 20px;
+                    // justify-content: space-between;
                     button{
                         background: none;
                         font-size: 16px;
@@ -165,10 +166,10 @@
                       font-weight: 600;
                       border-radius: 5px;
                       display: flex;
-                      column-gap: 10px;
+                      column-gap: 5px;
                       align-items: center;
                       span{
-                          font-size: 18px;
+                          font-size: 20px;
                           color: #326695;
                       }
                       &:hover{

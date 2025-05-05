@@ -91,7 +91,6 @@ function ChatModal({ materialId }) {
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
-  
 
   function sendData(e) {
     e.preventDefault()

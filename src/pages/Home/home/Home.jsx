@@ -27,7 +27,7 @@ function Home() {
                 </p>
               </div>
               <div className="home_btn">
-                <button className="BTN">Batafsil</button>
+                {/* <button className="BTN">Batafsil</button> */}
               </div>
             </div>
             <div className="col-6">

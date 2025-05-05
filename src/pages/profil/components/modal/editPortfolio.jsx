@@ -6,8 +6,7 @@ import { AuthContext } from '../../../../contexts/AuthContext';
 export function EditPortfolio() {
     const {editObj, blok, setBlok} = useContext(PortfolioContext);
     const {auth, userData} = useContext(AuthContext)
-      
-    
+
     const [editilmiyDaraja, setEditilmiyDaraja] = useState();
     const [editmusobaqaGolibi,setEditmusobaqaGolibi] = useState();
     const [editworldSkillsMutaxassis, setEditworldSkillsMutaxassis] = useState();
@@ -64,6 +63,7 @@ export function EditPortfolio() {
             multimedialar: editmultimediaMateriallar,
             til_sertifikatlari: editTilBilish
         }
+        
             
         fetch(`${import.meta.env.VITE_BASE_URL}/profil/${editObj.id}/`,{
             method: "PUT",

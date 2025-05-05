@@ -19,7 +19,7 @@ function Navbar() {
           </li> */}
           <li>
             <NavLink className="nav-link" to="/viloyatlar">
-              Professional ta'lim muassasalari
+              Kasbiy ta'lim muassasalari
             </NavLink>
           </li>
           <li>

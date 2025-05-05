@@ -29,7 +29,7 @@ export const AuthProvider = ({children}) =>{
           return res.json();
         })
         .then((data) => {
-          setMaterialMetod(data)
+          setMaterialMetod(data)          
         })
         .catch((err) => {
           console.log(err);

@@ -90,10 +90,13 @@ export function RegNewParol() {
                             </div>
                         </div>
                     </form>
-                    <div className="saveParolButton">
+                    <div className="saveParolButton" style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
                         <Link onClick={addData}>
                             <button id="saveMalumot">Parolni o'zgartirish</button>
                         </Link>
+                        <Link to="/login" style={{color: "#323548cc", marginBottom:"20px", marginTop:"10px", fontSize:"15px"}}>
+                                        Login sahifasiga o'tish
+                                        </Link>
                     </div>
                 </div>
             </div>

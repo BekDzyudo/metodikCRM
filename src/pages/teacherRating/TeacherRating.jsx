@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar/navbarMenu/Navbar";
 import FooterWhite from "../../components/footer/FooterWhite";
 import telba from "../../images/img/telba.jpg";
 import { Pagination } from "@mui/material";
-import useGetFetch from "../../hooks/useGetFetchProfil";
+import useGetFetch from "../../hooks/useGetFetch";
 import { AiOutlineClear } from "react-icons/ai";
 import PageLoader from "../../Loader/PageLoader";
 
@@ -32,7 +32,7 @@ function TeacherRating() {
   const { data: fanlar } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/edu-prof/fan/?kasb_va_mutaxassislik=${kasb}`
   );
-  const { data: reyting } = useGetFetch(
+  const { data: reyting, isPending, error } = useGetFetch(
     `${import.meta.env.VITE_BASE_URL}/reyting_app/reyting/?bilim_soha=${bilim}&talim_soha=${talim}&talim_yunalish=${yunalish}&kasb_va_mutaxasislik=${kasb}&fan=${fan}`
   );
   
@@ -41,9 +41,11 @@ function TeacherRating() {
       <TopNavbar />
       <Navbar />
       <div className="container">
-        {
+        {/* {
           !reyting?.results && <div style={{width:"100%", height:"500px"}}><PageLoader/></div>
-        }
+        } */}
+        {isPending && <PageLoader />}
+        {error && <div className="noData">{error}</div>}
         {reyting?.results && (
           <>
             <div className="rating_filter">

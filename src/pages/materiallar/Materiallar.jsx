@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TopNavbar from "../../components/navbar/topNavbar/TopNavbar";
 import Navbar from "../../components/navbar/navbarMenu/Navbar";
 import FooterWhite from "../../components/footer/FooterWhite";
 import "./materiallar.scss";
-import useGetFetch from "../../hooks/useGetFetchProfil";
+import useGetFetch from "../../hooks/useGetFetch";
 import { Link, NavLink } from "react-router-dom";
 import { FiDownload } from "react-icons/fi";
 import { FaEye } from "react-icons/fa";
 import { Pagination } from "@mui/material";
 import { AiOutlineClear } from "react-icons/ai";
 import PageLoader from "../../Loader/PageLoader";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Materiallar() {
+const {auth} = useContext(AuthContext)
+
   const [bilim, setBilim] = useState("");
   const [talim, setTalim] = useState("");
   const [yunalish, setYunalish] = useState("");
@@ -68,7 +71,7 @@ function Materiallar() {
     );
   }
 
-  const { data: materialList } = useGetFetch(
+  const { data: materialList, isPending, error } = useGetFetch(
     `${
       import.meta.env.VITE_BASE_URL
     }/birlashma/material-list/?kategoriya_material=${materialTypestate}&fan=${fan}&fan__kasb_va_mutaxassislik__talim_yunalish__talim_soha__bilim_soha=${bilim}&fan__kasb_va_mutaxassislik__talim_yunalish__talim_soha=${talim}&fan__kasb_va_mutaxassislik__talim_yunalish=${yunalish}&
@@ -78,13 +81,19 @@ function Materiallar() {
   function handlePagination(e, p) {
     setPage(p);
   }
+console.log(materialList);
 
   return (
     <div className="materiallar">
       <TopNavbar />
       <Navbar />
       <div className="container">
-        <div className="material_filter">
+        {isPending && <PageLoader />}
+        {error && <div className="noData">{error}</div>}
+        {
+          materialList?.results && (
+            <>
+               <div className="material_filter">
           <h1>Foydalanish uchun materiallar</h1>
           <div className="filterBlok">
             <select
@@ -225,26 +234,42 @@ function Materiallar() {
               {materialList?.results &&
                 materialList.results.map((item) => {
                   return (
-                    <div key={item.id} className="cardMaterial">
+                    <Link to={`/materiallarDetail/${item.id}`} key={item.id} className="cardMaterial">
                       <h2>
                       {item.kategoriya_material?.name}
                       </h2>
                       <h1>{item.fan?.name}</h1>
                       <div className="btnShow">
-                        <Link to={`/materiallarDetail/${item.id}`}>
-                          Ko'rish{" "}
-                          <span>
+                        <Link >
+                        <span>
                             <FaEye />
                           </span>
+                          {item.view_count}
                         </Link>
-                        <Link to={item.file} download={true} target="_blank">
+                        <Link>
+                          <span>
+                            <FiDownload />
+                          </span>
+                          {item.dowloand_count}
+                        </Link>
+                        {/* {
+                          auth.refreshToken ? 
+                          <Link to={item.file} download={true} target="_blank">
+                          <span>
+                            <FiDownload />
+                          </span>
+                          423{" "}
+                        </Link>
+                        :
+                        <Link to="/login">
                           Yuklab olish{" "}
                           <span>
                             <FiDownload />
                           </span>
                         </Link>
+                        } */}
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
             </div>
@@ -276,6 +301,9 @@ function Materiallar() {
             )}
           </div>
         </div>
+            </>
+          )
+        }
       </div>
       <FooterWhite />
     </div>

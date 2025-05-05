@@ -10,6 +10,7 @@ export function RegisterStudent() {
   const firstName = useRef()
   const lastName = useRef()
   const email = useRef();
+  const image = useRef();
   const password = useRef();
   const confirmPassword = useRef();
   const navigate = useNavigate()
@@ -19,6 +20,7 @@ export function RegisterStudent() {
       first_name: firstName.current.value,
       last_name: lastName.current.value,
       email: email.current.value,
+      image: image.current.files[0],
       password: password.current.value,
       password2: confirmPassword.current.value,
     };
@@ -43,17 +45,24 @@ export function RegisterStudent() {
       });
 
 
-   
+      const formData = new FormData();
 
       if (errorArr.length == 0) {
+        formData.append("first_name", dataObj.first_name);
+        formData.append("last_name", dataObj.last_name);
+        formData.append("email", dataObj.email);
+        formData.append("image", dataObj.image, dataObj.image.name);
+        formData.append("password", dataObj.password);
+        formData.append("password2", dataObj.password2);
+        formData.append("user_roles", "ordinary_user");
+
         if (dataObj.password !== dataObj.password2) {
           toast.error("Parolni qayta tekshiring")
         }
          else {
           fetch(`${import.meta.env.VITE_BASE_URL}/register/ordinary/`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...dataObj, user_roles: "ordinary_user" }),
+            body: formData
           })
             .then(async(res) => {
               const errorObj = await res.json()
@@ -112,18 +121,22 @@ export function RegisterStudent() {
                 </div>
               </div>
               <div className="regStudentRow">
-              <div className="studentInput">
-                <label htmlFor="email">Elektron pochta*</label>
-                <br />
-                <input type="email" id="email" ref={email}/>
-              </div>
+                <div className="studentInput">
+                  <label htmlFor="email">Elektron pochta*</label>
+                  <br />
+                  <input type="email" id="email" ref={email}/>
+                </div>
+                <div className="studentInput">
+                  <label htmlFor="image">Rasm joylash*</label>
+                  <br />
+                  <input type="file" accept="image/*" id="image" ref={image}/>
+                </div>
               </div>
               <div className="regStudentRow">
                 <div className="studentInput">
                   <label htmlFor="password">Parol*</label>
                   <br />
                   <input
-                    // className="student_parol"
                     type="password"
                     id="password"
                     placeholder="****"
@@ -145,7 +158,11 @@ export function RegisterStudent() {
                 <Link to="/register-student" >
                 <button style={{background: "none", color:"white"}} id="saveMalumot" onClick={addData}>Saqlash</button>
                 </Link>
+             {/* #107ddb */}
               </div>
+              <Link to="/login" style={{color: "#323548cc", marginBottom:"20px", fontSize:"15px"}}>
+                Login sahifasiga o'tish
+                </Link>
             </form>
           </div>
         </div>

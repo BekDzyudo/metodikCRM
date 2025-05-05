@@ -209,7 +209,7 @@ export default function Documents() {
                   </div>
                 </div>
               </div>
-              <div className="selects_box">
+              {/* <div className="selects_box">
                 <h4>Ta'lim sohasini tanlash</h4>
                 <div className="select_fields">
                   <div className="select_field">
@@ -316,7 +316,7 @@ export default function Documents() {
                   </div>
                   <button className="select_btn">Saqlash</button>
                 </div>
-              </div>
+              </div> */}
               <div className="document_new">
                 <h4>Barcha materiallar</h4>
                 <span className="document_incoming">Materiallar soni</span>

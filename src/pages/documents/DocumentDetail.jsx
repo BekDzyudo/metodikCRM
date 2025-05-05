@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { FiCheckSquare, FiDownload, FiHome, FiUpload } from "react-icons/fi";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useGetFetchProfil from "../../hooks/useGetFetchProfil";
@@ -12,8 +12,12 @@ export default function DocumentDetail() {
   const { auth, lookAtActionMetodist } = useContext(AuthContext);
   const navigate = useNavigate();
   const [Material, setMaterial] = useState(null);
+  let birlashmaLink = useRef()
+  let incomingButtons = useRef()
 
-  const {data} = useGetFetch(`${import.meta.env.VITE_BASE_URL}/birlashma/material/${id}/muhokama-update/`)
+  const { data } = useGetFetch(
+    `${import.meta.env.VITE_BASE_URL}/birlashma/material/${id}/muhokama-update/`
+  );
 
   function materialDetail() {
     if (!id) return;
@@ -90,9 +94,13 @@ export default function DocumentDetail() {
       })
       .then((data) => {
         toast.success("Material tasdiqlandi");
-        navigate("/Document/documents");
+        // navigate("/Document/documents");
       })
-      .catch((err) => console.log(JSON.parse(err.message)));
+      .catch((err) => console.log(JSON.parse(err.message)))
+      .finally(()=>{
+       incomingButtons.current.classList.remove("incoming_buttons")
+       incomingButtons.current.classList.add("incoming_buttonsHidden")
+      })
   }
   function radEtildi() {
     fetch(`${import.meta.env.VITE_BASE_URL}/birlashma/material-update/${id}/`, {
@@ -110,11 +118,44 @@ export default function DocumentDetail() {
       })
       .then((data) => {
         toast.success("Material rad etildi");
-        navigate("/Document/documents");
+        // navigate("/Document/documents");
       })
-      .catch((err) => console.log(JSON.parse(err.message)));
+      .catch((err) => console.log(JSON.parse(err.message)))
+      .finally(()=>{
+        incomingButtons.current.classList.remove("incoming_buttons")
+       incomingButtons.current.classList.add("incoming_buttonsHidden")
+      })
   }
 
+  function birlashmaFunc() {
+    fetch(
+      `${
+        import.meta.env.VITE_BASE_URL
+      }/birlashma/send-material-telegram-group/?material_id=${Material?.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + auth.accessToken,
+        },
+      }
+    )
+      .then(async (res) => {
+        const errorObj = await res.json();
+        if (!res.ok) throw new Error(JSON.stringify(errorObj));
+        return res;
+      })
+      .then((data) => {
+        toast.success("Material birlashmaga yuborildi");
+        // navigate("/Document/documents");
+      })
+      .catch((err) => console.log(JSON.parse(err.message)))
+      .finally(()=>{
+        birlashmaLink.current.classList.remove("birlashmaBtn")
+        birlashmaLink.current.classList.add("birlashmaBtnHidden")
+      })
+  }
+  
   return (
     <div className="container">
       <div className="top">
@@ -285,15 +326,19 @@ export default function DocumentDetail() {
                             <p>FAN NOMI</p>
                             <span>{Material?.fan.name}</span>
                           </div>
+                        
+                            <div className="incoming_box">
+                              <Link
+                              ref={birlashmaLink}
+                                onClick={birlashmaFunc}
+                                className="birlashmaBtn"
+                              >
+                                Birlashmaga yuborish
+                              </Link>
+                            </div>
+                          
                         </div>
-                        {/* ============== */}
-                        {Math.floor(
-                          new Date(Material?.updated_at).getTime() / 1000
-                        ) ==
-                          Math.floor(
-                            new Date(Material?.created_at).getTime() / 1000
-                          ) && (
-                          <div className="incoming_buttons">
+                        <div className="incoming_buttons" ref={incomingButtons}>
                             <div className="rejection">
                               <Link
                                 className="acceptance"
@@ -306,9 +351,6 @@ export default function DocumentDetail() {
                               </button>
                             </div>
                           </div>
-                        )}
-
-                        {/* ============== */}
                       </div>
                     </div>
                     <hr />

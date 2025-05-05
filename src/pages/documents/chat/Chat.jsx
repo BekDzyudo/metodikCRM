@@ -2,14 +2,13 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import "./chat.scss";
 import "react-chat-elements/dist/main.css";
 import useGetFetchProfil from "../../../hooks/useGetFetchProfil";
-import { MalumotContext } from "../../profil/components/contexts/editMalumotlarContext";
 
 function Chat({ userData, muhokama, materialId, materialDetail }) {
   const chatEndRef = useRef(null);
   const chatContainerRef = useRef(null);
   const enterInput = useRef();
   const [inputText, setInputText] = useState("");
-  const { chatActiveModal, setChatActiveModal } = useContext(MalumotContext);
+  
 
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
@@ -43,25 +42,13 @@ function Chat({ userData, muhokama, materialId, materialDetail }) {
   }
 
   function getLastSeen(timestamp) {
-    const now = new Date();
-    const lastSeen = new Date(timestamp);
-    const diffMs = now - lastSeen; // Millisekund farqi
+    const min = timestamp.split(":")[1]
+    const hour = timestamp.split(":")[0]
+console.log(hour, min);
 
-    const diffSec = Math.floor(diffMs / 1000);
-    const diffMin = Math.floor(diffSec / 60);
-    const diffHour = Math.floor(diffMin / 60);
-    const diffDay = Math.floor(diffHour / 24);
-    const diffWeek = Math.floor(diffDay / 7);
-    const diffMonth = Math.floor(diffDay / 30);
-    const diffYear = Math.floor(diffDay / 365);
-
-    if (diffSec < 60) return "Hozirgina online edi";
-    if (diffMin < 60) return `so'ngi faollik ${diffMin} daqiqa oldin`;
-    if (diffHour < 24) return `so'ngi faollik ${diffHour} soat oldin`;
-    if (diffDay < 7) return `so'ngi faollik ${diffDay} kun oldin`;
-    if (diffWeek < 4) return `so'ngi faollik ${diffWeek} hafta oldin`;
-    if (diffMonth < 12) return `so'ngi faollik ${diffMonth} oy oldin`;
-    return `so'ngi faollik ${diffYear} yil oldin`;
+    if (min > 0 && hour == 0) return `so'ngi faollik ${min[0] == 0 ? min[1] : min} daqiqa oldin`;
+    if (hour > 0) return `so'ngi faollik ${hour} soat oldin`;
+    return `uzoq vaqt kirmagan`;
   }
 
   useEffect(() => {
@@ -78,7 +65,8 @@ function Chat({ userData, muhokama, materialId, materialDetail }) {
             {userData?.online ? (
               <p>online</p>
             ) : (
-              <p> {getLastSeen(userData?.last_seen)}</p>
+              <p> {getLastSeen(userData?.last_seen_ago)}</p>
+              // <p>{userData?.last_seen_ago}</p>
             )}
           </div>
         </div>

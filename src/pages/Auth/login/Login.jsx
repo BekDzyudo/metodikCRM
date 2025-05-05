@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { login } from '../../../components/authentication/auth';
+import { Button } from 'bootstrap';
 
 export function Login() {
     const email = useRef();
@@ -82,13 +83,14 @@ export function Login() {
                                 </Link>
                             </div>
                         </div>
-                    </form>
-                    <div className="saveTeacherButton">
-                        <Link >
-                            <button onClick={addData} id="saveMalumot" >Tizimga kirish</button>
-                        </Link>
+                        <div className="saveTeacherButton">
+                        {/* <Link > */}
+                            <button type='submit' onClick={addData} id="saveMalumot" >Tizimga kirish</button>
+                        {/* </Link> */}
                     </div>
-                    <Link to="/register-select" className='saveTeacherRoyxat'>
+                    </form>
+                    
+                    <Link to="/register-student" className='saveTeacherRoyxat'>
                         <p>Ro'yxatdan o'tish</p>
                     </Link>
                 </div>

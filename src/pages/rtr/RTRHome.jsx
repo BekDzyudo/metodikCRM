@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import hudud from "../../images/img/hudud.jpg";
+import daraja3 from "../../images/img/boshlangich.png"
+import daraja4 from "../../images/img/orta.png"
+import daraja5 from "../../images/img/maxsus.png"
 import useGetFetch from "../../hooks/useGetFetch";
 import PageLoader from "../../Loader/PageLoader";
 
@@ -29,19 +32,19 @@ if(data){
         <div className="rtrHomeRow">
         <Link to="boshlangich-professional-talim" className="card">
           <div className="image">
-            <img src={hudud} alt="" />
+            <img src={daraja3} alt="" />
           </div>
           <h2>{data[0].title}</h2>
         </Link>
         <Link to="orta-professional-talim" className="card">
           <div className="image">
-            <img src={hudud} alt="" />
+            <img src={daraja4} alt="" />
           </div>
           <h2>{data[1].title}</h2>
         </Link>
         <Link to="orta-maxsus-professional-talim" className="card">
           <div className="image">
-            <img src={hudud} alt="" />
+            <img src={daraja5} alt="" />
           </div>
           <h2>{data[2].title}</h2>
         </Link>

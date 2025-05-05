@@ -22,6 +22,7 @@ import { CiSettings } from "react-icons/ci";
 import { ImExit } from "react-icons/im";
 import { GrDocumentText } from "react-icons/gr";
 import { FaCircle } from "react-icons/fa";
+import sound from "../../../images/img/notifSound.wav"
 
 function TopNavbar() {
   const { auth, logout, MaterialMetod, lookAtActionMetodist } = useContext(AuthContext);
@@ -29,6 +30,7 @@ function TopNavbar() {
   const { data: user } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/user-data/`
   );
+
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const handleOpenUserMenu = (event) => {
@@ -66,6 +68,7 @@ function TopNavbar() {
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       lookAtActionMetodist()
+      console.log("sound play");
       // console.log("yangi notification:", data);
     };
 
@@ -103,12 +106,14 @@ function TopNavbar() {
               <option value="Englis Til">Englis tili</option>
             </select>
           </div>
-          <div className="kirish">
-            <NavLink to="/regTeacherTitle" className="kirish-btn">
+          {
+            auth.refreshToken ? <></> : <div className="kirish">
+            <NavLink to="/login" className="kirish-btn">
               <PiSignIn className="signIn" />
               Kirish
             </NavLink>
           </div>
+          }
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip>
               <IconButton
@@ -212,7 +217,9 @@ function TopNavbar() {
                 sx: { display: "block" },
               }}
             >
-              <MenuItem onClick={handleCloseUserMenu} sx={{ width: "150px" }}>
+              { 
+                user?.user_roles && (
+                  <MenuItem onClick={handleCloseUserMenu} sx={{ width: "150px" }}>
                 <Typography sx={{ textAlign: "center", width: "100%" }}>
                   {user?.user_roles == "teacher" && (
                     <Link style={{ width: "100%" }} to="/profil">
@@ -230,6 +237,8 @@ function TopNavbar() {
                   )}
                 </Typography>
               </MenuItem>
+                )
+              }
               <MenuItem onClick={handleCloseUserMenu} sx={{ width: "150px" }}>
                 <Typography sx={{ textAlign: "center", width: "100%" }}>
                   <Link>
@@ -238,7 +247,9 @@ function TopNavbar() {
                   </Link>
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu} sx={{ width: "150px" }}>
+              {
+                user && (
+                  <MenuItem onClick={handleCloseUserMenu} sx={{ width: "150px" }}>
                 <Typography sx={{ textAlign: "center", width: "100%" }}>
                   <Link to="/login" onClick={logout}>
                     <ImExit style={{ width: "20px", height: "20px" }} />
@@ -246,6 +257,8 @@ function TopNavbar() {
                   </Link>
                 </Typography>
               </MenuItem>
+                )
+              }
             </Menu>
           </Box>
         </div>
