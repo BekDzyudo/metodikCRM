@@ -54,7 +54,7 @@ function TopNavbar() {
       lookAtActionMetodist()
     }, [auth?.accessToken])
 
-  const socketUrl = `ws://192.168.101.174:3000/ws/notifications/?token=${auth?.accessToken}`;
+  const socketUrl = `ws://192.168.100.10/ws/notifications/?token=${auth?.accessToken}`;
 
   useEffect(() => {
     if (!auth.accessToken) return;

@@ -33,7 +33,6 @@ function Comments({ comment, index }) {
       text: replyText,
       reply_comment: commentId,
     };
-    console.log(obj);
 
     if (!replyText.trim()) {
       toast.error("Iltimos bo'sh maydonni to'ldiring");

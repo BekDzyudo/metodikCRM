@@ -81,7 +81,6 @@ const {auth} = useContext(AuthContext)
   function handlePagination(e, p) {
     setPage(p);
   }
-console.log(materialList);
 
   return (
     <div className="materiallar">

@@ -17,13 +17,45 @@
     align-items: center;
     justify-content: center;
   }
-  
+  .name{
+    margin-right: 50px;
+  }
   .name h1 {
     color: #fff;
-    font-size: 70px;
-    font-weight: 800;
-    text-align: justify;
+    font-size: 80px;
+    font-weight: 700;
+    text-align: start;
+    text-transform: uppercase;
+   font-family: 'Oswald', sans-serif;
   }
+  .name .animated-title{
+    font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 80px;
+  text-transform: uppercase;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  }
+  .animated-title span {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: showUp 0.05s forwards;
+}
+
+.animated-title span:nth-child(1) { animation-delay: 0.05s; }
+.animated-title span:nth-child(2) { animation-delay: 0.10s; }
+.animated-title span:nth-child(3) { animation-delay: 0.15s; }
+/* ... davom ettirish kerak ... */
+.animated-title span:nth-child(40) { animation-delay: 2s; } /* oxirigacha qo‘shing */
+
+@keyframes showUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   
   .text p {
     margin-top: 45px !important;

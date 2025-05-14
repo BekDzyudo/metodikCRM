@@ -1,4 +1,5 @@
-const BASE_URL = "http://192.168.101.174:3000/api";
+// const BASE_URL = "http://192.168.101.174:3000/api";
+const BASE_URL = "http://192.168.100.10/api";
 
 export const register = async (data) => {
   const response = await fetch(`${BASE_URL}/register/`, {

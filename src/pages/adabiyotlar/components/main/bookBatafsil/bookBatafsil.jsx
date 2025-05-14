@@ -11,7 +11,6 @@ import Comments from "./Comments";
 
 export function BookBatafsil() {
   const { userData } = useContext(AuthContext);
-  console.log(userData);
   
   const { id } = useParams();
   // ref
@@ -58,7 +57,7 @@ export function BookBatafsil() {
         body: JSON.stringify(obj),
       })
         .then(async (res) => {
-          console.log(res);
+          // console.log(res);
 
           const errorObj = await res.json();
           if (!res.ok) throw new Error(JSON.stringify(errorObj));
