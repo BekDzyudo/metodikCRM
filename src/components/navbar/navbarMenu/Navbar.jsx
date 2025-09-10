@@ -22,8 +22,13 @@ function Navbar() {
               Kasbiy ta'lim muassasalari
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink className="nav-link" to="/Talim-Standartlari-Fanlar">
+              Ta'lim standartlari va fanlar
+            </NavLink>
+          </li> */}
+          <li>
+            <NavLink className="nav-link" to="https://edu.profedu.uz/" target="blank">
               Ta'lim standartlari va fanlar
             </NavLink>
           </li>

@@ -1,5 +1,5 @@
 .bar {
-  padding-top: 30px;
+  padding-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,6 +25,9 @@
   color: #fff;
   margin: 0;
 }
+.hamburger{
+  display: none;
+}
 .search {
   position: relative;
 }
@@ -49,6 +52,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.dropdowns .dropdown{
+  border: 1px solid white;
+  width: min-content;
 }
 #menu-appbar a{
   display: flex;
@@ -152,4 +159,87 @@
 }
 .dropdawnProfile ul li a svg {
   margin-right: 5px;
+}
+.notification{
+  margin: 0px 15px;
+}
+.avatar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.kirishMobile{
+  display: none;
+}
+.tilMobile{
+  display: none;
+}
+@media only screen and (max-width: 640px) {
+  .dropdowns{
+    margin-bottom: 10px;
+  }
+  .bar {
+  padding-top: 10px;
+  flex-direction: column-reverse;
+}
+.logo-img {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+.logo-title {
+ font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+}
+.til{
+  display: none;
+}
+.tilMobile{
+  display: block;
+}
+.tilMobile select {
+  background: none;
+  outline: none;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 5px;
+}
+.tilMobile select option {
+  font-size: 14px;
+  background: #179fe8cc;
+  border: none;
+}
+.kirish{
+  display: none;
+}
+.dropdowns {
+  width: 100%;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.hamburger{
+  display: block;
+  width: 40px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+}
+.notification{
+   margin: 0px 10px;
+}
+.dropdown-item{
+  font-size: 14px;
+}
+.kirishMobile{
+  display: block;
+}
+.dropdown-menu{
+  left: 0 !important;
+  right: auto !important;
+  min-width: 200px; 
+}
 }

@@ -19,3 +19,8 @@ li .nav-link {
 .nav-menu .active {
   color: #05cbd6;
 }
+@media only screen and (max-width: 640px) {
+  nav {
+  display: none;
+}
+}

@@ -3,6 +3,7 @@ import exitIcon from "../../../../images/exitIcon.svg";
 import { PortfolioContext } from "../contexts/editPortfolioContext";
 import useGetFetchProfil from "../../../../hooks/useGetFetchProfil";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import { red } from "@mui/material/colors";
 
 export function AddMalumotHujjatlar() {
   const { addhujjat, setAddHujjat, setAddObj } = useContext(PortfolioContext);
@@ -95,6 +96,7 @@ export function AddMalumotHujjatlar() {
   const { data: fanlar } = useGetFetchProfil(
     `${import.meta.env.VITE_BASE_URL}/shared_app/fanlar/${userData?.userId}`
   );
+console.log(fanlar);
 
   return (
     addhujjat && (
@@ -155,9 +157,9 @@ export function AddMalumotHujjatlar() {
               <br />
               <br />
               <label htmlFor="myfile" className="custom-file-upload">
-                Fayl biriktirish
+                Fayl biriktirish <span style={{color:"red"}}>(zip, rar)</span>
               </label>
-              <input type="file" ref={addFile} id="addFile" accept="application/pdf"/>
+              <input type="file" ref={addFile} id="addFile" accept=".zip,.rar"/>
             </div>
           </form>
           <div className="savePortfolioModalBtn">
