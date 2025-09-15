@@ -39,4 +39,19 @@
     color: #000;
     margin: 0;
   }
+
+  @media only screen and (max-width: 640px) {
+    .havola {
+    margin: 70px 0;
+  }
+  .havola_top {
+    margin-bottom: 20px;
+  }
+  .havola_top h1 {
+     color: rgb(19, 146, 231);
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+  }
+  }
   

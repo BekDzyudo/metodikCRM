@@ -25,10 +25,11 @@ export default function PedagogTarkib() {
     <>
       {isPending && <PageLoader />}
       {teachers?.length ? (
-        <div className="pedagog_body">
+        <div className="pedagog_body row gy-3">
           {teachers.map((item, index) => {
             return (
-              <Link key={index} className="pedagog_card">
+              <div className="col-sm-12 col-xs-6 col-md-6 col-xl-4">
+                <Link key={index} className="pedagog_card">
                 <div className="pedagog_img">
                   <img src={item.image} alt="" />
                 </div>
@@ -39,6 +40,7 @@ export default function PedagogTarkib() {
                   <h3>{item.first_name}</h3>
                 </div>
               </Link>
+              </div>
             );
           })}
         </div>

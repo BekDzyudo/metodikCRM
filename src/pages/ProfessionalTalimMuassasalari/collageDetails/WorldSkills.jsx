@@ -34,10 +34,11 @@ export default function WorldSkills() {
               <input type="search" placeholder="izlash" />
             </div> */}
           </div>
-          <div className="world_cards">
+          <div className="world_cards row gy-3">
             {worldSkillsArr.map((worldSkills) => {
               return (
-                <div key={worldSkills.id} className="col-3 world_card">
+                <div className="col-sm-12 col-xs-6 col-md-6 col-xl-4">
+                  <div key={worldSkills.id} className="world_card">
                   <div className="world_img">
                     <img src={worldSkills.image} alt="rasm" />
                   </div>
@@ -59,6 +60,7 @@ export default function WorldSkills() {
                       </div>
                     </div>
                   </div>
+                </div>
                 </div>
               );
             })}

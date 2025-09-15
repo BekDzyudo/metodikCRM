@@ -1,13 +1,13 @@
-import React from 'react'
-import logoWhite from "../../../../images/newLogoWhite.svg"
-import "./footer.css"
-import { Link } from 'react-router-dom'
+import React from "react";
+import logoWhite from "../../../../images/newLogoWhite.svg";
+import "./footer.css";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
     <footer className="footer">
-       <div className="container">
-       <div className="row">
+      <div className="container">
+        <div className="row">
           <div className="col-12 footer_box">
             <div className="col-4">
               <div className="footer_name">
@@ -61,7 +61,9 @@ export function Footer() {
                     <Link to="/adabiyotlar">O‘quv adabiyotlar</Link>
                   </li>
                   <li>
-                    <Link to="/materiallar">O‘qitish materiallari to'plami</Link>
+                    <Link to="/materiallar">
+                      O‘qitish materiallari to'plami
+                    </Link>
                   </li>
                   <li>
                     <Link to="/mahsulotlar">Metodik mahsulotlar</Link>
@@ -89,7 +91,7 @@ export function Footer() {
                     <Link>
                       <span>Manzil</span>
                       <p>
-                        Toshkent shahar, Olmazor tumani, Ziyo ko‘chasi, 76-uy
+                        Toshkent shahar, Olmazor tumani, Chimboy ko‘chasi, 96-uy
                       </p>
                     </Link>
                   </li>
@@ -98,12 +100,45 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="footer_bottom">
-          <p>
-            © 2023 Metodik ta’minot platformasi. Barcha huquqlar himoyalangan.
-          </p>
+        <div className="row_mobile">
+          <div className="footer_logo">
+            <div className="footer_img">
+              <img src={logoWhite} alt="" />
+            </div>
+            <div className="footer_title">
+              <p>
+                PROFESSIONAL TA'LIMNI <br /> RIVOJLANTIRISH <br />
+                INSTITUTI
+              </p>
+            </div>
+          </div>
+          <div className="mobile_contact">
+            <ul>
+              <li>
+                <Link>
+                  <span>Telefon</span>
+                  <p>+998 71 246-90-37</p>
+                </Link>
+              </li>
+              <li>
+                <Link>
+                  <span>Email</span>
+                  <p>pedagoginnovatsiyalar@edu.uz</p>
+                </Link>
+              </li>
+              <li>
+                <Link>
+                  <span>Manzil</span>
+                  <p>Toshkent shahar, Olmazor tumani, Chimboy ko‘chasi, 96-uy</p>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-       </div>
+        <div className="footer_bottom">
+          <p>Barcha huquqlar himoyalangan.</p>
+        </div>
+      </div>
     </footer>
-  )
+  );
 }

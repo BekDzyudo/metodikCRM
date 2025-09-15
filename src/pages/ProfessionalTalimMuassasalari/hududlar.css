@@ -36,7 +36,6 @@
 .hudud .right i {
   font-size: 24px;
 }
-
 .hudud h1 {
   color: #fff;
   font-feature-settings: "clig" off, "liga" off;
@@ -44,18 +43,12 @@
   font-weight: 700;
 }
 .hudud_body .row{
-  width: 100%;
-  display: flex;
-  column-gap: 30px;
-  row-gap: 50px;
-  margin-top: 80px;
   padding-bottom: 100px;
-  align-items: center;
-  flex-wrap: wrap;
+  padding: 20px;
 }
 .hudud_card {
+  width: 100% !important;
   height: 341px;
-  width: 23%;
   flex-shrink: 0;
   border-radius: 20px;
   background: #fff;
@@ -80,7 +73,7 @@
   object-fit: cover;
 }
 .hudud_card:hover {
-  margin-top: -50px;
+  margin-top: -20px;
   background: #05cbd6;
   transition: all 0.3s ease-in-out;
 }
@@ -368,16 +361,16 @@ width: 40%;
 
 .malumot_body {
   /* height: 120vh !important; */
- display: flex;
+ /* display: flex;
  row-gap: 30px;
  column-gap: 30px;
  flex-grow: 3;
- flex-wrap: wrap;
+ flex-wrap: wrap; */
 }
 .kasb_card{
   /* height: 350px; */
   border-radius: 10px;
-  width: 31%;
+  /* width: 31%; */
   min-height: 250px;
   background: #326695;
   display: flex;
@@ -458,17 +451,17 @@ width: 40%;
 }
 
 .world_cards {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   column-gap: 20px;
-  width: 100%;
+  width: 100%; */
 }
 
 .world_card {
   margin-top: 20px;
   border-radius: 5px;
   background: #326695;
-  width: 31.5%;
+  /* width: 31.5%; */
   height: 330px;
   padding: 10px 15px;
 }
@@ -550,15 +543,15 @@ width: 40%;
 /* pedagoglar tarkibi */
 
 .pedagog_body {
-  display: flex;
+  /* display: flex;
   row-gap: 30px;
   column-gap: 30px;
   flex-grow: 3;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
  }
  .pedagog_card{
    border-radius: 10px;
-   width: 31%;
+   /* width: 31%; */
    height: 350px;
    background: #326695;
    display: flex;
@@ -720,4 +713,84 @@ width: 40%;
   margin-bottom: 25px !important;
   padding: 0 !important;
   /* text-align: center; */
+}
+
+
+@media only screen and (max-width: 640px) {
+  .hudud {
+  border-radius: 0px 0px 100px 0px;
+  background: linear-gradient(168deg, #05096e 37.95%, #169de8 96.46%);
+  margin-bottom: 50px;
+  min-height: 100vh;
+}
+  .hudud .top {
+ display: none;
+}
+.hudud h1 {
+  color: #a0cdee;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 30px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 40px !important;
+}
+.muassasa_cards {
+  margin: 20px 0 40px 0;
+  padding-bottom: 100px;
+  display: flex;
+  flex-grow: 4;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.hudud_cards{
+  margin: 20px 0 40px 0;
+}
+.malumot_title {
+  font-size: 20px;
+  font-weight: 700 !important;
+  color: #a0cdee;
+  text-align: center;
+  margin: 40px 0px 30px !important;
+}
+
+.malumot_cards {
+  display: flex;
+  margin-bottom: 100px;
+  column-gap: 50px;
+}
+.fileBlok{
+  width: 100%;
+}
+.malumot_cards .sidebar{
+  display: none;
+}
+.malumot_card {
+  width: 354px;
+  padding: 10px 20px;
+  display: flex;
+  background: var(--light-grey-1, #f7fafd);
+  border-radius: 5px;
+}
+.malumot_card p {
+  font-family: "PT Sans";
+  color: #326695;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.isActive {
+  width: 354px;
+  padding: 10px 20px;
+  display: flex;
+  border-radius: 5px;
+  background: #326695;
+}
+
+.isActive p {
+  color: #ffffff;
+  font-family: "PT Sans";
+  font-size: 17px;
+  font-weight: 600;
+}
 }

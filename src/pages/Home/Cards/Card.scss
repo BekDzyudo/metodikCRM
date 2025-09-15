@@ -199,3 +199,9 @@
 //     clip-path: inset(0 0 0 0);
 //   }
 // }
+
+@media only screen and (max-width: 640px) {
+  .doira {
+  display: none;
+}
+}

@@ -27,35 +27,39 @@ export default function QisqaKurs() {
         <div className="malumot_qisqa">
           <div className="qisqa_top">
             <div className="qisqa_title">
-              <p>Qisqa muddatli kurslar</p> <span>{QisqaMuttatliKursArr.length}</span>
+              <p>Qisqa muddatli kurslar</p>{" "}
+              <span>{QisqaMuttatliKursArr.length}</span>
             </div>
             {/* <div className="talim_search">
               <i className="bi bi-search"></i>
               <input type="search" placeholder="izlash" />
             </div> */}
           </div>
-          <div className="world_cards">
+          <div className="world_cards row gy-3">
             {QisqaMuttatliKursArr.map((kurs) => {
               return (
-                <div key={kurs.id} className="col-3 world_card">
-                  <div className="world_img">
-                    <img src={kurs.image} alt="rasm" />
-                  </div>
-                  <div className="world_desc">
-                    <div className="world_text">
-                      <p>{kurs.name}</p>
-                      {/* <span>Boshlang‘ich professional ta'lim</span> */}
+                <div className="col-sm-12 col-xs-6 col-md-6 col-xl-4">
+                  <div key={kurs.id} className="world_card">
+                    <div className="world_img">
+                      <img src={kurs.image} alt="rasm" />
                     </div>
-                    <div className="world-btns">
-                      {/* <div > */}
-                        <Link className="world_yuklab"
+                    <div className="world_desc">
+                      <div className="world_text">
+                        <p>{kurs.name}</p>
+                        {/* <span>Boshlang‘ich professional ta'lim</span> */}
+                      </div>
+                      <div className="world-btns">
+                        {/* <div > */}
+                        <Link
+                          className="world_yuklab"
                           to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/qisqa-muddatli-kurslar/${kurs.id}`}
                         >
                           Kirish
                         </Link>
-                      {/* </div> */}
-                      <div className="world_card-bottom">
-                        <span>Kasb</span> <span>2023/2024</span>
+                        {/* </div> */}
+                        <div className="world_card-bottom">
+                          <span>Kasb</span> <span>2023/2024</span>
+                        </div>
                       </div>
                     </div>
                   </div>

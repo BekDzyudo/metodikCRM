@@ -81,10 +81,11 @@ export default function TayyorlanadiganKasb() {
               </div>
             </div>
           </div> */}
-          <div className="malumot_body">
+          <div className="malumot_body row gy-3">
             {kasbArr.map((item, index) => {
               return (
-                <Link 
+                  <div className="col-sm-12 col-xs-6 col-md-6 col-xl-4">
+                    <Link 
                 to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/tayyorlanadigan-kasblar/${item?.kasb?.id}`}
                 key={index} 
                 className="kasb_card">
@@ -95,6 +96,7 @@ export default function TayyorlanadiganKasb() {
                     <h3>{item.kasb.name}</h3>
                   </div>
                 </Link>
+                  </div>
               );
             })}
           </div>

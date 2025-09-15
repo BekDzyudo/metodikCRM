@@ -1,10 +1,17 @@
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 
 import useGetFetch from "../../hooks/useGetFetch";
 import PageLoader from "../../Loader/PageLoader";
 import { MdOutlineErrorOutline } from "react-icons/md";
 
 export default function MuassasaMalumotiLayout() {
+  const navigate = useNavigate();
   let { tumanId, muassasaId, collageId } = useParams();
   const {
     data: collage,
@@ -54,13 +61,66 @@ export default function MuassasaMalumotiLayout() {
           </div>
         </div>
         <h3 className="malumot_title">{collage?.name}</h3>
+        <select
+          class="form-select d-md-none mb-3"
+          aria-label="Default select example"
+          onChange={(e) => {
+            if (e.target.value) {
+              navigate(e.target.value);
+            }
+          }}
+        >
+          <option value="" selected disabled>
+            Tanlang
+          </option>
+          <option
+            value={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}`}
+          >
+            Umumiy ma'lumotlari
+          </option>
+          <option
+            value={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/ustav`}
+          >
+            Ustavi
+          </option>
+          <option
+            value={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/vasiylik-kengashi`}
+          >
+            Vasiylik kengashlari
+          </option>
+          <option
+            value={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/tayyorlanadigan-kasblar`}
+          >
+            Tayyorlanadigan kasb va mutaxassisliklar
+          </option>
+          <option
+            value={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/pedogoglar-tarkibi`}
+          >
+            Pedagoglar tarkibi
+          </option>
+          <option
+            value={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/rivojlanish-strategiyasi`}
+          >
+            Rivojlanish strategiyasi
+          </option>
+          <option
+            value={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/qisqa-muddatli-kurslar`}
+          >
+            Qisqa muddatli kurslar
+          </option>
+          <option
+            value={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/worldSkills`}
+          >
+            WorldSkills
+          </option>
+        </select>
         <div className="row row-cols-3 row-cols-lg-4 g-2 g-lg-3">
           <div className="col-12">
             <div className="malumot_cards">
-              <div className="col-4 sidebar">
+              <div className="col-4 sidebar d-none d-md-flex">
                 <NavLink
-                to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}`}
-                end
+                  to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}`}
+                  end
                   className={({ isActive }) =>
                     isActive ? "isActive" : "malumot_card"
                   }
@@ -84,7 +144,7 @@ export default function MuassasaMalumotiLayout() {
                   <p>Vasiylik kengashlari</p>
                 </NavLink>
                 <NavLink
-                to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/tayyorlanadigan-kasblar`}
+                  to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/tayyorlanadigan-kasblar`}
                   className={({ isActive }) =>
                     isActive ? "isActive" : "malumot_card"
                   }
@@ -108,7 +168,7 @@ export default function MuassasaMalumotiLayout() {
                   <p>Rivojlanish strategiyasi</p>
                 </NavLink>
                 <NavLink
-                to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/qisqa-muddatli-kurslar`}
+                  to={`/viloyatlar/tumanlar/${tumanId}/muassasalar/${muassasaId}/collages/${collageId}/qisqa-muddatli-kurslar`}
                   className={({ isActive }) =>
                     isActive ? "isActive" : "malumot_card"
                   }
@@ -124,7 +184,7 @@ export default function MuassasaMalumotiLayout() {
                   <p>WorldSkills</p>
                 </NavLink>
               </div>
-              <div className="col-8">
+              <div className="col-sm-12 col-md-8 fileBlok">
                 <Outlet />
               </div>
             </div>

@@ -515,3 +515,95 @@
     }
   }
 }
+
+@media only screen and (max-width: 640px) {
+  .bookBatafsil{
+  row-gap: 20px;
+  .bookTitle {
+    max-width: 100%;
+    width: 100% !important;
+    margin-top: 30px;
+    p {
+      font-family: Euclid Square;
+      font-size: 20px;
+      font-style: normal;      
+      font-weight: 700 !important;
+      color: #a0cdee;
+      text-align: center;
+    }
+  }
+    .bookContent {
+    display: flex;
+    column-gap: 30px;
+    .bookImg {
+      display: none;
+    }
+    .bookDesc {
+      width: 100% !important;
+      display: flex;
+      flex-direction: column;
+      .title {
+        color: #fff;
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: Euclid Square;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-bottom: 5px !important;
+      }
+      .titleName {
+        color: #fff;
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: Euclid Square;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+       .yuklash {
+        margin-top: 40px;
+        width: 100% !important;
+        .yuklashDesc {
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+        }
+        .yuklashBtn:hover {
+          background: #0d6ec4;
+        }
+        .yuklashBtn {
+          width: 30%;
+          padding: 5px 10px !important;
+        }
+      }
+        .hr {
+        color: white;
+        margin: 20px 0px !important;
+        height: 2px;
+      }
+       .izohlar {
+        margin-bottom: 50px !important;
+        .izohForm {
+          border-radius: 10px;
+          background: rgba(243, 243, 243, 0.45);
+          width: 100%;
+        }
+        .saveBlok {
+          display: flex;
+          justify-content: end;
+          .saveBtn {
+            padding: 5px 10px !important;
+            border-radius: 5px;
+            border: 1px solid #b5b5b5;
+          }
+          .saveBtn:hover {
+            background: #0d6ec4;
+          }
+        }
+      }
+  }
+  }
+    }
+  
+}

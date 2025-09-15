@@ -28,3 +28,44 @@
   font-size: 22px;
   font-weight: 700;
 }
+  @media only screen and (max-width: 640px) {
+    .statistika {
+  margin: 0px 0px 70px;
+}
+.statistika_box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.son {
+  width: 100%;
+  border-bottom: 2px solid #ddd;
+  border-right: none;
+  text-align: center;
+  padding: 0 0px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0px;
+
+}
+.son:last-child {
+   width: 100%;
+  border-bottom: 2px solid #ddd;
+  border-right: none;
+  text-align: center;
+  padding: 0 0px;
+}
+.son .count {
+  color: #1485d5;
+  text-align: justify;
+  font-size: 40px;
+  font-weight: 600;
+}
+.son p {
+  color: #1c71ff;
+  font-size: 20px;
+  font-weight: 500;
+}
+  }
