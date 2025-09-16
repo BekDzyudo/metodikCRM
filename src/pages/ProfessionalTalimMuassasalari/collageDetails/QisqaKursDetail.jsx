@@ -43,7 +43,7 @@ function QisqaKursDetail() {
       {isPending && <PageLoader />}
       {qisqaKursDetailObj ? (
         <div className="detail">
-          <div className="image-content">
+          <div className="image-content d-none d-md-block">
             <div className="talim_detail-img">
               <img src={qisqaKursDetailObj.image} alt="" />
             </div>
@@ -72,7 +72,7 @@ function QisqaKursDetail() {
                   </div>
                   <div className="talim_detail-btn">
                     <Link to={item.file} target="blank">
-                      Yuklab olish
+                      Yuklash
                     </Link>
                   </div>
                 </div>

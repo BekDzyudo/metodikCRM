@@ -28,7 +28,7 @@ function TayyorlanadiganKasbDetails() {
     <>
       <p className="kasbTitle">{data?.name}</p>
       <div className="kasbDetail col-12">
-        <div className="commentKasb">
+        <div className="commentKasb d-none d-md-block">
           <div className="talim_detail-img">
             <img src={data?.image} alt="" />
           </div>
@@ -61,7 +61,7 @@ function TayyorlanadiganKasbDetails() {
                     </span>
                   </div>
                   <div className="talim_detail-btn">
-                    <Link target="blanck" to={item.file}>Yuklab olish</Link>
+                    <Link target="blanck" to={item.file}>Yuklash</Link>
                   </div>
                 </div>
               );

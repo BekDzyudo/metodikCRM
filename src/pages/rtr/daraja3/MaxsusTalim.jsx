@@ -37,7 +37,7 @@ function MaxsusTalim() {
       </div>
       <div className="block">
         {sidebar && (
-          <div className="sidebar">
+          <div className="sidebar d-none d-md-flex">
             {sidebar[2]?.general_subjects.length > 1 && (
               <button
                 className={active == -1 ? "isActive" : "malumot_card"}

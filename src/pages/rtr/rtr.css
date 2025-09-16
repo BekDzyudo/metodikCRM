@@ -1,9 +1,10 @@
 .rtr{
-    background: linear-gradient(171deg, #05096e 0%, #169de8 100%);
+     background: linear-gradient(171deg, #05096e 0%, #169de8 100%);
     border-radius: 0px 0px 600px 0px;
+    padding-bottom: 50px;
     width: 100%;
     height: auto;
-    padding-bottom: 50px;
+    margin-bottom: 100px;
 }
 .rtrHomeRow{
     display: flex;
@@ -27,7 +28,6 @@
     object-fit: cover;
     scale: 0.9;
     border-radius: 5px;
-
 }
 .rtrHomeRow .card:nth-child(1):hover .image img{
     scale: 1;
@@ -251,4 +251,44 @@ height: 600px;
 .korgazma img{
     width: 100%;
     height: auto;
+}
+
+@media only screen and (max-width: 640px) {
+    .rtr{
+        border-radius: 0px 0px 100px 0px;
+        padding-bottom: 50px;
+        margin-bottom: 50px;
+    }
+    .rtrHomeRow{
+    flex-direction: column;
+    row-gap: 20px;
+    margin-top: 40px;
+}
+.rtrHomeRow .card{
+    width: 100%;
+    height: 250px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+    padding: 8px;
+}
+.rtrHomeRow .card .image{
+    height: 80%;
+    width: 60%;
+}
+.rtrHomeRow .card h2{
+    height: 20%;
+    font-size: 20px;
+}
+.block{
+margin-top: 40px;
+}
+.block .content{
+    padding: 0 !important;
+    width: 100%;
+}
+.block .content .cardd{
+    width: 100%;
+}
 }

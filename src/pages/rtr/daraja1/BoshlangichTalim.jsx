@@ -22,7 +22,9 @@ function BoshlangichTalim() {
     `https://rtr.profedu.uz/api/v1/rtr_base_app/subject-list/1/level/?general_subject=${category}&page=${page}`
   );
 
-  const {data: sidebar} = useGetFetch("https://rtr.profedu.uz/api/v1/rtr_base_app/category-level-list/")
+  const { data: sidebar } = useGetFetch(
+    "https://rtr.profedu.uz/api/v1/rtr_base_app/category-level-list/"
+  );
 
   return (
     <div className="container">
@@ -34,8 +36,8 @@ function BoshlangichTalim() {
         </div>
       </div>
       <div className="block">
-      {sidebar && (
-          <div className="sidebar">
+        {sidebar && (
+          <div className="sidebar d-none d-md-flex">
             {sidebar[0]?.general_subjects.length > 1 && (
               <button
                 className={active == -1 ? "isActive" : "malumot_card"}
@@ -70,7 +72,11 @@ function BoshlangichTalim() {
           {data?.results.length ? (
             data.results.map((item) => {
               return (
-                <Link to={`/raqamli-talim-resurslari/boshlangich-professional-talim/${item.id}`} className="cardd" key={item.id}>
+                <Link
+                  to={`/raqamli-talim-resurslari/boshlangich-professional-talim/${item.id}`}
+                  className="cardd"
+                  key={item.id}
+                >
                   <div className="image">
                     <img src={item.photo} alt="" />
                   </div>
@@ -113,9 +119,21 @@ function BoshlangichTalim() {
           )}
 
           {data?.total_pages > 1 && (
-            <ul className="pagenation" style={{width:"100%", justifyContent:"center"}}>
+            <div
+              className="pagenation"
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                margin: 0,
+                padding: 0,
+                display: "flex",
+              }}
+            >
               <Pagination
                 sx={{
+                  "& .MuiPagination-ul": {
+                    flexWrap: "wrap", // 📌 kichkina ekranda ham sig‘ib ketadi
+                  },
                   "& .MuiPaginationItem-root": {
                     color: "white",
                     "&:hover": {
@@ -125,7 +143,7 @@ function BoshlangichTalim() {
                     "&.Mui-selected": {
                       backgroundColor: "white",
                       color: "blue",
-                      fontWeight: "600px",
+                      fontWeight: 600,
                       fontSize: "20px",
                     },
                   },
@@ -135,7 +153,7 @@ function BoshlangichTalim() {
                 size="large"
                 onChange={handlePagination}
               ></Pagination>
-            </ul>
+            </div>
           )}
         </div>
       </div>

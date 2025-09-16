@@ -35,7 +35,7 @@ function OrtaTalim() {
       </div>
       <div className="block">
       {sidebar && (
-          <div className="sidebar">
+          <div className="sidebar d-none d-md-flex">
             {sidebar[1]?.general_subjects.length > 1 && (
               <button
                 className={active == -1 ? "isActive" : "malumot_card"}

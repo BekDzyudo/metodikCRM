@@ -141,9 +141,9 @@ export function BookBatafsil() {
                   <Link
                     to={data.results.adabiyotlar.file}
                     target="_blanck"
-                    className="yuklashBtn"
+                    className="yuklashBtn text-center"
                   >
-                    Yuklab olish
+                    Yuklash
                   </Link>
                 </div>
                 <hr className="hr" />

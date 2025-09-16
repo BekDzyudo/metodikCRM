@@ -82,7 +82,6 @@ function BoshlangichTalimDetail() {
           )}
         </div>
       </div>
-
       <div className="blockDetail">
         {isPending && <PageLoader />}
         {error && <div className="noData">{error}</div>}

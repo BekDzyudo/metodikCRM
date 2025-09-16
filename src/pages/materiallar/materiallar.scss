@@ -1,190 +1,223 @@
 .materiallar {
-    background: linear-gradient(168deg, #05096e 37.95%, #169de8 96.46%);
-    border-radius: 0px 0px 500px 0px;
-    padding-bottom: 1px;
-    .container {
+  background: linear-gradient(168deg, #05096e 37.95%, #169de8 96.46%);
+  border-radius: 0px 0px 500px 0px;
+  padding-bottom: 1px;
+  margin-bottom: 100px;
+  .container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+    .material_filter {
       display: flex;
       flex-direction: column;
-      row-gap: 100px;
-    .material_filter {
+      row-gap: 20px;
+      h1 {
+        font-size: 20px;
+        color: white;
+        font-weight: 500;
+      }
+      .filterBlok {
+        display: flex;
+        column-gap: 20px;
+        select {
+          max-width: 200px;
+          height: 50px;
+          padding: 10px 20px;
+          color: white;
+          background: #326695;
+          font-weight: 400;
+          font-size: 16px;
+          width: min-content;
+          outline: none;
+          border-radius: 5px;
+          option {
+            &:nth-child(1) {
+              background: white;
+              color: black;
+            }
+          }
+        }
+        button {
+          max-width: 220px;
+          height: 50px;
+          padding: 10px 20px;
+          color: white;
+          background: green;
+          font-weight: 400;
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+          column-gap: 5px;
+          outline: none;
+          border-radius: 5px;
+        }
+      }
+    }
+    .contentBlock {
+      display: flex;
+      column-gap: 50px;
+      .sidebar {
+        width: 25%;
         display: flex;
         flex-direction: column;
-        row-gap: 20px;
+        row-gap: 10px;
+        .malumot_card {
+          width: 100% !important;
+          padding: 10px 20px;
+          display: flex;
+          border-radius: 5px;
+          background: #ffffff;
+          p {
+            color: #326695;
+            font-family: "PT Sans";
+            font-size: 17px;
+            font-weight: 600;
+          }
+        }
+        .malumot_card:hover {
+          width: 354px;
+          padding: 10px 20px;
+          display: flex;
+          border-radius: 5px;
+          background: #326695;
+        }
+        .malumot_card:hover {
+          p {
+            color: #ffffff;
+            font-family: "PT Sans";
+            font-size: 17px;
+            font-weight: 600;
+          }
+        }
+        .isActive {
+          width: 100%;
+          padding: 10px 20px;
+          display: flex;
+          border-radius: 5px;
+          background: #326695;
+        }
+
+        .isActive p {
+          color: #ffffff;
+          font-family: "PT Sans";
+          font-size: 17px;
+          font-weight: 600;
+        }
+      }
+      .contents {
+        width: 75%;
+        .content {
+          width: 100%;
+          .cardMaterial {
+            min-height: 200px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            h2 {
+              text-align: center;
+              font-size: 18px;
+              background-color: #326695;
+              padding: 10px 10px !important;
+              color: rgb(240, 235, 235);
+              border-radius: 8px 8px 0px 0px;
+            }
+            h1 {
+              font-size: 20px;
+              padding: 0px 20px;
+              text-align: center;
+              color: #326695;
+              font-weight: 800px;
+            }
+            .btnShow {
+              padding: 0px 10px 5px;
+              display: flex;
+              column-gap: 20px;
+              button {
+                background: none;
+                font-size: 16px;
+                color: #326695;
+                font-weight: 600;
+                border-radius: 5px;
+                display: flex;
+                column-gap: 10px;
+                align-items: center;
+                span {
+                  font-size: 18px;
+                  color: #326695;
+                }
+                &:hover {
+                  color: #447bac;
+                }
+              }
+              a {
+                background: none;
+                font-size: 16px;
+                color: #326695;
+                font-weight: 600;
+                border-radius: 5px;
+                display: flex;
+                column-gap: 5px;
+                align-items: center;
+                span {
+                  font-size: 20px;
+                  color: #326695;
+                }
+                &:hover {
+                  color: #447bac;
+                }
+              }
+            }
+          }
+        }
+        .paginationn {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .materiallar {
+    border-radius: 0px 0px 100px 0px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    .container {
+      row-gap: 20px !important;
+      .material_filter {
+        row-gap: 0;
         h1 {
           font-size: 20px;
           color: white;
           font-weight: 500;
-        }
-        .filterBlok {
-          display: flex;
-          column-gap: 20px;
-          select {
-            max-width: 200px;
-            height: 50px;
-            padding: 10px 20px;
-            color: white;
-            background: #326695;
-            font-weight: 400;
-            font-size: 16px;
-            width: min-content;
-            outline: none;
-            border-radius: 5px;
-            option{
-              &:nth-child(1){
-                background: white;
-                color: black;
-              }
-            }
-          }
-          button{
-            max-width: 220px;
-            height: 50px;
-            padding: 10px 20px;
-            color: white;
-            background: green;
-            font-weight: 400;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            column-gap: 5px;
-            outline: none;
-            border-radius: 5px;
-          }
+          text-align: center;
+          margin-top: 40px !important;
         }
       }
-      .contentBlock{
-        display: flex;
-        column-gap: 50px;
-        .sidebar{
-            width: 25%;
-            display: flex;
-            flex-direction: column;
-            row-gap: 10px;
-            .malumot_card{
-                width: 100% !important;
-                padding: 10px 20px;
-                display: flex;
-                border-radius: 5px;
-                background: #ffffff;
-                p{
-                  color: #326695;
-                  font-family: "PT Sans";
-                  font-size: 17px;
-                  font-weight: 600;
-                }
-              }
-              .malumot_card:hover {
-                  width: 354px;
-                  padding: 10px 20px;
-                  display: flex;
-                  border-radius: 5px;
-                  background: #326695;
-                }
-                .malumot_card:hover {
-                  p {
-                    color: #ffffff;
-                    font-family: "PT Sans";
-                    font-size: 17px;
-                    font-weight: 600;
-                  }
-                }
-              .isActive {
-                width: 100%;
-                padding: 10px 20px;
-                display: flex;
-                border-radius: 5px;
-                background: #326695;
-              }
-          
-              .isActive p {
-                color: #ffffff;
-                font-family: "PT Sans";
-                font-size: 17px;
-                font-weight: 600;
-              }
-        }
-        .contents{
-          display: flex;
-          flex-direction: column;
-          width: 75%;
-          row-gap: 50px;
-          .content{
+      .contentBlock {
+        padding-left: 20px;
+        .contents {
+          width: 100% !important;
+          .content {
             width: 100%;
-            display: flex;
-            column-gap: 20px;
-            flex-wrap: wrap;
-            .cardMaterial{
-                width: 31.8%;
-                min-height: 200px;
-                margin-bottom: 30px;
-                background-color: rgb(255, 255, 255);
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                h2{
-                    text-align: center;
-                    font-size: 18px;
-                        background-color: #326695;
-                        padding: 10px 10px !important;
-                        color: rgb(240, 235, 235);
-                        border-radius: 8px 8px 0px 0px;
-                }
-                h1{
-                    font-size: 20px;
-                    padding: 0px 20px;
-                    text-align: center;
-                    color: #326695;
-                    font-weight: 800px;
-                }
-                .btnShow{
-                    padding: 0px 10px 5px;
-                    display: flex;
-                    column-gap: 20px;
-                    // justify-content: space-between;
-                    button{
-                        background: none;
-                        font-size: 16px;
-                        color: #326695;
-                        font-weight: 600;
-                        border-radius: 5px;
-                        display: flex;
-                        column-gap: 10px;
-                        align-items: center;
-                        span{
-                            font-size: 18px;
-                            color: #326695;
-                        }
-                        &:hover{
-                            color: #447bac;
-                        }
-                    }
-                    a{
-                      background: none;
-                      font-size: 16px;
-                      color: #326695;
-                      font-weight: 600;
-                      border-radius: 5px;
-                      display: flex;
-                      column-gap: 5px;
-                      align-items: center;
-                      span{
-                          font-size: 20px;
-                          color: #326695;
-                      }
-                      &:hover{
-                          color: #447bac;
-                      }
-                  }
-                }
+            .cardMaterial {
+              h2 {
+              }
+              h1 {
+                font-size: 18px;
+              }
+              .btnShow {
+                padding: 0px 10px 5px;
+                column-gap: 10px;
+              }
             }
-          }
-          .paginationn{
-            width: 100%;
-            display: flex;
-            justify-content: center;
           }
         }
       }
     }
+  }
 }

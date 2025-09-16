@@ -42,7 +42,7 @@ const month = [
       {isPending && <PageLoader />}
       {worldSkillsDetailObj ? (
         <div className="detail">
-          <div className="image-content">
+          <div className="image-content d-none d-md-block">
             <div className="talim_detail-img">
               <img src={worldSkillsDetailObj.image} alt="" />
             </div>
@@ -70,7 +70,7 @@ const month = [
                       </span>
                   </div>
                   <div className="talim_detail-btn">
-                    <Link to={item.file} target="blank">Yuklab olish</Link>
+                    <Link to={item.file} target="blank">Yuklash</Link>
                   </div>
                 </div>
               );

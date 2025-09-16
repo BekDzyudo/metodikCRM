@@ -488,7 +488,7 @@ width: 40%;
 
 .world_card .world_text p {
   color: #fff;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -792,5 +792,23 @@ width: 40%;
   font-family: "PT Sans";
   font-size: 17px;
   font-weight: 600;
+}
+.talim_detail-cards {
+  width: 100%;
+  margin: 20px 0px 0px 0px;
+}
+.talim_detail-card {
+  margin: 16px 0 20px 0;
+  width: 100%;
+  border-radius: 10px;
+  column-gap: 5px;
+}
+.talim_detail-btn {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid #b5b5b5;
+  margin-left: auto;
+  width: 25%;
+  text-align: center;
 }
 }
